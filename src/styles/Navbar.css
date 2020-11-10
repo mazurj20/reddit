@@ -1,0 +1,60 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap");
+
+.Navbar {
+  display: flex;
+  justify-content: space-between;
+  position: sticky;
+  top: 0;
+  background: rgba(255, 255, 255, 0.97);
+  z-index: 2;
+  height: 60px;
+}
+.Navbar_left {
+  display: flex;
+}
+.Navbar_left > .MuiSvgIcon-root {
+  color: rgba(235, 67, 0, 1);
+  padding: 10px;
+  width: 35px;
+  height: 35px;
+}
+.Navbar_title {
+  color: rgba(235, 67, 0, 1);
+  padding: 14px 10px 10px 0px;
+  font-family: "Montserrat", sans-serif;
+}
+
+.Navbar_search {
+  display: flex;
+  align-items: center;
+  background-color: rgba(210, 210, 210, 0.97);
+  border-radius: 2px;
+  margin: 12px 10px 10px 10px;
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.5);
+  height: 35px;
+  flex: 0.7;
+}
+
+.Navbar_search > .MuiSvgIcon-root {
+  color: gray;
+  padding-left: 10px;
+}
+
+.Navbar_search > input {
+  border: none;
+  outline-width: 0;
+  margin-left: 10px;
+  margin-top: 1px;
+  background-color: rgba(210, 210, 210, 0.97);
+  font-size: medium;
+  font-family: "Montserrat", sans-serif;
+}
+.Navbar_right {
+  display: flex;
+}
+.Navbar_right > .MuiAvatar-root {
+  margin: 10px;
+}
+.Navbar_right > .MuiIconButton-root {
+  margin: 10px;
+}

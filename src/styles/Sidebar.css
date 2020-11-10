@@ -1,0 +1,52 @@
+.Sidebar_top {
+  top: 80px;
+  left: 75%;
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  width: 20%;
+  justify-content: space-between;
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.5);
+  min-height: 35vh;
+}
+.Sidebar_title {
+  text-align: center;
+  background-color: rgba(235, 67, 0, 1);
+  padding: 5px;
+  font-family: "Montserrat", sans-serif;
+  height: 4vh;
+  color: rgb(231, 231, 231);
+}
+.Sidebar_top_container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.Sidebar_bottom {
+  text-align: center;
+  top: 50%;
+  left: 75%;
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  width: 20%;
+  justify-content: space-between;
+  max-height: 48%;
+  overflow: scroll;
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.5);
+  min-height: 45vh;
+}
+.Sidebar_button > button {
+  background-color: rgba(241, 241, 241, 0.97);
+  color: black;
+  margin: 6px;
+  border-radius: 1px;
+  width: 90%;
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.2);
+  height: 4vh;
+}
+.Sidebar_button > button:hover {
+  background-color: rgba(212, 212, 212, 0.97);
+}
