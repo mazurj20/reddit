@@ -18,9 +18,6 @@ const Sidebar = () => {
         <div className="Sidebar_button">
           <Button type="submit">Create a subreddit</Button>
         </div>
-        <div>
-          <h3>Subreddits(18)</h3>
-        </div>
         <div className="Sidebar_bottom_container"></div>
       </div>
     </div>
