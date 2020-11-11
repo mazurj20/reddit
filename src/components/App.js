@@ -1,13 +1,16 @@
 import "../styles/App.css";
 import Navbar from "./Navbar";
 import Sidebar from "./Sidebar";
+import Home from "./pages/Home";
 
 function App() {
   return (
     <div className="App">
       <Navbar />
       <Sidebar />
-      <h1>Welcome to reddit🥡</h1>
+      <div>
+        <Home />
+      </div>
     </div>
   );
 }

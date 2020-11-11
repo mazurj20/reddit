@@ -32,7 +32,7 @@
   flex-direction: column;
   background-color: white;
   width: 20%;
-  justify-content: space-between;
+  justify-content: flex-start;
   max-height: 48%;
   overflow: scroll;
   box-shadow: 0 0 2px rgba(0, 0, 0, 0.5);

@@ -1,0 +1,37 @@
+.post {
+  display: flex;
+  width: 50vw;
+  background-color: rgba(255, 255, 255, 0.97);
+  padding: 10px;
+  margin: 10px 10px 0px 10px;
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.5);
+}
+.post__left {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.post__right {
+  margin: 3px 0px 0px 30px;
+  width: 90%;
+  height: 90%;
+  overflow: hidden;
+}
+
+.post__title {
+  color: rgba(0, 0, 0, 0.9);
+}
+
+.post__contents {
+  margin: 10px;
+  color: rgba(92, 92, 92, 0.863);
+}
+.post__left > .MuiIcon-root > .MuiSvgIcon-root {
+  width: 10px;
+  height: 10px;
+}
+.post__image {
+  width: 80%;
+  height: 80%;
+}
