@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect} from "react";
 import "../styles/Navbar.css";
 import RedditIcon from "@material-ui/icons/Reddit";
 import {
@@ -17,17 +17,25 @@ import axios from "../axios";
 function Navbar() {
   const [{ user }, dispatch] = useStateValue();
 
-  const signUp = (email) => {
-    axios.post("/users", { email: email }).then((res) => console.log(res.data));
+ 
+
+  const signUp = () => {
+    axios.post("/users", { email: user.email }).then((res) => {
+      if(user) user["user_id"] = res.data.user_id;
+    });
   };
 
-  const findId = (email) => {
-    const header = { email: email };
+  const findId = () => {
+    const header = { email: user.email };
     axios.get("/login", { headers: header }).then((res) => {
       if (res.data.length < 1) {
-        signUp(email);
+        signUp();
       } else {
-        console.log("yo");
+        console.log(user);
+        console.log(res.data[0].user_id);
+        if (user) user["user_id"] = res.data[0].user_id;
+          
+
       }
     });
   };
@@ -42,9 +50,10 @@ function Navbar() {
         });
 
         console.log(res.user.email);
-        findId(res.user.email);
       })
       .catch((error) => alert(error.message));
+      
+    user && findId()
   };
 
   return (
