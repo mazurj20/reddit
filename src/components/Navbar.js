@@ -13,32 +13,43 @@ import { auth, provider } from "../firebase";
 import { actionTypes } from "../reducer";
 import { useStateValue } from "../stateprovider";
 import axios from "../axios";
+import firebase from 'firebase'
 
 function Navbar() {
   const [{ user }, dispatch] = useStateValue();
 
- 
+
 
   const signUp = () => {
     axios.post("/users", { email: user.email }).then((res) => {
-      if(user) user["user_id"] = res.data.user_id;
-    });
-  };
+       firebase.auth().onAuthStateChanged((user) => {
+        if (user) {
+            user["user_id"] = res.data.user_id
+            } 
+        })   
+    })
+  }
 
   const findId = () => {
     const header = { email: user.email };
     axios.get("/login", { headers: header }).then((res) => {
       if (res.data.length < 1) {
         signUp();
-      } else {
-        console.log(user);
+      } 
+      else {
+        
         console.log(res.data[0].user_id);
-        if (user) user["user_id"] = res.data[0].user_id;
-          
-
-      }
-    });
-  };
+         firebase.auth().onAuthStateChanged((user) => {
+            if (user) {
+                user["user_id"] = res.data[0].user_id
+                console.log(user);
+                    }
+                })
+                
+            }
+        });
+    };
+  
 
   const logIn = async () => {
     await auth
@@ -53,7 +64,8 @@ function Navbar() {
       })
       .catch((error) => alert(error.message));
       
-    user && findId()
+   
+
   };
 
   return (
@@ -73,7 +85,8 @@ function Navbar() {
         <IconButton>
           <MoreVert />
         </IconButton>
-        {user && <Avatar src={user.photoURL} />}
+        {user && <Avatar src={user.photoURL} />} 
+        {user && findId()}
       </div>
     </div>
   );
