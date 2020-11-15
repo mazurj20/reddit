@@ -1,4 +1,4 @@
-import React, {useEffect} from "react";
+import React, { useEffect } from "react";
 import "../styles/Navbar.css";
 import RedditIcon from "@material-ui/icons/Reddit";
 import {
@@ -13,43 +13,38 @@ import { auth, provider } from "../firebase";
 import { actionTypes } from "../reducer";
 import { useStateValue } from "../stateprovider";
 import axios from "../axios";
-import firebase from 'firebase'
+import firebase from "firebase";
 
 function Navbar() {
   const [{ user }, dispatch] = useStateValue();
 
-
-
   const signUp = () => {
     axios.post("/users", { email: user.email }).then((res) => {
-       firebase.auth().onAuthStateChanged((user) => {
+      firebase.auth().onAuthStateChanged((user) => {
         if (user) {
-            user["user_id"] = res.data.user_id
-            } 
-        })   
-    })
-  }
+          user["user_id"] = res.data.user_id;
+          console.log(user);
+        }
+      });
+    });
+  };
 
   const findId = () => {
     const header = { email: user.email };
     axios.get("/login", { headers: header }).then((res) => {
       if (res.data.length < 1) {
         signUp();
-      } 
-      else {
-        
+      } else {
         console.log(res.data[0].user_id);
-         firebase.auth().onAuthStateChanged((user) => {
-            if (user) {
-                user["user_id"] = res.data[0].user_id
-                console.log(user);
-                    }
-                })
-                
-            }
+        firebase.auth().onAuthStateChanged((user) => {
+          if (user) {
+            user["user_id"] = res.data[0].user_id;
+            console.log(user);
+          }
         });
-    };
-  
+      }
+    });
+  };
 
   const logIn = async () => {
     await auth
@@ -63,9 +58,6 @@ function Navbar() {
         console.log(res.user.email);
       })
       .catch((error) => alert(error.message));
-      
-   
-
   };
 
   return (
@@ -85,7 +77,7 @@ function Navbar() {
         <IconButton>
           <MoreVert />
         </IconButton>
-        {user && <Avatar src={user.photoURL} />} 
+        {user && <Avatar src={user.photoURL} />}
         {user && findId()}
       </div>
     </div>
