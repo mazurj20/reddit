@@ -25,6 +25,7 @@ function Navbar() {
        firebase.auth().onAuthStateChanged((user) => {
         if (user) {
             user["user_id"] = res.data.user_id
+            console.log(user)
             } 
         })   
     })
