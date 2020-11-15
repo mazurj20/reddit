@@ -14,6 +14,7 @@ import { actionTypes } from "../reducer";
 import { useStateValue } from "../stateprovider";
 import axios from "../axios";
 import firebase from "firebase";
+import { Link } from "react-router-dom";
 
 function Navbar() {
   const [{ user }, dispatch] = useStateValue();
@@ -62,12 +63,14 @@ function Navbar() {
 
   return (
     <div className="Navbar">
-      <div className="Navbar_left">
-        <RedditIcon />
-        <div className="Navbar_title">
-          <h2>reddit</h2>
+      <Link to="/" style={{ textDecoration: "none" }}>
+        <div className="Navbar_left">
+          <RedditIcon />
+          <div className="Navbar_title">
+            <h2>reddit</h2>
+          </div>
         </div>
-      </div>
+      </Link>
       <div className="Navbar_search">
         <SearchOutlined />
         <input placeholder="Search" style={{ flex: "1" }} type="text" />

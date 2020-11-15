@@ -18,7 +18,7 @@
   height: 4vh;
   color: rgb(231, 231, 231);
 }
-.Sidebar_top_container {
+.Sidebar_top_content {
   display: flex;
   flex-direction: column;
   justify-content: center;

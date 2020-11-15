@@ -1,13 +1,20 @@
 import React from "react";
 import "../../styles/Home.css";
 import SubredditDisplay from "../SubredditDisplay";
+import NewSubreddit from "../newSubreddit";
 
-const Home = () => {
+const Home = ({ createSubredditForm, setCreateSubredditForm }) => {
   return (
     <div className="Home">
-      <SubredditDisplay />
-      <SubredditDisplay />
-      <SubredditDisplay />
+      {createSubredditForm ? (
+        <NewSubreddit setCreateSubredditForm={setCreateSubredditForm} />
+      ) : (
+        <>
+          <SubredditDisplay />
+          <SubredditDisplay />
+          <SubredditDisplay />
+        </>
+      )}
     </div>
   );
 };
