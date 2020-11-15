@@ -1,21 +1,26 @@
 import React, { useState } from "react";
 import axios from "../axios";
-import "../styles/newSubreddit.css";
+import "../styles/newPost.css";
 import { useStateValue } from "../stateprovider";
 
 
-function NewSubreddit({ setCreateSubredditForm }) {
+function NewPost({ setCreatePostForm}) {
   const [titleInput, setTitleInput] = useState("");
   const [descriptionInput, setDescriptionInput] = useState("");
   const [urlInput, setUrlInput] = useState("");
   const [{ user }, dispatch] = useStateValue();
 
-  const CreateNewSubreddit = async (e) => {
-    await axios.post("/subreddits", {
+  const CreateNewPost = async (e) => {
+    await axios.post("/posts", {
       user_id: user.user_id,
-      title: titleInput,
-      content: descriptionInput,
-      url: urlInput,
+      post_title: titleInput,
+      post_content: descriptionInput,
+      post_image_url: urlInput,
+      post_upvotes: 0,
+      post_timestamp: new Intl.DateTimeFormat("en-US", {
+        hour: "2-digit",
+        minute: "2-digit",
+      }).format(Date.now()),
     });
 
     setTitleInput("");
@@ -26,37 +31,36 @@ function NewSubreddit({ setCreateSubredditForm }) {
 
   return (
     <div className="form__container">
-      <div className="newSubreddit__title">
+      <div className="newPost__title">
         <textarea
           value={titleInput}
-          placeholder="Subreddit Title"
+          placeholder="Post Title"
           onChange={(e) => setTitleInput(e.target.value)}
         />
       </div>
-      <div className="newSubreddit__description">
+      <div className="newPost__description">
         <textarea
           value={descriptionInput}
-          placeholder="Description(optional)"
+          placeholder="Content"
           onChange={(e) => setDescriptionInput(e.target.value)}
         />
       </div>
-      <div className="newSubreddit__url">
+      <div className="newPost__url">
         <textarea
           value={urlInput}
           placeholder="Image URL(optional)"
           onChange={(e) => setUrlInput(e.target.value)}
         />
       </div>
-      <div className="newSubreddit__button">
+      <div className="newPost__button">
         <button 
         onClick={() => {
-          
-          setCreateSubredditForm(false) 
-          CreateNewSubreddit()}} 
+          setCreatePostForm(false) 
+          CreateNewPost()}} 
         type="submit">
           Create
         </button>
-        <button onClick={() => setCreateSubredditForm(false)} type="submit">
+        <button onClick={() => setCreatePostForm(false)} type="submit">
           Cancel
         </button>
       </div>
@@ -64,4 +68,4 @@ function NewSubreddit({ setCreateSubredditForm }) {
   );
 }
 
-export default NewSubreddit;
+export default NewPost;

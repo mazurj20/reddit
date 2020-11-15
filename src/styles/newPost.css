@@ -1,0 +1,53 @@
+.form__container {
+  top: 10px;
+  left: 15%;
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  padding-bottom: 10px;
+  width: 50vw;
+  background-color: white;
+}
+
+.newPost__title {
+  margin: 10px;
+}
+
+.newPost__title > textarea {
+  width: 100%;
+  resize: none;
+  overflow: scroll;
+  height: 4vh;
+}
+
+.newPost__description {
+  flex: 1;
+  margin: 10px;
+}
+
+.newPost__description > textarea {
+  width: 100%;
+  height: 100%;
+  resize: none;
+  overflow: scroll;
+}
+.newPost__url {
+  margin: 10px;
+}
+.newPost__url > textarea {
+  width: 100%;
+  height: 100%;
+  resize: none;
+  overflow: scroll;
+}
+
+.newPost__button {
+  display: flex;
+  justify-content: flex-start;
+  margin: 10px;
+}
+
+.newPost__button > button {
+  margin: 5px;
+}

@@ -2,7 +2,7 @@ import React from "react";
 import "../styles/Sidebar.css";
 import { Button } from "@material-ui/core";
 
-const Sidebar = ({ setCreateSubredditForm }) => {
+const Sidebar = ({ setCreateSubredditForm, setCreatePostForm }) => {
   return (
     <div className="Sidebar">
       <div className="Sidebar_top">
@@ -19,7 +19,7 @@ const Sidebar = ({ setCreateSubredditForm }) => {
           <Button onClick={() => setCreateSubredditForm(true)} type="submit">
             Create a subreddit
           </Button>
-          <Button type="submit">Create a Post</Button>
+          <Button onClick={() => setCreatePostForm(true)} type="submit">Create a Post</Button>
         </div>
         <div className="Sidebar_bottom_content"></div>
       </div>

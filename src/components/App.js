@@ -7,11 +7,15 @@ import { Switch, Route } from "react-router-dom";
 
 function App() {
   const [createSubredditForm, setCreateSubredditForm] = useState(false);
+  const [createPostForm, setCreatePostForm] = useState(false)
 
   return (
     <div className="App">
       <Navbar />
-      <Sidebar setCreateSubredditForm={setCreateSubredditForm} />
+      <Sidebar 
+      setCreateSubredditForm={setCreateSubredditForm}
+      setCreatePostForm={setCreatePostForm}
+           />
       <main>
         <Switch>
           <Route
@@ -21,6 +25,8 @@ function App() {
               <Home
                 createSubredditForm={createSubredditForm}
                 setCreateSubredditForm={setCreateSubredditForm}
+                createPostForm={createPostForm}
+                setCreatePostForm={setCreatePostForm}
               />
             )}
           />
