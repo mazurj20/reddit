@@ -5,14 +5,14 @@
   border-radius: 4px;
   border: solid rgb(158, 158, 158);
   border-width: 1px;
-  height: 25vh;
+  height: 29vh;
 }
 .Post:hover {
   border: solid rgb(0, 0, 0);
   border-width: 1px;
 }
 .Post_left {
-  width: 6%;
+  width: 7%;
   height: 100%;
   background-color: rgb(233, 229, 229);
   border-radius: 4px 0 0 4px;

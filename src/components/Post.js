@@ -35,8 +35,8 @@ const Post = ({ post }) => {
             <Link to={`/account/${post.user_id}`} className="Post_user">
               <h4>{post.email}</h4>
             </Link>
+            <h4>&nbsp;&nbsp;&nbsp;{post.post_timestamp}</h4>
           </div>
-          <h4>{post.post_timestamp}</h4>
         </div>
         <div className="Post_right_body">
           <p>{post.post_content}</p>
