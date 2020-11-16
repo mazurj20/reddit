@@ -80,7 +80,11 @@ function Navbar() {
         <IconButton>
           <MoreVert />
         </IconButton>
-        {user && <Avatar src={user.photoURL} />}
+        {user && (
+          <Link to="/account" style={{ textDecoration: "none" }}>
+            <Avatar src={user.photoURL} />
+          </Link>
+        )}
         {user && findId()}
       </div>
     </div>
