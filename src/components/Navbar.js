@@ -81,7 +81,7 @@ function Navbar() {
           <MoreVert />
         </IconButton>
         {user && (
-          <Link to="/account" style={{ textDecoration: "none" }}>
+          <Link to="/profile" style={{ textDecoration: "none" }}>
             <Avatar src={user.photoURL} />
           </Link>
         )}
