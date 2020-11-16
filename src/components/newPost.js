@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "../axios";
 import "../styles/newPost.css";
 import { useStateValue } from "../stateprovider";
@@ -11,6 +11,12 @@ function NewPost({ setCreatePostForm}) {
   const [urlInput, setUrlInput] = useState("");
   const [{ user }, dispatch] = useStateValue();
   const [value, setValue] = useState(null);
+  const [arr,setArr] = useState([])
+
+useEffect(() => {
+    axios.get("/subreddits").then((res) => setArr(res.data))
+}, [])
+ 
 
   const CreateNewPost = async (e) => {
     await axios.post("/posts", {
@@ -32,7 +38,14 @@ function NewPost({ setCreatePostForm}) {
     
   };
 
-  let options = [1,2,3]
+  let options = []
+  for (let i of arr) {
+      options.push({
+          value: i.subreddit_title,
+          label: i.subreddit_title
+      })
+  }
+
 
   return (
     <div className="form__container">
