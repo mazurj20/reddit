@@ -9,13 +9,14 @@ function NewSubreddit({ setCreateSubredditForm }) {
   const [descriptionInput, setDescriptionInput] = useState("");
   const [urlInput, setUrlInput] = useState("");
   const [{ user }, dispatch] = useStateValue();
+  
 
   const CreateNewSubreddit = async (e) => {
     await axios.post("/subreddits", {
       user_id: user.user_id,
-      title: titleInput,
-      content: descriptionInput,
-      url: urlInput,
+      subreddit_title: titleInput,
+      subreddit_content: descriptionInput,
+      subreddit_url: urlInput,
     });
 
     setTitleInput("");
