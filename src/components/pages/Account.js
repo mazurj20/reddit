@@ -8,10 +8,9 @@ const Account = () => {
   const [{ user }] = useStateValue();
 
   useEffect(() => {
-    axios.get(`/user/posts`, { user_id: user.user_id }).then((res) => {
+    const header = { user_id: user.user_id };
+    axios.get(`/user/posts`, { headers: header }).then((res) => {
       setPosts(res.data);
-      console.log(user.user_id);
-      console.log(res.data);
       console.log(posts);
     });
   }, []);
