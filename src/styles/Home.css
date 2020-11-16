@@ -1,10 +1,16 @@
-.posts__container {
+.Home {
+  top: 10.5vh;
+  padding-bottom: 5px;
+  left: 10%;
   position: absolute;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 15vh;
+}
+.Home_posts {
   display: flex;
   flex-direction: column;
   justify-content: space-around;
   padding-bottom: 10px;
-  width: 70vw;
-  background-color: white;
-  margin-bottom: 10px;
+  width: 60vw;
 }

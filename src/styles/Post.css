@@ -1,4 +1,54 @@
-.post__element {
-  background-color: rgb(206, 206, 206);
-  margin: 10px;
+.Post {
+  display: flex;
+  background-color: rgb(240, 240, 240);
+  margin: 5px;
+  border-radius: 4px;
+  border: solid rgb(158, 158, 158);
+  border-width: 1px;
+  height: 25vh;
+}
+.Post:hover {
+  border: solid rgb(0, 0, 0);
+  border-width: 1px;
+}
+.Post_left {
+  width: 6%;
+  height: 100%;
+  background-color: rgb(233, 229, 229);
+  border-radius: 4px 0 0 4px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+.Post_right {
+  padding: 10px;
+  width: 100%;
+}
+.Post_right_heading {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 10px;
+}
+.Post_right_heading > img {
+  height: 25px;
+  width: 25px;
+  margin-right: 7px;
+}
+.Post_right_info {
+  display: flex;
+  color: grey;
+}
+.Post_user {
+  text-decoration: none;
+  color: grey;
+}
+.Post_user:hover {
+  text-decoration: underline;
+}
+
+.Post_right_heading > h3 {
+  display: flex;
 }

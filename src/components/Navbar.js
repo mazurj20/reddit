@@ -1,12 +1,7 @@
-import React, { useEffect } from "react";
+import React from "react";
 import "../styles/Navbar.css";
 import RedditIcon from "@material-ui/icons/Reddit";
-import {
-  SearchOutlined,
-  MoreVert,
-  AddIcCallRounded,
-  PersonAddDisabled,
-} from "@material-ui/icons";
+import { SearchOutlined, MoreVert } from "@material-ui/icons";
 import { Avatar, IconButton } from "@material-ui/core";
 import { Button } from "@material-ui/core";
 import { auth, provider } from "../firebase";

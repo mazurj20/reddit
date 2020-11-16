@@ -29,7 +29,7 @@ const Home = ({
   };
 
   return (
-    <div>
+    <div className="Home">
       {(() => {
         switch (ifTrue()) {
           case "subreddit":
@@ -42,7 +42,7 @@ const Home = ({
             return (
               <div>
                 {popularPosts && (
-                  <div className="posts__container">
+                  <div className="Home_posts">
                     {popularPosts.map((post) => (
                       <Post post={post} />
                     ))}
