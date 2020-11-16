@@ -5,7 +5,7 @@ import { useStateValue } from "../stateprovider";
 import Select from "react-select";
 
 
-function NewPost({ setCreatePostForm}) {
+function NewPost({ setCreatePostForm }) {
   const [titleInput, setTitleInput] = useState("");
   const [descriptionInput, setDescriptionInput] = useState("");
   const [urlInput, setUrlInput] = useState("");
@@ -17,15 +17,21 @@ useEffect(() => {
     axios.get("/subreddits").then((res) => setArr(res.data))
 }, [])
  
+ 
+ 
 
   const CreateNewPost = async (e) => {
+    
+
+    
     await axios.post("/posts", {
       
+      subreddit_id: value.value,
       user_id: user.user_id,
       post_title: titleInput,
       post_content: descriptionInput,
-      post_image_url: urlInput,
-      post_upvotes: 0,
+      post_image: urlInput,
+      post_upvotes: 100,
       post_timestamp: new Intl.DateTimeFormat("en-US", {
         hour: "2-digit",
         minute: "2-digit",
@@ -41,7 +47,7 @@ useEffect(() => {
   let options = []
   for (let i of arr) {
       options.push({
-          value: i.subreddit_title,
+          value: i.subreddit_id,
           label: i.subreddit_title
       })
   }
