@@ -52,7 +52,7 @@
 .Navbar_right {
   display: flex;
 }
-.Navbar_right > .MuiAvatar-root {
+.MuiAvatar-root {
   margin: 10px;
 }
 .Navbar_right > .MuiIconButton-root {
