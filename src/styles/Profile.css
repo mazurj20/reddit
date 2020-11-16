@@ -1,4 +1,6 @@
 .posts__container {
+  top: 13%;
+  left: 3%;
   position: absolute;
   display: flex;
   flex-direction: column;
@@ -6,5 +8,4 @@
   padding-bottom: 10px;
   width: 70vw;
   background-color: white;
-  margin-bottom: 10px;
 }

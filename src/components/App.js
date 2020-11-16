@@ -5,6 +5,7 @@ import Sidebar from "./Sidebar";
 import Home from "./pages/Home";
 import NotFound from "./NotFound";
 import { Switch, Route } from "react-router-dom";
+import Profile from "./pages/Profile";
 import Account from "./pages/Account";
 import { useStateValue } from "../stateprovider";
 
@@ -34,7 +35,12 @@ function App() {
               />
             )}
           />
-          {user && <Route exact path="/account" component={Account} />}
+          <Route
+            exact
+            path="/account/:id"
+            render={({ match }) => <Account match={match} />}
+          />
+          {user && <Route exact path="/profile" component={Profile} />}
           <Route component={NotFound} />
         </Switch>
       </main>
