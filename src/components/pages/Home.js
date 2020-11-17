@@ -42,13 +42,20 @@ const Home = ({
             return (
               <div>
                 {popularPosts && (
+                <>
+                  <button className="posts" onClick={()=>{
+                      setCreatePostForm(true)
+                  }}>Create Post</button>
                   <div className="Home_posts">
+                
                     {popularPosts.map((post) => (
                       <Post post={post} />
                     ))}
                   </div>
+                </>
                 )}
               </div>
+
             );
         }
       })()}

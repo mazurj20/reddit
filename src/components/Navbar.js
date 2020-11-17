@@ -11,7 +11,7 @@ import axios from "../axios";
 import firebase from "firebase";
 import { Link } from "react-router-dom";
 
-function Navbar() {
+function Navbar({ setCreateSubredditForm, setCreatePostForm }) {
   const [{ user }, dispatch] = useStateValue();
 
   const signUp = () => {
@@ -58,7 +58,10 @@ function Navbar() {
 
   return (
     <div className="Navbar">
-      <Link to="/" style={{ textDecoration: "none" }}>
+      <Link to="/" onClick={()=>{
+        setCreateSubredditForm(false)
+        setCreatePostForm(false)
+      }} style={{ textDecoration: "none" }} >
         <div className="Navbar_left">
           <RedditIcon />
           <div className="Navbar_title">
