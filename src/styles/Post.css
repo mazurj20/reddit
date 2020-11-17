@@ -56,3 +56,7 @@
 .Post_right_body {
   width: 98%;
 }
+.Post_time {
+  align-items: right;
+  margin-left: auto;
+}

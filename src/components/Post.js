@@ -34,10 +34,10 @@ const Post = ({ post }) => {
             &nbsp;&middot;&nbsp;
             <h4>Posted by&nbsp;</h4>
             <Link to={`/account/${post.user_id}`} className="Post_user">
-              <h4>{post.email}</h4>
+              <h4>{`u/${post.email}`}</h4>
             </Link>
-            <h4>&nbsp;&nbsp;&nbsp;{post.post_timestamp}</h4>
           </div>
+          <h4 className="Post_time">{post.post_timestamp}</h4>
         </div>
         <div className="Post_right_body">
           <Truncate
