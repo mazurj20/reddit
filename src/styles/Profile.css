@@ -1,4 +1,5 @@
-.posts__container {
+.Profile_posts {
+  margin-top: 30px;
   top: 13%;
   left: 3%;
   position: absolute;
@@ -7,5 +8,4 @@
   justify-content: space-around;
   padding-bottom: 10px;
   width: 70vw;
-  background-color: white;
 }

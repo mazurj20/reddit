@@ -17,8 +17,9 @@ const Profile = () => {
 
   return (
     <div>
+      {user && <h1>{user.email}</h1>}
       {posts && (
-        <div className="posts__container">
+        <div className="Profile_posts">
           {posts.map((post) => (
             <Post post={post} />
           ))}

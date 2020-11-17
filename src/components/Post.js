@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import ArrowUpwardRoundedIcon from "@material-ui/icons/ArrowUpwardRounded";
 import ArrowDownwardRoundedIcon from "@material-ui/icons/ArrowDownwardRounded";
 import { IconButton } from "@material-ui/core";
+import Truncate from "react-truncate";
 
 const Post = ({ post }) => {
   const increaseLikes = () => {
@@ -39,7 +40,19 @@ const Post = ({ post }) => {
           </div>
         </div>
         <div className="Post_right_body">
-          <p>{post.post_content}</p>
+          <Truncate
+            lines={3}
+            ellipsis={
+              <span>
+                ... <a href="/link/to/article">Read more</a>
+              </span>
+            }
+          >
+            {post.post_content}
+          </Truncate>
+        </div>
+        <div className="Post_image">
+          {post.post_image && <img src={`${post.post_image}`} />}
         </div>
         <div className="Post_right_links"></div>
       </div>

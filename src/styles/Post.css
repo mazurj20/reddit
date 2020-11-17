@@ -35,7 +35,7 @@
 .Post_right_heading > img {
   height: 25px;
   width: 25px;
-  margin-right: 7px;
+  margin-right: 10px;
 }
 .Post_right_info {
   display: flex;
@@ -51,4 +51,8 @@
 
 .Post_right_heading > h3 {
   display: flex;
+}
+
+.Post_right_body {
+  width: 98%;
 }

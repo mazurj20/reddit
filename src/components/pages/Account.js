@@ -22,7 +22,7 @@ const Account = ({ match }) => {
     <div>
       {account && <h1>{account.email}</h1>}
       {posts ? (
-        <div className="posts__container">
+        <div className="Account_posts">
           {posts.map((post) => (
             <Post post={post} />
           ))}
