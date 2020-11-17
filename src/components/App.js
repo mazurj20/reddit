@@ -16,7 +16,7 @@ function App() {
 
   return (
     <div className="App">
-      <Navbar />
+      <Navbar setCreatePostForm={setCreatePostForm} setCreateSubredditForm={setCreateSubredditForm} />
       <Sidebar
         setCreateSubredditForm={setCreateSubredditForm}
         setCreatePostForm={setCreatePostForm}
