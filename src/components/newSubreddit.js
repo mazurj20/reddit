@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "../axios";
 import "../styles/newSubreddit.css";
 import { useStateValue } from "../stateprovider";
@@ -9,6 +9,14 @@ function NewSubreddit({ setCreateSubredditForm }) {
   const [descriptionInput, setDescriptionInput] = useState("");
   const [urlInput, setUrlInput] = useState("");
   const [{ user }, dispatch] = useStateValue();
+  const [arr, setArr] = useState([]);
+  const [duplicate, setDuplicate] = useState("hidden")
+
+  useEffect(() => {
+    axios.get("/subreddits").then((res) => setArr(res.data));
+  }, []);
+
+console.log(arr)
   
 
   const CreateNewSubreddit = async (e) => {
@@ -25,6 +33,22 @@ function NewSubreddit({ setCreateSubredditForm }) {
     
   };
 
+  arr.map((sub)=>{
+    console.log(sub.subreddit_title)
+    if (duplicate === "hidden") { 
+      if (sub.subreddit_title.toLowerCase() === titleInput.toLowerCase()) {
+        setDuplicate("visible")
+      }
+    }
+    else {
+      if (sub.subreddit_title.toLowerCase() !== titleInput.toLowerCase()) {
+        setDuplicate("hidden")
+      }
+    }
+    
+    
+  })
+
   return (
     <div className="form__container">
       <div className="newSubreddit__title">
@@ -33,6 +57,7 @@ function NewSubreddit({ setCreateSubredditForm }) {
           placeholder="Subreddit Title"
           onChange={(e) => setTitleInput(e.target.value)}
         />
+        <p style={{visibility: duplicate}}>Subreddit already exists</p>
       </div>
       <div className="newSubreddit__description">
         <textarea
@@ -51,9 +76,12 @@ function NewSubreddit({ setCreateSubredditForm }) {
       <div className="newSubreddit__button">
         <button 
         onClick={() => {
+          if (duplicate === "hidden") {
+            setCreateSubredditForm(false) 
+            CreateNewSubreddit()
+          }
           
-          setCreateSubredditForm(false) 
-          CreateNewSubreddit()}} 
+          }} 
         type="submit">
           Create
         </button>
