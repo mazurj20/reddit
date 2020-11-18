@@ -3,6 +3,7 @@ import "../styles/Sidebar.css";
 import { Button } from "@material-ui/core";
 import axios from "../axios";
 import ArrowUpwardRoundedIcon from "@material-ui/icons/ArrowUpwardRounded";
+import { Link } from "react-router-dom";
 
 const Sidebar = ({ setCreateSubredditForm, setCreatePostForm }) => {
   const [trending, setTrending] = useState(null);
@@ -26,7 +27,13 @@ const Sidebar = ({ setCreateSubredditForm, setCreatePostForm }) => {
               {trending.map((subreddit) => (
                 <div className="Sidebar_top_element">
                   <ArrowUpwardRoundedIcon />
-                  <h3>{`r/${subreddit.subreddit_title}`}</h3>
+                  <Link
+                    to={`/subreddits/${subreddit.subreddit_id}`}
+                    style={{ textDecoration: "none", color: "black" }}
+                  >
+                    <h3>{`r/${subreddit.subreddit_title}`}</h3>
+                    {console.log(subreddit)}
+                  </Link>
                 </div>
               ))}
             </>
