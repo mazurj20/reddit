@@ -8,7 +8,7 @@ function NewPost({ setCreatePostForm }) {
   const [titleInput, setTitleInput] = useState("");
   const [descriptionInput, setDescriptionInput] = useState("");
   const [urlInput, setUrlInput] = useState("");
-  const [{ user }, dispatch] = useStateValue();
+  const [{ user }] = useStateValue();
   const [value, setValue] = useState(null);
   const [arr, setArr] = useState([]);
 
@@ -34,8 +34,6 @@ function NewPost({ setCreatePostForm }) {
     setDescriptionInput("");
     setUrlInput("");
   };
-
-  
 
   let options = [];
   for (let i of arr) {

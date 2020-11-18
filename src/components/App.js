@@ -22,10 +22,7 @@ function App() {
         setCreatePostForm={setCreatePostForm}
         setCreateSubredditForm={setCreateSubredditForm}
       />
-      <Sidebar
-        setCreateSubredditForm={setCreateSubredditForm}
-        setCreatePostForm={setCreatePostForm}
-      />
+
       <main>
         <Switch>
           <Route

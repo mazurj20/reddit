@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "../../styles/Home.css";
+import Sidebar from "../Sidebar";
 import NewSubreddit from "../newSubreddit";
 import NewPost from "../newPost";
 import Post from "../Post";
@@ -29,37 +30,43 @@ const Home = ({
   };
 
   return (
-    <div className="Home">
-      {(() => {
-        switch (ifTrue()) {
-          case "subreddit":
-            return (
-              <NewSubreddit setCreateSubredditForm={setCreateSubredditForm} />
-            );
-          case "post":
-            return <NewPost setCreatePostForm={setCreatePostForm} />;
-          default:
-            return (
-              <div>
-                {popularPosts && (
-                  <>
-                    <div className="Post_button">
-                      <Button onClick={() => setCreatePostForm(true)}>
-                        Create a post
-                      </Button>
-                    </div>
-                    <div className="Home_posts">
-                      {popularPosts.map((post) => (
-                        <Post post={post} />
-                      ))}
-                    </div>
-                  </>
-                )}
-              </div>
-            );
-        }
-      })()}
-    </div>
+    <>
+      <Sidebar
+        setCreateSubredditForm={setCreateSubredditForm}
+        setCreatePostForm={setCreatePostForm}
+      />
+      <div className="Home">
+        {(() => {
+          switch (ifTrue()) {
+            case "subreddit":
+              return (
+                <NewSubreddit setCreateSubredditForm={setCreateSubredditForm} />
+              );
+            case "post":
+              return <NewPost setCreatePostForm={setCreatePostForm} />;
+            default:
+              return (
+                <div>
+                  {popularPosts && (
+                    <>
+                      <div className="Post_button">
+                        <Button onClick={() => setCreatePostForm(true)}>
+                          Create a post
+                        </Button>
+                      </div>
+                      <div className="Home_posts">
+                        {popularPosts.map((post) => (
+                          <Post post={post} />
+                        ))}
+                      </div>
+                    </>
+                  )}
+                </div>
+              );
+          }
+        })()}
+      </div>
+    </>
   );
 };
 
