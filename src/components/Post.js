@@ -34,7 +34,7 @@ const Post = ({ post }) => {
           <div className="Post_right_heading">
             <img src="https://b.thumbs.redditmedia.com/8cMVsK9DKU-HJSM2WEG9mAGHIgd8-cEsnpJNJlB5NPw.png" />
             <Link
-              to={`/subreddit/${post.subreddit_id}`}
+              to={`/subreddits/${post.subreddit_id}`}
               className="Post_subreddit_title"
             >
               <h4 className="Post_title">{`r/${post.subreddit_title}`}</h4>
