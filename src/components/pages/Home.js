@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
 import "../../styles/Home.css";
-import SubredditDisplay from "../SubredditDisplay";
 import NewSubreddit from "../newSubreddit";
 import NewPost from "../newPost";
 import Post from "../Post";
 import axios from "../../axios";
+import { Button } from "@material-ui/core";
 
 const Home = ({
   createSubredditForm,
@@ -42,20 +42,20 @@ const Home = ({
             return (
               <div>
                 {popularPosts && (
-                <>
-                  <button className="posts" onClick={()=>{
-                      setCreatePostForm(true)
-                  }}>Create Post</button>
-                  <div className="Home_posts">
-                
-                    {popularPosts.map((post) => (
-                      <Post post={post} />
-                    ))}
-                  </div>
-                </>
+                  <>
+                    <div className="Post_button">
+                      <Button onClick={() => setCreatePostForm(true)}>
+                        Create a post
+                      </Button>
+                    </div>
+                    <div className="Home_posts">
+                      {popularPosts.map((post) => (
+                        <Post post={post} />
+                      ))}
+                    </div>
+                  </>
                 )}
               </div>
-
             );
         }
       })()}
