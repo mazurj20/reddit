@@ -1,0 +1,42 @@
+.PostPage {
+  margin-top: 30px;
+  top: 10%;
+  left: 3%;
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  padding-bottom: 10px;
+  width: 70vw;
+}
+.PostPage_comments {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  background-color: rgb(243, 240, 240);
+  margin: 5px;
+  border-radius: 2px;
+}
+.PostPage_createComment {
+  margin: 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.PostPage_createComment > textarea {
+  overflow: scroll;
+  resize: vertical;
+  height: 100%;
+  background-color: rgb(243, 240, 240);
+  border-bottom: none;
+}
+.PostPage_commentButton {
+  background-color: rgb(233, 229, 229);
+  display: flex;
+  justify-content: flex-end;
+  border: 1px solid grey;
+  border-top: none;
+}
+.PostPage_commentButton > button {
+  margin: 5px;
+}

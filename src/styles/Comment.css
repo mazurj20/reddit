@@ -1,0 +1,23 @@
+.Comment {
+  display: flex;
+}
+.Comment_left {
+  width: 7%;
+  height: 100%;
+  background-color: rgb(233, 229, 229);
+  border-radius: 4px 0 0 4px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+.Comment_right {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+.Comment_header {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
