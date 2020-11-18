@@ -1,0 +1,11 @@
+.Subreddit_posts {
+  margin-top: 30px;
+  top: 10%;
+  left: 3%;
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  padding-bottom: 10px;
+  width: 70vw;
+}

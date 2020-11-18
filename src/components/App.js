@@ -8,6 +8,8 @@ import { Switch, Route } from "react-router-dom";
 import Profile from "./pages/Profile";
 import Account from "./pages/Account";
 import { useStateValue } from "../stateprovider";
+import Subreddit from "./pages/Subreddit";
+import PostPage from "./pages/PostPage";
 
 function App() {
   const [createSubredditForm, setCreateSubredditForm] = useState(false);
@@ -16,7 +18,10 @@ function App() {
 
   return (
     <div className="App">
-      <Navbar setCreatePostForm={setCreatePostForm} setCreateSubredditForm={setCreateSubredditForm} />
+      <Navbar
+        setCreatePostForm={setCreatePostForm}
+        setCreateSubredditForm={setCreateSubredditForm}
+      />
       <Sidebar
         setCreateSubredditForm={setCreateSubredditForm}
         setCreatePostForm={setCreatePostForm}
@@ -39,6 +44,16 @@ function App() {
             exact
             path="/account/:id"
             render={({ match }) => <Account match={match} />}
+          />
+          <Route
+            exact
+            path="/subreddits/:id"
+            render={({ match }) => <Subreddit match={match} />}
+          />
+          <Route
+            exact
+            path="/posts/:id"
+            render={({ match }) => <PostPage match={match} />}
           />
           {user && <Route exact path="/profile" component={Profile} />}
           <Route component={NotFound} />
