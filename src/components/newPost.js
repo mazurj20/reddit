@@ -35,6 +35,8 @@ function NewPost({ setCreatePostForm }) {
     setUrlInput("");
   };
 
+  
+
   let options = [];
   for (let i of arr) {
     options.push({
