@@ -4,21 +4,25 @@ import "../styles/newPost.css";
 import { useStateValue } from "../stateprovider";
 import Select from "react-select";
 
-function NewPost({ setCreatePostForm }) {
+function NewPost({ setCreatePostForm, value, setValue }) {
   const [titleInput, setTitleInput] = useState("");
   const [descriptionInput, setDescriptionInput] = useState("");
   const [urlInput, setUrlInput] = useState("");
   const [{ user }] = useStateValue();
-  const [value, setValue] = useState(null);
   const [arr, setArr] = useState([]);
+ 
 
-  useEffect(() => {
+  
+
+ 
+useEffect(() => {
     axios.get("/subreddits").then((res) => setArr(res.data));
   }, []);
 
+
   const CreateNewPost = async (e) => {
     await axios.post("/posts", {
-      subreddit_id: value.value,
+      subreddit_id: value,
       user_id: user.user_id,
       post_title: titleInput,
       post_content: descriptionInput,
@@ -35,6 +39,28 @@ function NewPost({ setCreatePostForm }) {
     setUrlInput("");
   };
 
+
+
+   const getTitle = () => {
+    for (let i of arr) {
+      if (i.subreddit_id == value) {
+        return i.subreddit_title
+      }
+    }
+  
+  } 
+
+   let defaultVal = {
+    value: value,
+    label: getTitle()
+  }
+
+  
+
+  
+
+  console.log(defaultVal)
+
   let options = [];
   for (let i of arr) {
     options.push({
@@ -45,12 +71,12 @@ function NewPost({ setCreatePostForm }) {
 
   return (
     <div className="form__container">
-      <Select
-        defaultValue={"subreddit"}
+     {defaultVal.label && <Select
+        defaultValue={defaultVal}
         onChange={setValue}
         options={options}
         placeholder={"subreddit"}
-      />
+      />}
       <div className="newPost__title">
         <textarea
           value={titleInput}

@@ -6,14 +6,25 @@ import NewPost from "../newPost";
 import Post from "../Post";
 import axios from "../../axios";
 import { Button } from "@material-ui/core";
+import { useLocation } from "react-router-dom";
 
 const Home = ({
   createSubredditForm,
   setCreateSubredditForm,
   createPostForm,
   setCreatePostForm,
+  value,
+  setValue,
 }) => {
   const [popularPosts, setPopularPosts] = useState(null);
+  const location = useLocation();
+  if (location.state) {
+    const id = location.state.id;
+  }
+
+  
+
+  console.log(value)
 
   useEffect(() => {
     axios.get(`/popular`).then((res) => {
@@ -43,7 +54,7 @@ const Home = ({
                 <NewSubreddit setCreateSubredditForm={setCreateSubredditForm} />
               );
             case "post":
-              return <NewPost setCreatePostForm={setCreatePostForm} />;
+              return <NewPost setValue={setValue} value={value} setCreatePostForm={setCreatePostForm} />;
             default:
               return (
                 <div>
