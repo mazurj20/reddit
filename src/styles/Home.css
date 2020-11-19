@@ -46,3 +46,14 @@
   border: solid rgb(0, 0, 0);
   border-width: 1px;
 }
+@media (max-width: 800px) {
+  .Sidebar {
+    display: none;
+  }
+  .Home_posts {
+    width: 80vw;
+  }
+  .Post_button {
+    width: 80vw;
+  }
+}
