@@ -43,6 +43,7 @@ const Home = ({
   return (
     <>
       <Sidebar
+        className="Sidebar"
         setCreateSubredditForm={setCreateSubredditForm}
         setCreatePostForm={setCreatePostForm}
       />
