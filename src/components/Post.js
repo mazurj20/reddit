@@ -35,9 +35,9 @@ const Post = ({ post }) => {
             <img src="https://b.thumbs.redditmedia.com/8cMVsK9DKU-HJSM2WEG9mAGHIgd8-cEsnpJNJlB5NPw.png" />
             <Link
               to={`/subreddits/${post.subreddit_id}`}
-              className="Post_subreddit_title"
+              className="Post_subreddit_title_link"
             >
-              <h4 className="Post_title">{`r/${post.subreddit_title}`}</h4>
+              <h4 className="Post_subreddit_title">{`r/${post.subreddit_title}`}</h4>
             </Link>
             <div className="Post_right_info">
               &nbsp;&middot;&nbsp;
@@ -49,6 +49,9 @@ const Post = ({ post }) => {
             <h4 className="Post_time">{post.post_timestamp}</h4>
           </div>
           <div className="Post_right_body">
+            <div className="title">
+              <h2>{post.post_title}</h2>
+            </div>
             <Truncate
               lines={3}
               ellipsis={

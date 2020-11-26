@@ -15,6 +15,8 @@ const Home = ({
   setCreatePostForm,
   value,
   setValue,
+  fromHome,
+  setFromHome,
 }) => {
   const [popularPosts, setPopularPosts] = useState(null);
   const location = useLocation();
@@ -22,9 +24,7 @@ const Home = ({
     const id = location.state.id;
   }
 
-  
-
-  console.log(value)
+  console.log(value);
 
   useEffect(() => {
     axios.get(`/popular`).then((res) => {
@@ -55,14 +55,27 @@ const Home = ({
                 <NewSubreddit setCreateSubredditForm={setCreateSubredditForm} />
               );
             case "post":
-              return <NewPost setValue={setValue} value={value} setCreatePostForm={setCreatePostForm} />;
+              return (
+                <NewPost
+                  setValue={setValue}
+                  value={value}
+                  setCreatePostForm={setCreatePostForm}
+                  fromHome={fromHome}
+                  setFromHome={setFromHome}
+                />
+              );
             default:
               return (
                 <div>
                   {popularPosts && (
                     <>
                       <div className="Post_button">
-                        <Button onClick={() => setCreatePostForm(true)}>
+                        <Button
+                          onClick={() => {
+                            setCreatePostForm(true);
+                            setFromHome(true);
+                          }}
+                        >
                           Create a post
                         </Button>
                       </div>
@@ -83,3 +96,4 @@ const Home = ({
 };
 
 export default Home;
+
