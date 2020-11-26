@@ -14,7 +14,8 @@ import PostPage from "./pages/PostPage";
 function App() {
   const [createSubredditForm, setCreateSubredditForm] = useState(false);
   const [createPostForm, setCreatePostForm] = useState(false);
-  const [value, setValue] = useState(null)
+  const [value, setValue] = useState(null);
+  const [fromHome, setFromHome] = useState(true);
   const [{ user }] = useStateValue();
 
   return (
@@ -37,6 +38,8 @@ function App() {
                 setCreatePostForm={setCreatePostForm}
                 value={value}
                 setValue={setValue}
+                fromHome={fromHome}
+                setFromHome={setFromHome}
               />
             )}
           />
@@ -48,7 +51,15 @@ function App() {
           <Route
             exact
             path="/subreddits/:id"
-            render={({ match }) => <Subreddit match={match} setCreatePostForm={setCreatePostForm} value={value} setValue={setValue} />}
+            render={({ match }) => (
+              <Subreddit
+                match={match}
+                setCreatePostForm={setCreatePostForm}
+                value={value}
+                setValue={setValue}
+                setFromHome={setFromHome}
+              />
+            )}
           />
           <Route
             exact
