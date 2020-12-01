@@ -12,25 +12,7 @@ import { makeStyles } from "@material-ui/core/styles";
 const Post = ({ post }) => {
   const [{ user }] = useStateValue();
   const [postUpvotes, setPostUpvotes] = useState(post.post_upvotes);
-  /*
-  const useStyles = makeStyles({
-    root: {
-      color: rgb(29, 133, 194),
-    },
-  });
 
-  const BiggerListItemIcon = withStyles({
-    root: {
-      "& .MuiSvgIcon-root": { fontSize: "2em" },
-    },
-  })(ArrowUpwardRoundedIcon);
-
-  const BiggerListItemIcon2 = withStyles({
-    root: {
-      "& .MuiSvgIcon-root": { fontSize: "2em" },
-    },
-  })(ArrowDownwardRoundedIcon);
-*/
   const increaseLikes2 = () => {
     let updatedUpvotes = post.post_upvotes + 1;
     axios.put(`/posts/${post.post_id}`, {
@@ -141,6 +123,7 @@ const Post = ({ post }) => {
                 <Link
                   to={`/subreddits/${post.subreddit_id}`}
                   className="Post_subreddit_title"
+                  style={{ textDecoration: "none", color: "black" }}
                 >
                   <h4 className="Post_title">{`r/${post.subreddit_title}`}</h4>
                 </Link>

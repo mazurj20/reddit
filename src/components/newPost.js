@@ -4,21 +4,29 @@ import "../styles/newPost.css";
 import { useStateValue } from "../stateprovider";
 import Select from "react-select";
 
-function NewPost({ setCreatePostForm }) {
+function NewPost({
+  setCreatePostForm,
+  value,
+  setValue,
+  fromHome,
+  setFromHome,
+}) {
   const [titleInput, setTitleInput] = useState("");
   const [descriptionInput, setDescriptionInput] = useState("");
   const [urlInput, setUrlInput] = useState("");
   const [{ user }] = useStateValue();
-  const [value, setValue] = useState(null);
   const [arr, setArr] = useState([]);
+  const [DefaultVal, setDefaultVal] = useState(null);
 
   useEffect(() => {
     axios.get("/subreddits").then((res) => setArr(res.data));
   }, []);
 
+  console.log(fromHome);
+
   const CreateNewPost = async (e) => {
     await axios.post("/posts", {
-      subreddit_id: value.value,
+      subreddit_id: value,
       user_id: user.user_id,
       post_title: titleInput,
       post_content: descriptionInput,
@@ -35,6 +43,27 @@ function NewPost({ setCreatePostForm }) {
     setUrlInput("");
   };
 
+  const getTitle = () => {
+    for (let i of arr) {
+      if (i.subreddit_id == value) {
+        return i.subreddit_title;
+      }
+    }
+    //setFromHome(false);
+  };
+
+  let defaultVal = {
+    value: value,
+    label: getTitle(),
+  };
+
+  //console.log(defaultVal);
+  if (defaultVal.label && !DefaultVal) {
+    setDefaultVal(defaultVal);
+  }
+
+  console.log(DefaultVal);
+
   let options = [];
   for (let i of arr) {
     options.push({
@@ -43,14 +72,44 @@ function NewPost({ setCreatePostForm }) {
     });
   }
 
+  const cases = () => {
+    if (!fromHome && DefaultVal) {
+      return "1";
+    } else if (fromHome) {
+      return "2";
+    }
+  };
+
   return (
     <div className="form__container">
-      <Select
-        defaultValue={"subreddit"}
-        onChange={setValue}
-        options={options}
-        placeholder={"subreddit"}
-      />
+      {(() => {
+        switch (cases()) {
+          case "1":
+            return (
+              <Select
+                defaultValue={DefaultVal}
+                onChange={setValue}
+                options={options}
+                placeholder={"subreddit"}
+              />
+            );
+          case "2":
+            return (
+              <Select
+                defaultValue={"subreddit"}
+                onChange={setValue}
+                options={options}
+                placeholder={"subreddit"}
+              />
+            );
+          default:
+            return (
+              <div>
+                <h2>loading...</h2>
+              </div>
+            );
+        }
+      })()}
       <div className="newPost__title">
         <textarea
           value={titleInput}

@@ -48,11 +48,11 @@
 .Post_user:hover {
   text-decoration: underline;
 }
-.Post_subreddit_title {
+.Post_title {
   text-decoration: none;
   color: black;
 }
-.Post_subreddit_title:hover {
+.Post_title:hover {
   text-decoration: underline;
 }
 .Post_right_heading > h3 {
