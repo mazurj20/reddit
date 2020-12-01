@@ -43,7 +43,7 @@ const Subreddit = ({
 
   return (
     <div className="Subreddit">
-      {posts ? (
+      {posts && subreddit ? (
         <>
           <div className="Subreddit_image">
             {subreddit[0].subreddit_image && (
@@ -70,4 +70,3 @@ const Subreddit = ({
 };
 
 export default Subreddit;
-
