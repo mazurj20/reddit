@@ -18,7 +18,11 @@ const Subreddit = ({ match }) => {
     <div>
       {posts ? (
         <div className="Subreddit_posts">
+          <div className="Subreddit_info">
+            <h1>{`r/${posts[0].subreddit_title}`}</h1>
+          </div>
           <h1>{`r/${posts[0].subreddit_title}`}</h1>
+
           {posts.map((post) => (
             <Post post={post} />
           ))}

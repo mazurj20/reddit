@@ -46,7 +46,7 @@
   border: solid rgb(0, 0, 0);
   border-width: 1px;
 }
-@media (max-width: 800px) {
+@media (max-width: 900px) {
   .Sidebar {
     display: none;
   }
