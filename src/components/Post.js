@@ -141,7 +141,13 @@ const Post = ({ post }) => {
                   lines={3}
                   ellipsis={
                     <span>
-                      ... <a href="/link/to/article">Read more</a>
+                      ...{" "}
+                      <a
+                        style={{ textDecoration: "none", color: "grey" }}
+                        href="/link/to/article"
+                      >
+                        Read more
+                      </a>
                     </span>
                   }
                 >
