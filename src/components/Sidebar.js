@@ -5,7 +5,12 @@ import axios from "../axios";
 import ArrowUpwardRoundedIcon from "@material-ui/icons/ArrowUpwardRounded";
 import { Link } from "react-router-dom";
 
-const Sidebar = ({ setCreateSubredditForm, setCreatePostForm }) => {
+const Sidebar = ({
+  setCreateSubredditForm,
+  setCreatePostForm,
+  fromHome,
+  setFromHome,
+}) => {
   const [trending, setTrending] = useState(null);
 
   useEffect(() => {
@@ -45,18 +50,26 @@ const Sidebar = ({ setCreateSubredditForm, setCreatePostForm }) => {
           <h3>Other Subreddits</h3>
         </div>
         <div className="Sidebar_button">
-          <Button onClick={() => {
-            setCreateSubredditForm(true)
-            setCreatePostForm(false)
-            }} type="submit">
+          <Button
+            onClick={() => {
+              setCreateSubredditForm(true);
+              setCreatePostForm(false);
+            }}
+            type="submit"
+          >
             Create a subreddit
           </Button>
 
-          <Button onClick={() => {
-            setCreatePostForm(true)
-            setCreateSubredditForm(false)
-            }} type="submit">Create a Post</Button>
-
+          <Button
+            onClick={() => {
+              setCreatePostForm(true);
+              setCreateSubredditForm(false);
+              setFromHome(true);
+            }}
+            type="submit"
+          >
+            Create a Post
+          </Button>
         </div>
         <div className="Sidebar_bottom_content"></div>
       </div>
