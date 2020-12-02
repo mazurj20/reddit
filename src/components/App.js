@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import "../styles/App.css";
 import Navbar from "./Navbar";
-import Sidebar from "./Sidebar";
 import Home from "./pages/Home";
 import NotFound from "./NotFound";
 import { Switch, Route } from "react-router-dom";

@@ -24,7 +24,7 @@ const Sidebar = ({
     <div className="Sidebar">
       <div className="Sidebar_top">
         <div className="Sidebar_title">
-          <h3>Trending This Week</h3>
+          <h3>Trending</h3>
         </div>
         <div className="Sidebar_top_content">
           {trending && (
@@ -47,7 +47,7 @@ const Sidebar = ({
       </div>
       <div className="Sidebar_bottom">
         <div className="Sidebar_title">
-          <h3>Other Subreddits</h3>
+          <h3>Subreddits</h3>
         </div>
         <div className="Sidebar_button">
           <Button
@@ -57,18 +57,21 @@ const Sidebar = ({
             }}
             type="submit"
           >
-            Create a subreddit
+            <h5>Create a subreddit</h5>
+
           </Button>
 
           <Button
             onClick={() => {
               setCreatePostForm(true);
               setCreateSubredditForm(false);
+
+            <h5>Create a post</h5>
+
               setFromHome(true);
             }}
             type="submit"
           >
-            Create a Post
           </Button>
         </div>
         <div className="Sidebar_bottom_content"></div>

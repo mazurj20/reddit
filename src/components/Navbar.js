@@ -19,6 +19,10 @@ function Navbar({ setCreateSubredditForm, setCreatePostForm }) {
       firebase.auth().onAuthStateChanged((user) => {
         if (user) {
           user["user_id"] = res.data.user_id;
+          user["likedPosts"] = [];
+          user["dislikedPosts"] = [];
+          user["likedComments"] = [];
+          user["dislikedComments"] = [];
           console.log(user);
         }
       });
@@ -35,6 +39,10 @@ function Navbar({ setCreateSubredditForm, setCreatePostForm }) {
         firebase.auth().onAuthStateChanged((user) => {
           if (user) {
             user["user_id"] = res.data[0].user_id;
+            user["likedPosts"] = [];
+            user["dislikedPosts"] = [];
+            user["likedComments"] = [];
+            user["dislikedComments"] = [];
             console.log(user);
           }
         });
@@ -58,10 +66,14 @@ function Navbar({ setCreateSubredditForm, setCreatePostForm }) {
 
   return (
     <div className="Navbar">
-      <Link to="/" onClick={()=>{
-        setCreateSubredditForm(false)
-        setCreatePostForm(false)
-      }} style={{ textDecoration: "none" }} >
+      <Link
+        to="/"
+        onClick={() => {
+          setCreateSubredditForm(false);
+          setCreatePostForm(false);
+        }}
+        style={{ textDecoration: "none" }}
+      >
         <div className="Navbar_left">
           <RedditIcon />
           <div className="Navbar_title">
