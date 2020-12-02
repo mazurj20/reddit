@@ -7,7 +7,6 @@ import Post from "../Post";
 import axios from "../../axios";
 import { Button } from "@material-ui/core";
 import { useLocation } from "react-router-dom";
-
 const Home = ({
   createSubredditForm,
   setCreateSubredditForm,
@@ -23,15 +22,12 @@ const Home = ({
   if (location.state) {
     const id = location.state.id;
   }
-
   console.log(value);
-
   useEffect(() => {
     axios.get(`/popular`).then((res) => {
       setPopularPosts(res.data);
     });
   }, []);
-
   const ifTrue = () => {
     if (createSubredditForm) {
       return "subreddit";
@@ -39,7 +35,6 @@ const Home = ({
       return "post";
     }
   };
-
   return (
     <>
       <Sidebar
