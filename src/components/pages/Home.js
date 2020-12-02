@@ -46,6 +46,8 @@ const Home = ({
         className="Sidebar"
         setCreateSubredditForm={setCreateSubredditForm}
         setCreatePostForm={setCreatePostForm}
+        fromHome={fromHome}
+        setFromHome={setFromHome}
       />
       <div className="Home">
         {(() => {
@@ -96,4 +98,3 @@ const Home = ({
 };
 
 export default Home;
-
