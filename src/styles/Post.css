@@ -67,12 +67,6 @@
   align-items: right;
   margin-left: auto;
 }
-.MuiSvgIcon-root {
-  color: rgb(180, 180, 180);
-}
-.y {
-  color: rgb(47, 112, 185);
-}
 .Post_image {
   width: 100%;
   display: flex;
