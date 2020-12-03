@@ -50,11 +50,13 @@ const Subreddit = ({
               <img src={subreddit[0].subreddit_image}></img>
             )}
           </div>
-          <div className="Subreddit_header">header</div>
-
-          <Button onClick={createPost}>Create a post</Button>
-          <div className="Subreddit_posts">
+          <div className="Subreddit_header">
             <h1>{`r/${posts[0].subreddit_title}`}</h1>
+          </div>
+          <div className="Subreddit_posts">
+            <div className="Subreddit_post_button">
+              <Button onClick={createPost}>Create a post</Button>
+            </div>
             {posts.map((post) => (
               <Post post={post} />
             ))}

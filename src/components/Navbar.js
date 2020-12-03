@@ -75,7 +75,7 @@ function Navbar({ setCreateSubredditForm, setCreatePostForm }) {
         style={{ textDecoration: "none" }}
       >
         <div className="Navbar_left">
-          <RedditIcon />
+          <RedditIcon fontSize={"large"} />
           <div className="Navbar_title">
             <h2>reddit</h2>
           </div>

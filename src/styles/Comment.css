@@ -1,10 +1,12 @@
 .Comment {
   display: flex;
+  margin: 5px;
+  width: 97%;
+  border-radius: 2px;
 }
 .Comment_left {
-  width: 7%;
+  width: 5%;
   height: 100%;
-  background-color: rgb(233, 229, 229);
   border-radius: 4px 0 0 4px;
   display: flex;
   flex-direction: column;
@@ -20,4 +22,26 @@
   display: flex;
   justify-content: space-between;
   width: 100%;
+  margin-bottom: 5px;
+}
+.Comment_header_left {
+  display: flex;
+}
+.Comment_user {
+  text-decoration: none;
+  color: grey;
+}
+.Comment_user:hover {
+  text-decoration: underline;
+}
+.Comment_time {
+  padding-right: 4px;
+}
+.Comment_body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.Comment_body > h6 {
+  width: 95%;
 }

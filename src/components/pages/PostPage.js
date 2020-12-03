@@ -10,6 +10,7 @@ const PostPage = ({ match }) => {
   const [comments, setComments] = useState(null);
   const [commentInput, setCommentInput] = useState("");
   const [{ user }] = useStateValue();
+  const [updateCommentSection, setUpdateCommentSection] = useState(0);
 
   useEffect(() => {
     axios.get(`/posts/${match.params.id}`).then((res) => {
@@ -22,10 +23,10 @@ const PostPage = ({ match }) => {
       setComments(res.data);
       console.log(comments);
     });
-  }, []);
+  }, [updateCommentSection]);
 
   const createComment = async () => {
-    const commentx = {
+    const newComment = {
       user_id: user.user_id,
       post_id: post.post_id,
       comment_content: commentInput,
@@ -35,9 +36,11 @@ const PostPage = ({ match }) => {
         minute: "2-digit",
       }).format(Date.now()),
     };
-    console.log(commentx);
-    await axios.post("/comments", commentx);
+    console.log(newComment);
+    await axios.post("/comments", newComment);
     setCommentInput("");
+    let updates = updateCommentSection + 1;
+    setUpdateCommentSection(updates);
   };
 
   return (
@@ -45,21 +48,20 @@ const PostPage = ({ match }) => {
       {comments ? (
         <div className="PostPage">
           {post && <Post post={post} />}
-          {user ? (
-            <div className="PostPage_createComment">
-              <textarea
-                placeholder="Content"
-                value={commentInput}
-                placeholder="Content"
-                onChange={(e) => setCommentInput(e.target.value)}
-              />
-              <div className="PostPage_commentButton">
+          <div className="PostPage_createComment">
+            <textarea
+              value={commentInput}
+              placeholder="leave a comment..."
+              onChange={(e) => setCommentInput(e.target.value)}
+            />
+            <div className="PostPage_commentButton">
+              {user ? (
                 <button onClick={createComment}>Comment</button>
-              </div>
+              ) : (
+                <p style={{ margin: "2px" }}>must be logged in to comment</p>
+              )}
             </div>
-          ) : (
-            <h1>login</h1>
-          )}
+          </div>
           <div className="PostPage_comments">
             {comments.map((comment) => (
               <Comment comment={comment} />

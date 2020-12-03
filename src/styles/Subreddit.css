@@ -1,3 +1,15 @@
+.Subreddit_post_button > button {
+  background-color: rgb(240, 240, 240);
+  width: 100%;
+  margin: 6px;
+  width: 98.5%;
+  border: solid rgb(158, 158, 158);
+  border-width: 1px;
+}
+.Subreddit_post_button > button:hover {
+  border: solid rgb(0, 0, 0);
+  border-width: 1px;
+}
 .Subreddit_posts {
   margin-top: 30px;
   top: 10%;
