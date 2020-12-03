@@ -15,6 +15,8 @@ const Post = ({ post }) => {
   const blue = "primary";
   const [upvoteColor, setUpvoteColor] = useState(grey);
   const [downvoteColor, setDownvoteColor] = useState(grey);
+  const defaultImg =
+    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTHLOsag5Yart674I1fvUvwF49v8wgofGpQtQ&usqp=CAU";
 
   const changeUpvoteColor = () => {
     let newColor = upvoteColor == grey ? blue : grey;
@@ -120,6 +122,7 @@ const Post = ({ post }) => {
       alert("you must login to perform this action");
     }
   };
+
   return (
     <>
       {post && (
@@ -177,7 +180,12 @@ const Post = ({ post }) => {
                 </Truncate>
               </div>
               <div className="Post_image">
-                {post.post_image && <img src={`${post.post_image}`} />}
+                {post.post_image && (
+                  <img
+                    src={`${post.post_image}`}
+                    onError={(e) => e.target.setAttribute("src", defaultImg)}
+                  />
+                )}
               </div>
               <div className="Post_right_links"></div>
             </div>
