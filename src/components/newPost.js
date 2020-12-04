@@ -23,23 +23,20 @@ function NewPost({
   }, []);
 
   console.log(fromHome);
-  let obj = {
-    subreddit_id: fromHome ? value.value : value,
-    user_id: user.user_id,
-    post_title: titleInput,
-    post_content: descriptionInput,
-    post_image: urlInput,
-    post_upvotes: 100,
-    post_timestamp: new Intl.DateTimeFormat("en-US", {
-      hour: "2-digit",
-      minute: "2-digit",
-    }).format(Date.now()),
-  };
-
-  console.log(obj);
 
   const CreateNewPost = async (e) => {
-    await axios.post("/posts", obj);
+    await axios.post("/posts", {
+      subreddit_id: fromHome ? value.value : value,
+      user_id: user.user_id,
+      post_title: titleInput,
+      post_content: descriptionInput,
+      post_image: urlInput,
+      post_upvotes: 100,
+      post_timestamp: new Intl.DateTimeFormat("en-US", {
+        hour: "2-digit",
+        minute: "2-digit",
+      }).format(Date.now()),
+    });
 
     setTitleInput("");
     setDescriptionInput("");
