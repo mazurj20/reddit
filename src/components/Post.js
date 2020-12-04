@@ -143,41 +143,43 @@ const Post = ({ post }) => {
             style={{ textDecoration: "none", color: "black", width: "100%" }}
           >
             <div className="Post_right">
-              <div className="Post_right_heading">
-                <img src="https://b.thumbs.redditmedia.com/8cMVsK9DKU-HJSM2WEG9mAGHIgd8-cEsnpJNJlB5NPw.png" />
-                <Link
-                  to={`/subreddits/${post.subreddit_id}`}
-                  className="Post_subreddit_title"
-                  style={{ textDecoration: "none", color: "black" }}
-                >
-                  <h4 className="Post_title">{`r/${post.subreddit_title}`}</h4>
-                </Link>
-                <div className="Post_right_info">
-                  &nbsp;&middot;&nbsp;
-                  <h4>Posted by&nbsp;</h4>
-                  <Link to={`/account/${post.user_id}`} className="Post_user">
-                    <h4>{`u/${post.email}`}</h4>
+              <div className="Post_right_top">
+                <div className="Post_right_heading">
+                  <img src="https://b.thumbs.redditmedia.com/8cMVsK9DKU-HJSM2WEG9mAGHIgd8-cEsnpJNJlB5NPw.png" />
+                  <Link
+                    to={`/subreddits/${post.subreddit_id}`}
+                    className="Post_subreddit_title"
+                    style={{ textDecoration: "none", color: "black" }}
+                  >
+                    <h4 className="Post_title">{`r/${post.subreddit_title}`}</h4>
                   </Link>
+                  <div className="Post_right_info">
+                    &nbsp;&middot;&nbsp;
+                    <h4>Posted by&nbsp;</h4>
+                    <Link to={`/account/${post.user_id}`} className="Post_user">
+                      <h4>{`u/${post.email}`}</h4>
+                    </Link>
+                  </div>
+                  <h4 className="Post_time">{post.post_timestamp}</h4>
                 </div>
-                <h4 className="Post_time">{post.post_timestamp}</h4>
-              </div>
-              <div className="Post_right_body">
-                <Truncate
-                  lines={3}
-                  ellipsis={
-                    <span>
-                      ...{" "}
-                      <a
-                        style={{ textDecoration: "none", color: "grey" }}
-                        href="/link/to/article"
-                      >
-                        Read more
-                      </a>
-                    </span>
-                  }
-                >
-                  {post.post_content}
-                </Truncate>
+                <div className="Post_right_body">
+                  <Truncate
+                    lines={3}
+                    ellipsis={
+                      <span>
+                        ...{" "}
+                        <a
+                          style={{ textDecoration: "none", color: "grey" }}
+                          href="/link/to/article"
+                        >
+                          Read more
+                        </a>
+                      </span>
+                    }
+                  >
+                    {post.post_content}
+                  </Truncate>
+                </div>
               </div>
               <div className="Post_image">
                 {post.post_image && (
@@ -187,7 +189,9 @@ const Post = ({ post }) => {
                   />
                 )}
               </div>
-              <div className="Post_right_links"></div>
+              <div className="Post_right_links">
+                <h5>255 comments</h5>
+              </div>
             </div>
           </Link>
         </div>

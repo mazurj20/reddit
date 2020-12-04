@@ -1,0 +1,22 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap");
+
+.SidebarAds {
+  top: 12.2%;
+  left: 77%;
+  position: absolute;
+  width: 20%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.SidebarAds_item {
+  margin-bottom: 10px;
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  background-color: white;
+  justify-content: space-between;
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.5);
+  min-height: 60vh;
+}

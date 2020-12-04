@@ -17,12 +17,13 @@
   display: flex;
   flex-direction: column;
   width: 100%;
+  padding-top: 15px;
 }
 .Comment_header {
   display: flex;
   justify-content: space-between;
   width: 100%;
-  margin-bottom: 5px;
+  margin-bottom: 8px;
 }
 .Comment_header_left {
   display: flex;

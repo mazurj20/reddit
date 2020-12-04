@@ -4,6 +4,7 @@ import axios from "../../axios";
 import Post from "../Post";
 import { Button } from "@material-ui/core";
 import { useHistory } from "react-router-dom";
+import SubredditAds from "../SubredditAds";
 
 const Subreddit = ({
   match,
@@ -42,32 +43,36 @@ const Subreddit = ({
   };
 
   return (
-    <div className="Subreddit">
-      {posts && subreddit ? (
-        <>
-          <div className="Subreddit_image">
-            {subreddit[0].subreddit_image && (
-              <img src={subreddit[0].subreddit_image}></img>
-            )}
-          </div>
-          <div className="Subreddit_header">
-            <h1>{`r/${posts[0].subreddit_title}`}</h1>
-          </div>
-          <div className="Subreddit_posts">
-            <div className="Subreddit_post_button">
-              <Button onClick={createPost}>Create a post</Button>
+    <>
+      <div className="Subreddit">
+        <SubredditAds />
+        {posts && subreddit ? (
+          <>
+            <div className="Subreddit_image">
+              {subreddit[0].subreddit_image && (
+                <img src={subreddit[0].subreddit_image}></img>
+              )}
             </div>
-            {posts.map((post) => (
-              <Post post={post} />
-            ))}
+            <div className="Subreddit_header">
+              <div className="Subreddit_header_background"></div>
+              <h1>{`r/${posts[0].subreddit_title}`}</h1>
+            </div>
+            <div className="Subreddit_posts">
+              <div className="Subreddit_post_button">
+                <Button onClick={createPost}>Create a post</Button>
+              </div>
+              {posts.map((post) => (
+                <Post post={post} />
+              ))}
+            </div>
+          </>
+        ) : (
+          <div>
+            <h2>Loading...</h2>
           </div>
-        </>
-      ) : (
-        <div>
-          <h2>Loading...</h2>
-        </div>
-      )}
-    </div>
+        )}
+      </div>
+    </>
   );
 };
 

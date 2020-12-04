@@ -4,6 +4,7 @@ import axios from "../../axios";
 import Comment from "../Comment";
 import Post from "../Post";
 import { useStateValue } from "../../stateprovider";
+import SidebarAds from "../SidebarAds";
 
 const PostPage = ({ match }) => {
   const [post, setPost] = useState(null);
@@ -45,6 +46,7 @@ const PostPage = ({ match }) => {
 
   return (
     <div>
+      <SidebarAds />
       {comments ? (
         <div className="PostPage">
           {post && <Post post={post} />}
@@ -62,11 +64,13 @@ const PostPage = ({ match }) => {
               )}
             </div>
           </div>
-          <div className="PostPage_comments">
-            {comments.map((comment) => (
-              <Comment comment={comment} />
-            ))}
-          </div>
+          {comments.length > 0 && (
+            <div className="PostPage_comments">
+              {comments.map((comment) => (
+                <Comment comment={comment} />
+              ))}
+            </div>
+          )}
         </div>
       ) : (
         <div>

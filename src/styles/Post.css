@@ -24,10 +24,18 @@
 .Post_right {
   padding: 8px;
   width: 100%;
+  height: 95%;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-between;
   align-items: flex-start;
+}
+.Post_right_top {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  height: 100%;
+  width: 100%;
 }
 .Post_right_heading {
   display: flex;
@@ -83,4 +91,6 @@
   overflow: hidden;
   object-fit: cover;
   padding-right: 12px;
+}
+.Post_right_links {
 }
