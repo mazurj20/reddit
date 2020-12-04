@@ -4,7 +4,7 @@ import axios from "../../axios";
 import Post from "../Post";
 import { Button } from "@material-ui/core";
 import { useHistory } from "react-router-dom";
-import SubredditAds from "../SubredditAds";
+import SidebarAds2 from "../SidebarAds2";
 
 const Subreddit = ({
   match,
@@ -45,7 +45,7 @@ const Subreddit = ({
   return (
     <>
       <div className="Subreddit">
-        <SubredditAds />
+        <SidebarAds2 />
         {posts && subreddit ? (
           <>
             <div className="Subreddit_image">

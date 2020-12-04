@@ -4,7 +4,7 @@ import axios from "../../axios";
 import Comment from "../Comment";
 import Post from "../Post";
 import { useStateValue } from "../../stateprovider";
-import SidebarAds from "../SidebarAds";
+import SidebarAds1 from "../SidebarAds1";
 
 const PostPage = ({ match }) => {
   const [post, setPost] = useState(null);
@@ -46,14 +46,14 @@ const PostPage = ({ match }) => {
 
   return (
     <div>
-      <SidebarAds />
+      <SidebarAds1 />
       {comments ? (
         <div className="PostPage">
           {post && <Post post={post} />}
           <div className="PostPage_createComment">
             <textarea
               value={commentInput}
-              placeholder="leave a comment..."
+              placeholder="join the conversation..."
               onChange={(e) => setCommentInput(e.target.value)}
             />
             <div className="PostPage_commentButton">

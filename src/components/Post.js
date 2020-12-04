@@ -3,6 +3,7 @@ import "../styles/Post.css";
 import { Link } from "react-router-dom";
 import ArrowUpwardRoundedIcon from "@material-ui/icons/ArrowUpwardRounded";
 import ArrowDownwardRoundedIcon from "@material-ui/icons/ArrowDownwardRounded";
+import ChatBubbleIcon from "@material-ui/icons/ChatBubble";
 import { IconButton } from "@material-ui/core";
 import Truncate from "react-truncate";
 import { useStateValue } from "../stateprovider";
@@ -190,6 +191,8 @@ const Post = ({ post }) => {
                 )}
               </div>
               <div className="Post_right_links">
+                <ChatBubbleIcon fontSize={"small"} />
+                &nbsp;
                 <h5>255 comments</h5>
               </div>
             </div>
