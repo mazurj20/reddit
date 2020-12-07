@@ -5,6 +5,7 @@ import Comment from "../Comment";
 import Post from "../Post";
 import { useStateValue } from "../../stateprovider";
 import SidebarAds1 from "../SidebarAds1";
+import moment from "moment";
 
 const PostPage = ({ match }) => {
   const [post, setPost] = useState(null);
@@ -30,10 +31,7 @@ const PostPage = ({ match }) => {
       post_id: post.post_id,
       comment_content: commentInput,
       comment_upvotes: 0,
-      comment_timestamp: new Intl.DateTimeFormat("en-US", {
-        hour: "2-digit",
-        minute: "2-digit",
-      }).format(Date.now()),
+      comment_timestamp: moment().format("YYYY-MM-DDTHH:mm"),
     };
     console.log(newComment);
     await axios.post("/comments", newComment);

@@ -8,6 +8,7 @@ import { IconButton } from "@material-ui/core";
 import Truncate from "react-truncate";
 import { useStateValue } from "../stateprovider";
 import axios from "../axios";
+import moment from "moment";
 
 const Post = ({ post }) => {
   const [{ user }] = useStateValue();
@@ -168,7 +169,9 @@ const Post = ({ post }) => {
                       <h4>{`u/${post.email}`}</h4>
                     </Link>
                   </div>
-                  <h4 className="Post_time">{post.post_timestamp}</h4>
+                  <h4 className="Post_time">
+                    {moment(post.post_timestamp).fromNow()}
+                  </h4>
                 </div>
                 <div className="Post_right_body">
                   <Truncate

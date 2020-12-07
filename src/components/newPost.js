@@ -33,7 +33,7 @@ function NewPost({
       post_content: descriptionInput,
       post_image: urlInput,
       post_upvotes: 0,
-      post_timestamp: moment().startOf("hour").fromNow(),
+      post_timestamp: moment().format("YYYY-MM-DDTHH:mm"),
     });
 
     setTitleInput("");
