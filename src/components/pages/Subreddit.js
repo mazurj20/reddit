@@ -55,7 +55,9 @@ const Subreddit = ({
             </div>
             <div className="Subreddit_header">
               <div className="Subreddit_header_background"></div>
-              <h1>{`r/${posts[0].subreddit_title}`}</h1>
+              <h1>{`r/${subreddit[0].subreddit_title}`}</h1>
+              <p>{subreddit[0].subreddit_content}</p>
+              <h3>{`${subreddit[0].members}`} members in this community</h3>
             </div>
             <div className="Subreddit_posts">
               <div className="Subreddit_post_button">

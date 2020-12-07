@@ -193,7 +193,7 @@ const Post = ({ post }) => {
               <div className="Post_right_links">
                 <ChatBubbleIcon fontSize={"small"} />
                 &nbsp;
-                <h5>255 comments</h5>
+                <h5>3 comments</h5>
               </div>
             </div>
           </Link>
