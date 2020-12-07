@@ -5,6 +5,7 @@ import Post from "../Post";
 import { Button } from "@material-ui/core";
 import { useHistory } from "react-router-dom";
 import SidebarAds2 from "../SidebarAds2";
+import { useStateValue } from "../../stateprovider";
 
 const Subreddit = ({
   match,
@@ -17,6 +18,7 @@ const Subreddit = ({
   const [id, setId] = useState(null);
   const [subreddit, setSubreddit] = useState(null);
   const history = useHistory();
+  const [{ user }] = useStateValue();
 
   useEffect(() => {
     const header = { subreddit_id: match.params.id };
@@ -32,14 +34,18 @@ const Subreddit = ({
   console.log(subreddit);
 
   const createPost = () => {
-    setValue(match.params.id);
-    setId(match.params.id);
-    setCreatePostForm(true);
-    setFromHome(false);
-    history.push({
-      pathname: "/",
-      state: { id: [match.params.id] },
-    });
+    if (user) {
+      setValue(match.params.id);
+      setId(match.params.id);
+      setCreatePostForm(true);
+      setFromHome(false);
+      history.push({
+        pathname: "/",
+        state: { id: [match.params.id] },
+      });
+    } else {
+      alert("login");
+    }
   };
 
   return (
