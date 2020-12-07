@@ -57,3 +57,11 @@
     width: 80vw;
   }
 }
+@media (max-width: 600px) {
+  .Home_posts {
+    width: 88vw;
+  }
+  .Post_button {
+    width: 88vw;
+  }
+}

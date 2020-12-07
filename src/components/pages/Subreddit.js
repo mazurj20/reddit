@@ -51,7 +51,7 @@ const Subreddit = ({
   return (
     <>
       <div className="Subreddit">
-        <SidebarAds2 />
+        <SidebarAds2 className="Subreddit_sidebar" />
         {posts && subreddit ? (
           <>
             <div className="Subreddit_image">
