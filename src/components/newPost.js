@@ -3,6 +3,7 @@ import axios from "../axios";
 import "../styles/newPost.css";
 import { useStateValue } from "../stateprovider";
 import Select from "react-select";
+import moment from "moment";
 
 function NewPost({
   setCreatePostForm,
@@ -31,11 +32,8 @@ function NewPost({
       post_title: titleInput,
       post_content: descriptionInput,
       post_image: urlInput,
-      post_upvotes: 100,
-      post_timestamp: new Intl.DateTimeFormat("en-US", {
-        hour: "2-digit",
-        minute: "2-digit",
-      }).format(Date.now()),
+      post_upvotes: 0,
+      post_timestamp: moment().startOf("hour").fromNow(),
     });
 
     setTitleInput("");
