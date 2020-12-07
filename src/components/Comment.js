@@ -6,6 +6,7 @@ import "../styles/Comment.css";
 import { Link } from "react-router-dom";
 import { useStateValue } from "../stateprovider";
 import axios from "../axios";
+import moment from "moment";
 
 const Comment = ({ comment }) => {
   const [{ user }] = useStateValue();
@@ -140,7 +141,9 @@ const Comment = ({ comment }) => {
               <h5>{`u/${comment.email}`}</h5>
             </Link>
           </div>
-          <h5 className="Comment_time">{comment.comment_timestamp}</h5>
+          <h5 className="Comment_time">
+            {moment(comment.comment_timestamp).fromNow()}
+          </h5>
         </div>
         <div className="Comment_body">
           <h6>{comment.comment_content}</h6>
