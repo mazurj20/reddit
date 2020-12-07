@@ -6,9 +6,11 @@ import reportWebVitals from "./reportWebVitals";
 import { StateProvider } from "./stateprovider";
 import reducer, { initialState } from "./reducer";
 import { BrowserRouter as Router } from "react-router-dom";
+import ScrollToTop from "./components/ScrollToTop";
 
 ReactDOM.render(
   <Router>
+    <ScrollToTop />
     <StateProvider initialState={initialState} reducer={reducer}>
       <App />
     </StateProvider>

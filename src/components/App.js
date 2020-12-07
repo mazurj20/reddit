@@ -24,7 +24,7 @@ function App() {
         setCreateSubredditForm={setCreateSubredditForm}
       />
 
-      <main>
+      <main className="Main">
         <Switch>
           <Route
             exact
@@ -74,4 +74,3 @@ function App() {
 }
 
 export default App;
-

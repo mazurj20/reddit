@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "../styles/Post.css";
 import { Link } from "react-router-dom";
 import ArrowUpwardRoundedIcon from "@material-ui/icons/ArrowUpwardRounded";
@@ -11,6 +11,7 @@ import axios from "../axios";
 
 const Post = ({ post }) => {
   const [{ user }] = useStateValue();
+  const [numOfComments, setNumOfComments] = useState(null);
   const [postUpvotes, setPostUpvotes] = useState(post.post_upvotes);
   const grey = "disabled";
   const blue = "primary";
@@ -18,6 +19,12 @@ const Post = ({ post }) => {
   const [downvoteColor, setDownvoteColor] = useState(grey);
   const defaultImg =
     "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTHLOsag5Yart674I1fvUvwF49v8wgofGpQtQ&usqp=CAU";
+
+  useEffect(() => {
+    axios.get(`/post/${post.post_id}`).then((res) => {
+      setNumOfComments(res.data);
+    });
+  }, []);
 
   const changeUpvoteColor = () => {
     let newColor = upvoteColor == grey ? blue : grey;
@@ -193,7 +200,15 @@ const Post = ({ post }) => {
               <div className="Post_right_links">
                 <ChatBubbleIcon fontSize={"small"} />
                 &nbsp;
-                <h5>3 comments</h5>
+                {numOfComments && (
+                  <>
+                    {numOfComments[0] ? (
+                      <h5>{`${numOfComments[0].comments} comments`}</h5>
+                    ) : (
+                      <h5>0 comments</h5>
+                    )}
+                  </>
+                )}
               </div>
             </div>
           </Link>

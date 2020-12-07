@@ -16,13 +16,11 @@ const PostPage = ({ match }) => {
   useEffect(() => {
     axios.get(`/posts/${match.params.id}`).then((res) => {
       setPost(res.data[0]);
-      console.log(res.data[0]);
     });
 
     const header = { post_id: match.params.id };
     axios.get("/subreddit/post/comments", { headers: header }).then((res) => {
       setComments(res.data);
-      console.log(comments);
     });
   }, [updateCommentSection]);
 
