@@ -7,6 +7,8 @@ import Post from "../Post";
 import axios from "../../axios";
 import { Button } from "@material-ui/core";
 import { useLocation } from "react-router-dom";
+import { useStateValue } from "../../stateprovider";
+
 const Home = ({
   createSubredditForm,
   setCreateSubredditForm,
@@ -17,6 +19,7 @@ const Home = ({
   fromHome,
   setFromHome,
 }) => {
+  const [{ user }] = useStateValue();
   const [popularPosts, setPopularPosts] = useState(null);
   const location = useLocation();
   if (location.state) {
@@ -69,8 +72,12 @@ const Home = ({
                       <div className="Post_button">
                         <Button
                           onClick={() => {
-                            setCreatePostForm(true);
-                            setFromHome(true);
+                            if (user) {
+                              setCreatePostForm(true);
+                              setFromHome(true);
+                            } else {
+                              alert("log in");
+                            }
                           }}
                         >
                           Create a post
