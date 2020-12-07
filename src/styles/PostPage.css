@@ -43,3 +43,9 @@
 .PostPage_commentButton > button {
   margin: 5px;
 }
+
+@media only screen and (max-width: 600px) {
+  .PostPage {
+    width: 95vw;
+  }
+}

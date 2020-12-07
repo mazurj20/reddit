@@ -21,7 +21,6 @@
   padding: 14px 10px 10px 0px;
   font-family: "Montserrat", sans-serif;
 }
-
 .Navbar_search {
   display: flex;
   align-items: center;
@@ -29,7 +28,7 @@
   border-radius: 2px;
   margin: 12px 10px 10px 10px;
   box-shadow: 0 0 2px rgba(0, 0, 0, 0.5);
-  height: 35px;
+  height: 30px;
   flex: 0.7;
 }
 
@@ -55,4 +54,9 @@
 }
 .Navbar_right > .MuiIconButton-root {
   margin: 10px;
+}
+@media only screen and (max-width: 600px) {
+  .Navbar_title {
+    display: none;
+  }
 }

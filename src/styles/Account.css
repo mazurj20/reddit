@@ -9,3 +9,8 @@
   padding-bottom: 10px;
   width: 70vw;
 }
+@media only screen and (max-width: 600px) {
+  .Account_posts {
+    width: 95vw;
+  }
+}

@@ -87,9 +87,6 @@ function Navbar({ setCreateSubredditForm, setCreatePostForm }) {
       </div>
       <div className="Navbar_right">
         {!user && <Button onClick={() => logIn()}>log in</Button>}
-        <IconButton>
-          <MoreVert />
-        </IconButton>
         {user && (
           <Link to="/profile" style={{ textDecoration: "none" }}>
             <Avatar src={user.photoURL} />
