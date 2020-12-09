@@ -59,4 +59,18 @@
   .Navbar_title {
     display: none;
   }
+  .Navbar_search {
+    display: flex;
+    align-items: center;
+    background-color: rgba(210, 210, 210, 0.97);
+    border-radius: 2px;
+    margin: 12px 10px 10px 10px;
+    box-shadow: 0 0 2px rgba(0, 0, 0, 0.5);
+    height: 30px;
+    flex: 0.6;
+    width: 60%;
+  }
+  .Navbar_search > input {
+    width: 36vw;
+  }
 }
