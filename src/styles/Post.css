@@ -51,8 +51,11 @@
   width: 25px;
   margin-right: 10px;
 }
+
 .Post_right_info {
   display: flex;
+  justify-content: center;
+  align-items: center;
   color: grey;
   overflow: hidden;
   white-space: nowrap;

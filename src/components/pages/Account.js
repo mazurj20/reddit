@@ -27,9 +27,9 @@ const Account = ({ match }) => {
         <div className="Account_info">
           <div className="Account_name">
             <AccountCircleIcon style={{ padding: "5px" }} />
-            <h1>{account.email}</h1>
+            <h3>{account.email}</h3>
           </div>
-          <h1 style={{ padding: "5px" }}>{account.total_posts} posts</h1>
+          <h3 style={{ padding: "5px" }}>{account.total_posts} posts</h3>
         </div>
       )}
       {posts ? (
