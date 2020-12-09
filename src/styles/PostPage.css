@@ -45,6 +45,8 @@
 
 @media only screen and (max-width: 600px) {
   .PostPage {
+    position: absolute;
+    top: 11%;
     width: 95vw;
   }
 }
