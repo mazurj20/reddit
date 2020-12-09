@@ -154,7 +154,10 @@ const Post = ({ post }) => {
             <div className="Post_right">
               <div className="Post_right_top">
                 <div className="Post_right_heading">
-                  <img src="https://b.thumbs.redditmedia.com/8cMVsK9DKU-HJSM2WEG9mAGHIgd8-cEsnpJNJlB5NPw.png" />
+                  <img
+                    className="Post_subreddit_img"
+                    src="https://b.thumbs.redditmedia.com/8cMVsK9DKU-HJSM2WEG9mAGHIgd8-cEsnpJNJlB5NPw.png"
+                  />
                   <Link
                     to={`/subreddits/${post.subreddit_id}`}
                     className="Post_subreddit_title"

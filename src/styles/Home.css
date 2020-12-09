@@ -58,10 +58,14 @@
   }
 }
 @media (max-width: 600px) {
+  .Home {
+    position: absolute;
+    left: 5vw;
+  }
   .Home_posts {
-    width: 88vw;
+    width: 90vw;
   }
   .Post_button {
-    width: 88vw;
+    width: 90vw;
   }
 }

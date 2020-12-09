@@ -7,7 +7,7 @@
   display: flex;
   flex-direction: column;
   background-color: white;
-  width: 20%;
+  width: 22%;
   justify-content: space-between;
   box-shadow: 0 0 2px rgba(0, 0, 0, 0.5);
   min-height: 35vh;
@@ -15,9 +15,8 @@
 .Sidebar_title {
   text-align: center;
   background-color: rgba(235, 67, 0, 1);
-  padding: 5px;
+  padding: 7px;
   font-family: "Montserrat", sans-serif;
-  height: 4vh;
   color: rgb(231, 231, 231);
 }
 .Sidebar_top_content {
@@ -45,7 +44,7 @@
   flex-direction: column;
   background-color: white;
   justify-content: flex-start;
-  width: 20%;
+  width: 22%;
   max-height: 48%;
   box-shadow: 0 0 2px rgba(0, 0, 0, 0.5);
   min-height: 45vh;

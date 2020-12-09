@@ -1,11 +1,28 @@
 .Subreddit_header {
   background-color: rgb(255, 255, 255);
   color: black;
-  height: 28vh;
 }
 .Subreddit_header_background {
-  background-color: rgb(58, 160, 255);
+  background-image: url("https://i.pinimg.com/originals/f2/34/67/f23467a444a599ec291b2ff128b044de.png");
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
   height: 17vh;
+  width: 100%;
+}
+.Subreddit_header_info {
+  width: 95%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  max-height: 8vh;
+  overflow: hidden;
+}
+.Subreddit_header_title {
+  color: rgba(235, 67, 0, 1);
+}
+.Subreddit_header_users {
+  display: flex;
 }
 .Subreddit_post_button > button {
   background-color: rgb(240, 240, 240);
@@ -45,7 +62,7 @@
 
 @media only screen and (max-width: 600px) {
   .Subreddit_posts {
-    top: 40%;
+    top: 25%;
     left: 3%;
     position: absolute;
     display: flex;
@@ -53,5 +70,8 @@
     justify-content: space-around;
     padding-bottom: 10px;
     width: 95vw;
+  }
+  .Subreddit_header_background {
+    height: 10vh;
   }
 }
