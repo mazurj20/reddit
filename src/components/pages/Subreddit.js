@@ -6,6 +6,7 @@ import { Button } from "@material-ui/core";
 import { useHistory } from "react-router-dom";
 import SidebarAds2 from "../SidebarAds2";
 import { useStateValue } from "../../stateprovider";
+import PeopleIcon from "@material-ui/icons/People";
 
 const Subreddit = ({
   match,
@@ -61,9 +62,16 @@ const Subreddit = ({
             </div>
             <div className="Subreddit_header">
               <div className="Subreddit_header_background"></div>
-              <h1>{`r/${subreddit[0].subreddit_title}`}</h1>
-              <p>{subreddit[0].subreddit_content}</p>
-              <h3>{`${subreddit[0].members}`} users in this community</h3>
+              <div className="Subreddit_header_info">
+                <div>
+                  <h1 className="Subreddit_header_title">{`r/${subreddit[0].subreddit_title}`}</h1>
+                  <h3>Description: {subreddit[0].subreddit_content}</h3>
+                </div>
+                <div className="Subreddit_header_users">
+                  <PeopleIcon style={{ marginRight: "10px" }} />
+                  <h3>{`${subreddit[0].members}`} user(s) in this community</h3>
+                </div>
+              </div>
             </div>
             <div className="Subreddit_posts">
               <div className="Subreddit_post_button">

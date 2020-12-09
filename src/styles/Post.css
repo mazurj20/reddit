@@ -111,4 +111,10 @@
   .Post_image > img {
     height: 20vh;
   }
+  .Post {
+    min-height: 15vh;
+  }
+  .Post_subreddit_img {
+    display: none;
+  }
 }

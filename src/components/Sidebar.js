@@ -25,7 +25,7 @@ const Sidebar = ({
     <div className="Sidebar">
       <div className="Sidebar_top">
         <div className="Sidebar_title">
-          <h3>Trending This Week</h3>
+          <h4>Trending Communities</h4>
         </div>
         <div className="Sidebar_top_content">
           {trending && (
@@ -48,7 +48,7 @@ const Sidebar = ({
       </div>
       <div className="Sidebar_bottom">
         <div className="Sidebar_title">
-          <h3>Other Subreddits</h3>
+          <h4>Share Your Thoughts</h4>
         </div>
         <div className="Sidebar_button">
           <Button
