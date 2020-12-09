@@ -8,12 +8,16 @@ import AccountCircleIcon from "@material-ui/icons/AccountCircle";
 
 const Profile = () => {
   const [posts, setPosts] = useState(null);
+  const [account, setAccount] = useState(null);
   const [{ user }] = useStateValue();
 
   useEffect(() => {
     const header = { user_id: user.user_id };
     axios.get(`/user/posts`, { headers: header }).then((res) => {
       setPosts(res.data);
+    });
+    axios.get(`/users/${user.user_id}`).then((res) => {
+      setAccount(res.data[0]);
     });
   }, []);
 
@@ -24,9 +28,11 @@ const Profile = () => {
         <div className="Profile_info">
           <div className="Profile_name">
             <AccountCircleIcon style={{ padding: "5px" }} />
-            <h1>{user.email}</h1>
+            <h3>{user.email}</h3>
           </div>
-          <h1 style={{ padding: "5px" }}>{user.total_posts} posts</h1>
+          {account && (
+            <h3 style={{ padding: "5px" }}>{account.total_posts} posts</h3>
+          )}
         </div>
       )}
       {posts && (
