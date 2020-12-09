@@ -1,7 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap");
 
 .Sidebar_top {
-  top: 80px;
+  top: 11.5%;
   left: 75%;
   position: fixed;
   display: flex;
@@ -47,7 +47,7 @@
   width: 22%;
   max-height: 48%;
   box-shadow: 0 0 2px rgba(0, 0, 0, 0.5);
-  min-height: 45vh;
+  min-height: 48vh;
 }
 
 .Sidebar_button > button {
