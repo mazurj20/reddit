@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import "../../styles/Account.css";
 import axios from "../../axios";
 import Post from "../Post";
-import SidebarAds2 from "../SidebarAds2";
+import SidebarAds1 from "../SidebarAds1";
 
 const Account = ({ match }) => {
   const [posts, setPosts] = useState(null);
@@ -21,7 +21,7 @@ const Account = ({ match }) => {
 
   return (
     <div>
-      <SidebarAds2 />
+      <SidebarAds1 />
       {account && <h1>{account.email}</h1>}
       {posts ? (
         <div className="Account_posts">

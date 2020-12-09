@@ -3,7 +3,7 @@ import "../../styles/Profile.css";
 import axios from "../../axios";
 import { useStateValue } from "../../stateprovider";
 import Post from "../Post";
-import SidebarAds2 from "../SidebarAds2";
+import SidebarAds1 from "../SidebarAds1";
 
 const Profile = () => {
   const [posts, setPosts] = useState(null);
@@ -18,7 +18,7 @@ const Profile = () => {
 
   return (
     <div>
-      <SidebarAds2 />
+      <SidebarAds1 />
       {user && <h1>{user.email}</h1>}
       {posts && (
         <div className="Profile_posts">
