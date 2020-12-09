@@ -4,6 +4,7 @@ import axios from "../../axios";
 import { useStateValue } from "../../stateprovider";
 import Post from "../Post";
 import SidebarAds1 from "../SidebarAds1";
+import AccountCircleIcon from "@material-ui/icons/AccountCircle";
 
 const Profile = () => {
   const [posts, setPosts] = useState(null);
@@ -19,7 +20,15 @@ const Profile = () => {
   return (
     <div>
       <SidebarAds1 />
-      {user && <h1>{user.email}</h1>}
+      {user && (
+        <div className="Profile_info">
+          <div className="Profile_name">
+            <AccountCircleIcon style={{ padding: "5px" }} />
+            <h1>{user.email}</h1>
+          </div>
+          <h1 style={{ padding: "5px" }}>{user.total_posts} posts</h1>
+        </div>
+      )}
       {posts && (
         <div className="Profile_posts">
           {posts.map((post) => (

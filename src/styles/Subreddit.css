@@ -62,7 +62,7 @@
 
 @media only screen and (max-width: 600px) {
   .Subreddit_posts {
-    top: 25%;
+    top: 28%;
     left: 3%;
     position: absolute;
     display: flex;
@@ -73,5 +73,12 @@
   }
   .Subreddit_header_background {
     height: 10vh;
+  }
+  .Subreddit_post_button {
+  }
+  .Subreddit_post_button > button {
+    width: 97.1%;
+  }
+  .Subreddit_post_button > .MuiButtonBase-root {
   }
 }
