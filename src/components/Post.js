@@ -176,6 +176,9 @@ const Post = ({ post }) => {
                     {moment(post.post_timestamp).fromNow()}
                   </h4>
                 </div>
+                <div>
+                  <h3>{post.post_title}</h3>
+                </div>
                 <div className="Post_right_body">
                   <Truncate
                     lines={3}
