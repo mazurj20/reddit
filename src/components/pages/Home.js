@@ -8,6 +8,7 @@ import axios from "../../axios";
 import { Button } from "@material-ui/core";
 import { useLocation } from "react-router-dom";
 import { useStateValue } from "../../stateprovider";
+import Navbar from "../Navbar";
 
 const Home = ({
   createSubredditForm,
@@ -72,7 +73,6 @@ const Home = ({
                       <div className="Home_buttons">
                         <Button
                           style={{ fontSize: "10px" }}
-                          className="Subreddit_button"
                           onClick={() => {
                             if (user) {
                               setCreateSubredditForm(true);

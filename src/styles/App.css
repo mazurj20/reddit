@@ -1,6 +1,6 @@
 .App {
   font-family: "Montserrat", sans-serif;
-  min-height: 500vh;
+  min-height: 100vh;
 }
 @media only screen and (max-width: 600px) {
   .App {
