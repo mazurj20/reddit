@@ -8,7 +8,6 @@ import axios from "../../axios";
 import { Button } from "@material-ui/core";
 import { useLocation } from "react-router-dom";
 import { useStateValue } from "../../stateprovider";
-import Navbar from "../Navbar";
 
 const Home = ({
   createSubredditForm,
@@ -32,6 +31,7 @@ const Home = ({
       setPopularPosts(res.data);
     });
   }, []);
+
   const ifTrue = () => {
     if (createSubredditForm) {
       return "subreddit";
@@ -39,6 +39,7 @@ const Home = ({
       return "post";
     }
   };
+
   return (
     <>
       <Sidebar

@@ -56,7 +56,7 @@ const Subreddit = ({
           <>
             <SidebarAds
               className="Subreddit_sidebar"
-              top={"41%"}
+              top={"43%"}
               numOfAds={Math.ceil(posts.length / 2) + 1}
             />
             <div className="Subreddit_image">
