@@ -52,9 +52,13 @@ const Subreddit = ({
   return (
     <>
       <div className="Subreddit">
-        <SidebarAds top={"41%"} className="Subreddit_sidebar" />
         {posts && subreddit ? (
           <>
+            <SidebarAds
+              className="Subreddit_sidebar"
+              top={"41%"}
+              numOfAds={Math.ceil(posts.length / 2) + 1}
+            />
             <div className="Subreddit_image">
               {subreddit[0].subreddit_image && (
                 <img src={subreddit[0].subreddit_image}></img>

@@ -42,32 +42,38 @@ const PostPage = ({ match }) => {
 
   return (
     <div>
-      <SidebarAds top={"12%"} />
       {comments ? (
-        <div className="PostPage">
-          {post && <Post post={post} />}
-          <div className="PostPage_createComment">
-            <textarea
-              value={commentInput}
-              placeholder="join the conversation..."
-              onChange={(e) => setCommentInput(e.target.value)}
-            />
-            <div className="PostPage_commentButton">
-              {user ? (
-                <button onClick={createComment}>Comment</button>
-              ) : (
-                <p style={{ margin: "2px" }}>must be logged in to comment</p>
-              )}
+        <>
+          <SidebarAds
+            top={"12%"}
+            numOfAds={Math.floor(comments.length / 2) - 1}
+          />
+
+          <div className="PostPage">
+            {post && <Post post={post} />}
+            <div className="PostPage_createComment">
+              <textarea
+                value={commentInput}
+                placeholder="join the conversation..."
+                onChange={(e) => setCommentInput(e.target.value)}
+              />
+              <div className="PostPage_commentButton">
+                {user ? (
+                  <button onClick={createComment}>Comment</button>
+                ) : (
+                  <p style={{ margin: "2px" }}>must be logged in to comment</p>
+                )}
+              </div>
             </div>
+            {comments.length > 0 && (
+              <div className="PostPage_comments">
+                {comments.map((comment) => (
+                  <Comment comment={comment} />
+                ))}
+              </div>
+            )}
           </div>
-          {comments.length > 0 && (
-            <div className="PostPage_comments">
-              {comments.map((comment) => (
-                <Comment comment={comment} />
-              ))}
-            </div>
-          )}
-        </div>
+        </>
       ) : (
         <div>
           <h2>Loading...</h2>
