@@ -27,24 +27,27 @@
 .posts:hover {
   background-color: rgba(212, 212, 212, 0.97);
 }
-.Post_button {
+.Home_buttons {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   width: 60vw;
 }
 
-.Post_button > button {
+.Home_buttons > button {
   background-color: rgb(240, 240, 240);
-  width: 100%;
-  margin: 6px;
+  margin: 4px;
   width: 98.5%;
   border: solid rgb(158, 158, 158);
   border-width: 1px;
 }
-.Post_button > button:hover {
+.Home_buttons > button:hover {
   border: solid rgb(0, 0, 0);
   border-width: 1px;
+}
+.Subreddit_button {
+  display: none;
 }
 @media (max-width: 900px) {
   .Sidebar {
@@ -53,8 +56,11 @@
   .Home_posts {
     width: 80vw;
   }
-  .Post_button {
+  .Home_buttons {
     width: 80vw;
+  }
+  .Subreddit_button {
+    display: block;
   }
 }
 @media (max-width: 600px) {
@@ -65,7 +71,7 @@
   .Home_posts {
     width: 90vw;
   }
-  .Post_button {
+  .Home_buttons {
     width: 90vw;
   }
 }

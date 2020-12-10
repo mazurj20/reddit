@@ -3,7 +3,7 @@ import "../../styles/Profile.css";
 import axios from "../../axios";
 import { useStateValue } from "../../stateprovider";
 import Post from "../Post";
-import SidebarAds1 from "../SidebarAds1";
+import SidebarAds from "../SidebarAds";
 import AccountCircleIcon from "@material-ui/icons/AccountCircle";
 
 const Profile = () => {
@@ -23,7 +23,7 @@ const Profile = () => {
 
   return (
     <div>
-      <SidebarAds1 />
+      <SidebarAds top={"17.5%"} />
       {user && (
         <div className="Profile_info">
           <div className="Profile_name">

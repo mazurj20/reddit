@@ -4,7 +4,7 @@ import axios from "../../axios";
 import Comment from "../Comment";
 import Post from "../Post";
 import { useStateValue } from "../../stateprovider";
-import SidebarAds1 from "../SidebarAds1";
+import SidebarAds from "../SidebarAds";
 import moment from "moment";
 
 const PostPage = ({ match }) => {
@@ -42,7 +42,7 @@ const PostPage = ({ match }) => {
 
   return (
     <div>
-      <SidebarAds1 />
+      <SidebarAds top={"12%"} />
       {comments ? (
         <div className="PostPage">
           {post && <Post post={post} />}

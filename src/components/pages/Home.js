@@ -69,8 +69,24 @@ const Home = ({
                 <div>
                   {popularPosts && (
                     <>
-                      <div className="Post_button">
+                      <div className="Home_buttons">
                         <Button
+                          style={{ fontSize: "10px" }}
+                          className="Subreddit_button"
+                          onClick={() => {
+                            if (user) {
+                              setCreateSubredditForm(true);
+                              setCreatePostForm(false);
+                            } else {
+                              alert("log in");
+                            }
+                          }}
+                          type="submit"
+                        >
+                          Create a subreddit
+                        </Button>
+                        <Button
+                          style={{ fontSize: "10px" }}
                           onClick={() => {
                             if (user) {
                               setCreatePostForm(true);
