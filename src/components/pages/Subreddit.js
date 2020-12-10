@@ -4,7 +4,7 @@ import axios from "../../axios";
 import Post from "../Post";
 import { Button } from "@material-ui/core";
 import { useHistory } from "react-router-dom";
-import SidebarAds2 from "../SidebarAds2";
+import SidebarAds from "../SidebarAds";
 import { useStateValue } from "../../stateprovider";
 import PeopleIcon from "@material-ui/icons/People";
 
@@ -52,7 +52,7 @@ const Subreddit = ({
   return (
     <>
       <div className="Subreddit">
-        <SidebarAds2 className="Subreddit_sidebar" />
+        <SidebarAds top={"41%"} className="Subreddit_sidebar" />
         {posts && subreddit ? (
           <>
             <div className="Subreddit_image">
@@ -75,7 +75,9 @@ const Subreddit = ({
             </div>
             <div className="Subreddit_posts">
               <div className="Subreddit_post_button">
-                <Button onClick={createPost}>Create a post</Button>
+                <Button style={{ fontSize: "10px" }} onClick={createPost}>
+                  Create a post
+                </Button>
               </div>
               {posts.map((post) => (
                 <Post post={post} />

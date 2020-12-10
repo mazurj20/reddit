@@ -51,3 +51,13 @@
 .newPost__button > button {
   margin: 5px;
 }
+@media only screen and (max-width: 900px) {
+  .form__container {
+    width: 80vw;
+  }
+}
+@media only screen and (max-width: 600px) {
+  .form__container {
+    width: 90vw;
+  }
+}

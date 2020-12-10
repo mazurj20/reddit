@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import "../../styles/Account.css";
 import axios from "../../axios";
 import Post from "../Post";
-import SidebarAds1 from "../SidebarAds1";
+import SidebarAds from "../SidebarAds";
 import AccountCircleIcon from "@material-ui/icons/AccountCircle";
 
 const Account = ({ match }) => {
@@ -22,7 +22,7 @@ const Account = ({ match }) => {
 
   return (
     <div>
-      <SidebarAds1 />
+      <SidebarAds top={"17.5%"} />
       {account && (
         <div className="Account_info">
           <div className="Account_name">
