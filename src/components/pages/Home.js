@@ -72,6 +72,7 @@ const Home = ({
                     <>
                       <div className="Home_buttons">
                         <Button
+                          className="CreateSubreddit_button"
                           style={{ fontSize: "10px" }}
                           onClick={() => {
                             if (user) {
