@@ -21,8 +21,16 @@ const Sidebar = ({
       console.log(res.data);
     });
   }, []);
+  const scrollTop = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
   return (
     <div className="Sidebar">
+      <div className="gddf">
+        <div onClick={scrollTop} className="Sidebar_title">
+          <h4>Back to Top</h4>
+        </div>
+      </div>
       <div className="Sidebar_top">
         <div className="Sidebar_title">
           <h4>Trending Communities</h4>

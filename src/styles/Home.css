@@ -46,9 +46,6 @@
   border: solid rgb(0, 0, 0);
   border-width: 1px;
 }
-.Subreddit_button {
-  display: none;
-}
 @media (max-width: 900px) {
   .Sidebar {
     display: none;
@@ -58,9 +55,6 @@
   }
   .Home_buttons {
     width: 80vw;
-  }
-  .Subreddit_button {
-    display: block;
   }
 }
 @media (max-width: 600px) {

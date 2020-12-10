@@ -13,9 +13,6 @@ const SidebarAds1 = ({ top }) => {
       <div className="SidebarAds_item">
         <h4>advertisement</h4>
       </div>
-      <div className="SidebarAds_item">
-        <h4>advertisement</h4>
-      </div>
     </div>
   );
 };
