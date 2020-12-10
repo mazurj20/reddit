@@ -197,15 +197,16 @@ const Post = ({ post }) => {
                     {post.post_content}
                   </Truncate>
                 </div>
+                <div className="Post_image">
+                  {post.post_image && (
+                    <img
+                      src={`${post.post_image}`}
+                      onError={(e) => e.target.setAttribute("src", defaultImg)}
+                    />
+                  )}
+                </div>
               </div>
-              <div className="Post_image">
-                {post.post_image && (
-                  <img
-                    src={`${post.post_image}`}
-                    onError={(e) => e.target.setAttribute("src", defaultImg)}
-                  />
-                )}
-              </div>
+
               <div className="Post_right_links">
                 <ChatBubbleIcon fontSize={"small"} />
                 &nbsp;
