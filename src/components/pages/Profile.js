@@ -23,7 +23,9 @@ const Profile = () => {
 
   return (
     <div>
-      <SidebarAds top={"17.5%"} />
+      {posts && (
+        <SidebarAds top={"17.5%"} numOfAds={Math.ceil(posts.length / 2) + 1} />
+      )}
       {user && (
         <div className="Profile_info">
           <div className="Profile_name">

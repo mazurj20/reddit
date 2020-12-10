@@ -26,7 +26,7 @@ const Sidebar = ({
   };
   return (
     <div className="Sidebar">
-      <div className="gddf">
+      <div className="Sidebar_backtotop">
         <div onClick={scrollTop} className="Sidebar_title">
           <h4>Back to Top</h4>
         </div>

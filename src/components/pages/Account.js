@@ -22,7 +22,9 @@ const Account = ({ match }) => {
 
   return (
     <div>
-      <SidebarAds top={"17.5%"} />
+      {posts && (
+        <SidebarAds top={"17.5%"} numOfAds={Math.ceil(posts.length / 2) + 1} />
+      )}
       {account && (
         <div className="Account_info">
           <div className="Account_name">

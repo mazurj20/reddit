@@ -61,7 +61,7 @@
 .Sidebar_button > button:hover {
   background-color: rgba(212, 212, 212, 0.97);
 }
-.gddf {
+.Sidebar_backtotop {
   top: 3%;
   left: 75%;
   position: fixed;
