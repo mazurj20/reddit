@@ -9,7 +9,9 @@ function NewSubreddit({ setCreateSubredditForm }) {
   const [urlInput, setUrlInput] = useState("");
   const [{ user }, dispatch] = useStateValue();
   const [arr, setArr] = useState([]);
-  const [duplicate, setDuplicate] = useState("hidden");
+
+  const [duplicate, setDuplicate] = useState(false);
+
 
   useEffect(() => {
     axios.get("/subreddits").then((res) => setArr(res.data));
@@ -29,14 +31,11 @@ function NewSubreddit({ setCreateSubredditForm }) {
   };
 
   arr.map((sub) => {
-    console.log(sub.subreddit_title);
-    if (duplicate === "hidden") {
+
+    if (duplicate === false) {
       if (sub.subreddit_title.toLowerCase() === titleInput.toLowerCase()) {
-        setDuplicate("visible");
-      }
-    } else {
-      if (sub.subreddit_title.toLowerCase() !== titleInput.toLowerCase()) {
-        setDuplicate("hidden");
+        setDuplicate(true);
+
       }
     }
   });
@@ -49,7 +48,7 @@ function NewSubreddit({ setCreateSubredditForm }) {
           placeholder="Subreddit Title"
           onChange={(e) => setTitleInput(e.target.value)}
         />
-        <p style={{ visibility: duplicate }}>Subreddit already exists</p>
+
       </div>
       <div className="newSubreddit__description">
         <textarea
@@ -68,9 +67,13 @@ function NewSubreddit({ setCreateSubredditForm }) {
       <div className="newSubreddit__button">
         <button
           onClick={() => {
-            if (duplicate === "hidden") {
+
+            if (duplicate === false) {
               setCreateSubredditForm(false);
               CreateNewSubreddit();
+            } else {
+              alert(`r/${titleInput} already exists.`);
+
             }
           }}
           type="submit"
