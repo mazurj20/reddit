@@ -17,6 +17,8 @@
     "react-router": "^5.2.0",
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.0",
+    "react-search": "^2.1.1",
+    "react-search-box": "^2.0.2",
     "react-select": "^3.1.0",
     "react-truncate": "^2.4.0",
     "web-vitals": "^0.2.4"
