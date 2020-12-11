@@ -31,6 +31,7 @@ const Home = ({
       setPopularPosts(res.data);
     });
   }, []);
+
   const ifTrue = () => {
     if (createSubredditForm) {
       return "subreddit";
@@ -38,6 +39,7 @@ const Home = ({
       return "post";
     }
   };
+
   return (
     <>
       <Sidebar
@@ -69,8 +71,24 @@ const Home = ({
                 <div>
                   {popularPosts && (
                     <>
-                      <div className="Post_button">
+                      <div className="Home_buttons">
                         <Button
+                          className="CreateSubreddit_button"
+                          style={{ fontSize: "10px" }}
+                          onClick={() => {
+                            if (user) {
+                              setCreateSubredditForm(true);
+                              setCreatePostForm(false);
+                            } else {
+                              alert("log in");
+                            }
+                          }}
+                          type="submit"
+                        >
+                          Create a subreddit
+                        </Button>
+                        <Button
+                          style={{ fontSize: "10px" }}
                           onClick={() => {
                             if (user) {
                               setCreatePostForm(true);

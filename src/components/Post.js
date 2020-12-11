@@ -163,18 +163,18 @@ const Post = ({ post }) => {
                     className="Post_subreddit_title"
                     style={{ textDecoration: "none", color: "black" }}
                   >
-                    <h4 className="Post_title">{`r/${post.subreddit_title}`}</h4>
+                    <h5 className="Post_title">{`r/${post.subreddit_title}`}</h5>
                   </Link>
                   <div className="Post_right_info">
                     &nbsp;&middot;&nbsp;
-                    <h4>Posted by&nbsp;</h4>
+                    <h5>Posted by&nbsp;</h5>
                     <Link to={`/account/${post.user_id}`} className="Post_user">
-                      <h4>{`u/${post.email}`}</h4>
+                      <h5>{`u/${post.email}`}</h5>
                     </Link>
                   </div>
-                  <h4 className="Post_time">
+                  <h5 className="Post_time">
                     {moment(post.post_timestamp).fromNow()}
-                  </h4>
+                  </h5>
                 </div>
                 <div>
                   <h3>{post.post_title}</h3>
@@ -197,15 +197,16 @@ const Post = ({ post }) => {
                     {post.post_content}
                   </Truncate>
                 </div>
+                <div className="Post_image">
+                  {post.post_image && (
+                    <img
+                      src={`${post.post_image}`}
+                      onError={(e) => e.target.setAttribute("src", defaultImg)}
+                    />
+                  )}
+                </div>
               </div>
-              <div className="Post_image">
-                {post.post_image && (
-                  <img
-                    src={`${post.post_image}`}
-                    onError={(e) => e.target.setAttribute("src", defaultImg)}
-                  />
-                )}
-              </div>
+
               <div className="Post_right_links">
                 <ChatBubbleIcon fontSize={"small"} />
                 &nbsp;

@@ -2,7 +2,8 @@ import React, { useState, useEffect } from "react";
 import "../../styles/Account.css";
 import axios from "../../axios";
 import Post from "../Post";
-import SidebarAds1 from "../SidebarAds1";
+import SidebarAds from "../SidebarAds";
+import AccountCircleIcon from "@material-ui/icons/AccountCircle";
 
 const Account = ({ match }) => {
   const [posts, setPosts] = useState(null);
@@ -21,8 +22,18 @@ const Account = ({ match }) => {
 
   return (
     <div>
-      <SidebarAds1 />
-      {account && <h1>{account.email}</h1>}
+      {posts && (
+        <SidebarAds top={"17.5%"} numOfAds={Math.ceil(posts.length / 2) + 1} />
+      )}
+      {account && (
+        <div className="Account_info">
+          <div className="Account_name">
+            <AccountCircleIcon style={{ padding: "5px" }} />
+            <h3>{account.email}</h3>
+          </div>
+          <h3 style={{ padding: "5px" }}>{account.total_posts} posts</h3>
+        </div>
+      )}
       {posts ? (
         <div className="Account_posts">
           {posts.map((post) => (

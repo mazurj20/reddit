@@ -51,9 +51,14 @@
   width: 25px;
   margin-right: 10px;
 }
+
 .Post_right_info {
   display: flex;
+  justify-content: center;
+  align-items: center;
   color: grey;
+  overflow: hidden;
+  white-space: nowrap;
 }
 .Post_user {
   text-decoration: none;
@@ -80,23 +85,28 @@
   align-items: right;
   margin-left: auto;
 }
+
 .Post_image {
-  width: 100%;
+  width: 96%;
+  max-height: 35vh;
   display: flex;
   justify-content: center;
   align-items: center;
+  object-fit: cover;
+  overflow: hidden;
 }
 .Post_image > img {
-  width: 95%;
-  height: 30vh;
-  overflow: hidden;
+  width: 100%;
   object-fit: cover;
-  padding-right: 12px;
+  display: block;
 }
 .Post_right_links {
   display: flex;
+  justify-content: flex-start;
+  align-items: center;
   color: rgb(104, 104, 104);
-  padding: 2px;
+  padding: 5px;
+  margin-top: 5px;
 }
 .Post_right_links > .MuiSvgIcon-root {
   color: grey;
@@ -104,12 +114,11 @@
 .Post_right_links:hover {
   background-color: rgb(223, 223, 223);
   border-radius: 4px;
-  padding: 2px;
 }
 
 @media only screen and (max-width: 600px) {
   .Post_image > img {
-    height: 20vh;
+    height: 18vh;
   }
   .Post {
     min-height: 15vh;

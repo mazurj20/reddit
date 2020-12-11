@@ -15,7 +15,7 @@
   justify-content: space-between;
   align-items: center;
   padding: 10px;
-  max-height: 8vh;
+  max-height: 11vh;
   overflow: hidden;
 }
 .Subreddit_header_title {
@@ -37,7 +37,7 @@
   border-width: 1px;
 }
 .Subreddit_posts {
-  top: 40%;
+  top: 42%;
   left: 3%;
   position: absolute;
   display: flex;
@@ -62,7 +62,7 @@
 
 @media only screen and (max-width: 600px) {
   .Subreddit_posts {
-    top: 25%;
+    top: 28%;
     left: 3%;
     position: absolute;
     display: flex;
@@ -73,5 +73,12 @@
   }
   .Subreddit_header_background {
     height: 10vh;
+  }
+  .Subreddit_post_button {
+  }
+  .Subreddit_post_button > button {
+    width: 97.1%;
+  }
+  .Subreddit_post_button > .MuiButtonBase-root {
   }
 }

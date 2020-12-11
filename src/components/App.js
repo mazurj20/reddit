@@ -23,7 +23,6 @@ function App() {
         setCreatePostForm={setCreatePostForm}
         setCreateSubredditForm={setCreateSubredditForm}
       />
-
       <main className="Main">
         <Switch>
           <Route

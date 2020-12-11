@@ -1,16 +1,15 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap");
 
-.SidebarAds1 {
-  top: 12.2%;
-  left: 77%;
+.SidebarAds {
   position: absolute;
+  left: 77%;
   width: 20%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
-.SidebarAds1_item {
+.SidebarAds_item {
   margin-bottom: 10px;
   display: flex;
   width: 100%;
@@ -22,7 +21,7 @@
 }
 
 @media only screen and (max-width: 600px) {
-  .SidebarAds1 {
+  .SidebarAds {
     display: none;
   }
 }

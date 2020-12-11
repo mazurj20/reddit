@@ -9,7 +9,9 @@ function NewSubreddit({ setCreateSubredditForm }) {
   const [urlInput, setUrlInput] = useState("");
   const [{ user }, dispatch] = useStateValue();
   const [arr, setArr] = useState([]);
+
   const [duplicate, setDuplicate] = useState(false);
+
 
   useEffect(() => {
     axios.get("/subreddits").then((res) => setArr(res.data));
@@ -29,9 +31,11 @@ function NewSubreddit({ setCreateSubredditForm }) {
   };
 
   arr.map((sub) => {
+
     if (duplicate === false) {
       if (sub.subreddit_title.toLowerCase() === titleInput.toLowerCase()) {
         setDuplicate(true);
+
       }
     }
   });
@@ -44,6 +48,7 @@ function NewSubreddit({ setCreateSubredditForm }) {
           placeholder="Subreddit Title"
           onChange={(e) => setTitleInput(e.target.value)}
         />
+
       </div>
       <div className="newSubreddit__description">
         <textarea
@@ -62,11 +67,13 @@ function NewSubreddit({ setCreateSubredditForm }) {
       <div className="newSubreddit__button">
         <button
           onClick={() => {
+
             if (duplicate === false) {
               setCreateSubredditForm(false);
               CreateNewSubreddit();
             } else {
               alert(`r/${titleInput} already exists.`);
+
             }
           }}
           type="submit"
