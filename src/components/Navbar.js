@@ -10,13 +10,14 @@ import { useStateValue } from "../stateprovider";
 import axios from "../axios";
 import firebase from "firebase";
 import { Link } from "react-router-dom";
-import Search from "react-search";
 import { useHistory } from "react-router-dom";
+import AutoSuggest from "react-autosuggest";
 
 function Navbar({ setCreateSubredditForm, setCreatePostForm }) {
   const [{ user }, dispatch] = useStateValue();
   const [searchArr, setSearchArr] = useState([]);
-  const [value, setValue] = useState({});
+  const [value, setValue] = useState("");
+  const [suggestions, setSuggestions] = useState([]);
   const history = useHistory();
 
   useEffect(() => {
@@ -29,7 +30,7 @@ function Navbar({ setCreateSubredditForm, setCreatePostForm }) {
   searchArr.map((sub) => {
     options.push({
       id: sub.subreddit_id,
-      value: sub.subreddit_title,
+      title: sub.subreddit_title.toLowerCase(),
     });
     return options;
   });
@@ -39,9 +40,13 @@ function Navbar({ setCreateSubredditForm, setCreatePostForm }) {
   console.log(value);
 
   const select = () => {
-    history.push({
-      pathname: `/subreddits/${value[0].id}`,
-    });
+    for (let option of options) {
+      if (option.title === value) {
+        history.push({
+          pathname: `/subreddits/${option.id}`,
+        });
+      }
+    }
   };
 
   const signUp = () => {
@@ -94,6 +99,12 @@ function Navbar({ setCreateSubredditForm, setCreatePostForm }) {
       .catch((error) => alert(error.message));
   };
 
+  function getSuggestions(value) {
+    return options.filter((option) =>
+      option.title.includes(value.trim().toLowerCase())
+    );
+  }
+
   return (
     <div className="Navbar">
       <Link
@@ -112,13 +123,29 @@ function Navbar({ setCreateSubredditForm, setCreatePostForm }) {
         </div>
       </Link>
       <div className="Navbar_search">
-        <Search
-          items={options}
-          placeholder="Find a community"
-          onItemsChanged={setValue}
-          maxSelected={1}
+        <AutoSuggest
+          suggestions={suggestions}
+          onSuggestionsClearRequested={() => setSuggestions([])}
+          onSuggestionsFetchRequested={({ value }) => {
+            console.log(value);
+            setValue(value);
+            setSuggestions(getSuggestions(value));
+          }}
+          onSuggestionSelected={(_, { suggestionValue }) =>
+            console.log("Selected: " + suggestionValue)
+          }
+          getSuggestionValue={(suggestion) => suggestion.title}
+          renderSuggestion={(suggestion) => <span>{suggestion.title}</span>}
+          inputProps={{
+            placeholder: "find a community",
+            value: value,
+            onChange: (_, { newValue, method }) => {
+              setValue(newValue);
+            },
+          }}
+          highlightFirstSuggestion={true}
         />
-        <button onClick={select}>enter</button>
+        <button onClick={select}>submit</button>
       </div>
       <div className="Navbar_right">
         {!user && <Button onClick={() => logIn()}>log in</Button>}
