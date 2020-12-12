@@ -23,12 +23,12 @@ const Account = ({ match }) => {
   return (
     <div>
       {posts && (
-        <SidebarAds top={"17.5%"} numOfAds={Math.ceil(posts.length / 2) + 1} />
+        <SidebarAds top={"23.5%"} numOfAds={Math.ceil(posts.length / 2) + 1} />
       )}
       {account && (
         <div className="Account_info">
           <div className="Account_name">
-            <AccountCircleIcon style={{ padding: "5px" }} />
+            <AccountCircleIcon fontSize={"large"} style={{ padding: "5px" }} />
             <h3>{account.email}</h3>
           </div>
           <h3 style={{ padding: "5px" }}>{account.total_posts} posts</h3>

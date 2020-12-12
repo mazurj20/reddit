@@ -1,5 +1,5 @@
 .Account_posts {
-  top: 17%;
+  top: 23%;
   left: 3%;
   position: absolute;
   display: flex;
@@ -9,10 +9,12 @@
   width: 70vw;
 }
 .Account_info {
-  background: rgb(255, 205, 185);
+  background: rgb(238, 238, 238);
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  padding: 7px;
 }
 .Account_name {
   display: flex;

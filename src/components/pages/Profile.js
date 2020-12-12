@@ -26,12 +26,12 @@ const Profile = () => {
   return (
     <div>
       {posts && (
-        <SidebarAds top={"17.5%"} numOfAds={Math.ceil(posts.length / 2) + 1} />
+        <SidebarAds top={"23.5%"} numOfAds={Math.ceil(posts.length / 2) + 1} />
       )}
       {user && (
         <div className="Profile_info">
           <div className="Profile_name">
-            <AccountCircleIcon style={{ padding: "5px" }} />
+            <AccountCircleIcon fontSize={"large"} style={{ padding: "5px" }} />
             <h3>{user.email}</h3>
           </div>
           {account && (
