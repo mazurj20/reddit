@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from "react";
 import "../styles/Navbar.css";
 import RedditIcon from "@material-ui/icons/Reddit";
-import { SearchOutlined, MoreVert } from "@material-ui/icons";
-import { Avatar, IconButton } from "@material-ui/core";
-import { Button } from "@material-ui/core";
+import SearchIcon from "@material-ui/icons/Search";
+import { Avatar } from "@material-ui/core";
 import { auth, provider } from "../firebase";
 import { actionTypes } from "../reducer";
 import { useStateValue } from "../stateprovider";
@@ -93,10 +92,13 @@ function Navbar({ setCreateSubredditForm, setCreatePostForm }) {
           type: actionTypes.SET_USER,
           user: res.user,
         });
-
         console.log(res.user.email);
       })
       .catch((error) => alert(error.message));
+  };
+
+  const handleLogout = () => {
+    console.log("dsd");
   };
 
   function getSuggestions(value) {
@@ -123,35 +125,50 @@ function Navbar({ setCreateSubredditForm, setCreatePostForm }) {
         </div>
       </Link>
       <div className="Navbar_search">
-        <AutoSuggest
-          suggestions={suggestions}
-          onSuggestionsClearRequested={() => setSuggestions([])}
-          onSuggestionsFetchRequested={({ value }) => {
-            console.log(value);
-            setValue(value);
-            setSuggestions(getSuggestions(value));
-          }}
-          onSuggestionSelected={(_, { suggestionValue }) =>
-            console.log("Selected: " + suggestionValue)
-          }
-          getSuggestionValue={(suggestion) => suggestion.title}
-          renderSuggestion={(suggestion) => <span>{suggestion.title}</span>}
-          inputProps={{
-            placeholder: "find a community",
-            value: value,
-            onChange: (_, { newValue, method }) => {
-              setValue(newValue);
-            },
-          }}
-          highlightFirstSuggestion={true}
-        />
-        <button onClick={select}>submit</button>
+        <div className="Navbar_search_left">
+          <SearchIcon />
+          <AutoSuggest
+            suggestions={suggestions}
+            onSuggestionsClearRequested={() => setSuggestions([])}
+            onSuggestionsFetchRequested={({ value }) => {
+              console.log(value);
+              setValue(value);
+              setSuggestions(getSuggestions(value));
+            }}
+            onSuggestionSelected={(_, { suggestionValue }) =>
+              console.log("Selected: " + suggestionValue)
+            }
+            getSuggestionValue={(suggestion) => suggestion.title}
+            renderSuggestion={(suggestion) => <span>{suggestion.title}</span>}
+            inputProps={{
+              placeholder: "find a community",
+              value: value,
+              onChange: (_, { newValue, method }) => {
+                setValue(newValue);
+              },
+              onSubmit: select(),
+            }}
+            highlightFirstSuggestion={true}
+          />
+        </div>
       </div>
       <div className="Navbar_right">
-        {!user && <Button onClick={() => logIn()}>log in</Button>}
+        {user ? (
+          <h5 onClick={handleLogout}>Logout</h5>
+        ) : (
+          <div>
+            {!user && (
+              <div onClick={() => logIn()}>
+                <h5>Login</h5>
+              </div>
+            )}
+
+            {user && findId()}
+          </div>
+        )}
         {user && (
           <Link to="/profile" style={{ textDecoration: "none" }}>
-            <Avatar src={user.photoURL} />
+            <Avatar fontSize={"small"} src={user.photoURL} />
           </Link>
         )}
         {user && findId()}

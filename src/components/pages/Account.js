@@ -28,10 +28,10 @@ const Account = ({ match }) => {
       {account && (
         <div className="Account_info">
           <div className="Account_name">
-            <AccountCircleIcon fontSize={"large"} style={{ padding: "5px" }} />
-            <h3>{account.email}</h3>
+            <AccountCircleIcon fontSize={"large"} style={{ padding: "3px" }} />
+            <h4>{account.email}</h4>
           </div>
-          <h3 style={{ padding: "5px" }}>{account.total_posts} posts</h3>
+          <h4 style={{ padding: "3px" }}>{account.total_posts} posts</h4>
         </div>
       )}
       {posts ? (

@@ -62,7 +62,7 @@
 }
 .Post_user {
   text-decoration: none;
-  color: grey;
+  color: rgb(97, 97, 97);
 }
 .Post_user:hover {
   text-decoration: underline;
@@ -84,6 +84,8 @@
 .Post_time {
   align-items: right;
   margin-left: auto;
+  overflow: hidden;
+  white-space: nowrap;
 }
 .Post_image {
   width: 96%;
@@ -146,5 +148,8 @@
   }
   .Post_subreddit_img {
     display: none;
+  }
+  .Post_right_heading {
+    width: 95%;
   }
 }
