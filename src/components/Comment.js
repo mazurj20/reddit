@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import ArrowUpwardRoundedIcon from "@material-ui/icons/ArrowUpwardRounded";
 import ArrowDownwardRoundedIcon from "@material-ui/icons/ArrowDownwardRounded";
+import DeleteRoundedIcon from "@material-ui/icons/DeleteRounded";
 import { IconButton } from "@material-ui/core";
 import "../styles/Comment.css";
 import { Link } from "react-router-dom";
@@ -8,7 +9,11 @@ import { useStateValue } from "../stateprovider";
 import axios from "../axios";
 import moment from "moment";
 
-const Comment = ({ comment }) => {
+const Comment = ({
+  comment,
+  updateCommentSection,
+  setUpdateCommentSection,
+}) => {
   const [{ user }] = useStateValue();
   const [commentUpvotes, setCommentUpvotes] = useState(comment.comment_upvotes);
   const grey = "disabled";
@@ -25,6 +30,12 @@ const Comment = ({ comment }) => {
       }
     }
   }, []);
+
+  const deleteComment = async () => {
+    await axios.delete(`/comments/${comment.comment_id}`);
+    let newUpdate = updateCommentSection + 1;
+    setUpdateCommentSection(newUpdate);
+  };
 
   const changeUpvoteColor = () => {
     let newColor = upvoteColor == grey ? blue : grey;
@@ -158,6 +169,16 @@ const Comment = ({ comment }) => {
         <div className="Comment_body">
           <h6>{comment.comment_content}</h6>
         </div>
+        {user && (
+          <div className="Comment_delete_container">
+            {user.user_id == comment.user_id && (
+              <div className="Comment_delete" onClick={deleteComment}>
+                <DeleteRoundedIcon fontSize={"small"} />
+                <h5>Delete</h5>
+              </div>
+            )}
+          </div>
+        )}
       </div>
     </div>
   );

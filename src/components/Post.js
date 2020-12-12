@@ -45,8 +45,6 @@ const Post = ({
     await axios.delete(`/posts/${post.post_id}`);
     let newUpdate = profilePageUpdates + 1;
     setProfilePageUpdates(newUpdate);
-    console.log(profilePageUpdates);
-    console.log("delete");
   };
 
   const changeUpvoteColor = () => {

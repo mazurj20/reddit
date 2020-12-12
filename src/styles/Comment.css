@@ -46,3 +46,20 @@
 .Comment_body > h6 {
   width: 95%;
 }
+.Comment_delete_container {
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+  height: 100%;
+}
+.Comment_delete {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 5px;
+  color: grey;
+}
+.Comment_delete:hover {
+  background-color: rgb(223, 223, 223);
+  border-radius: 4px;
+}
