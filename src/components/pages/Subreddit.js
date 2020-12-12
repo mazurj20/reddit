@@ -59,11 +59,13 @@ const Subreddit = ({
               top={"43%"}
               numOfAds={Math.ceil(posts.length / 2) + 1}
             />
-            <div className="Subreddit_image">
+
+            {/*<div className="Subreddit_image">
               {subreddit[0].subreddit_image && (
                 <img src={subreddit[0].subreddit_image}></img>
               )}
-            </div>
+            </div>*/}
+
             <div className="Subreddit_header">
               <div className="Subreddit_header_background"></div>
               <div className="Subreddit_header_info">

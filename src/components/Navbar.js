@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "../styles/Navbar.css";
 import RedditIcon from "@material-ui/icons/Reddit";
 import { SearchOutlined, MoreVert } from "@material-ui/icons";
@@ -10,9 +10,39 @@ import { useStateValue } from "../stateprovider";
 import axios from "../axios";
 import firebase from "firebase";
 import { Link } from "react-router-dom";
+import Search from "react-search";
+import { useHistory } from "react-router-dom";
 
 function Navbar({ setCreateSubredditForm, setCreatePostForm }) {
   const [{ user }, dispatch] = useStateValue();
+  const [searchArr, setSearchArr] = useState([]);
+  const [value, setValue] = useState({});
+  const history = useHistory();
+
+  useEffect(() => {
+    axios.get("/subreddits").then((res) => setSearchArr(res.data));
+  }, []);
+
+  console.log(searchArr);
+
+  let options = [];
+  searchArr.map((sub) => {
+    options.push({
+      id: sub.subreddit_id,
+      value: sub.subreddit_title,
+    });
+    return options;
+  });
+
+  console.log(options);
+
+  console.log(value);
+
+  const select = () => {
+    history.push({
+      pathname: `/subreddits/${value[0].id}`,
+    });
+  };
 
   const signUp = () => {
     axios.post("/users", { email: user.email }).then((res) => {
@@ -82,8 +112,13 @@ function Navbar({ setCreateSubredditForm, setCreatePostForm }) {
         </div>
       </Link>
       <div className="Navbar_search">
-        <SearchOutlined />
-        <input placeholder="Search" style={{ flex: "1" }} type="text" />
+        <Search
+          items={options}
+          placeholder="Find a community"
+          onItemsChanged={setValue}
+          maxSelected={1}
+        />
+        <button onClick={select}>enter</button>
       </div>
       <div className="Navbar_right">
         {!user && <Button onClick={() => logIn()}>log in</Button>}

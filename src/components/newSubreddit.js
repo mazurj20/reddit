@@ -9,7 +9,8 @@ function NewSubreddit({ setCreateSubredditForm, pageUpdates, setPageUpdates }) {
   const [urlInput, setUrlInput] = useState("");
   const [{ user }, dispatch] = useStateValue();
   const [arr, setArr] = useState([]);
-  const [duplicate, setDuplicate] = useState("none");
+
+  const [duplicate, setDuplicate] = useState(false);
 
   useEffect(() => {
     axios.get("/subreddits").then((res) => setArr(res.data));
@@ -32,14 +33,9 @@ function NewSubreddit({ setCreateSubredditForm, pageUpdates, setPageUpdates }) {
   };
 
   arr.map((sub) => {
-    console.log(sub.subreddit_title);
-    if (duplicate === "none") {
+    if (duplicate === false) {
       if (sub.subreddit_title.toLowerCase() === titleInput.toLowerCase()) {
-        setDuplicate("block");
-      }
-    } else {
-      if (sub.subreddit_title.toLowerCase() !== titleInput.toLowerCase()) {
-        setDuplicate("none");
+        setDuplicate(true);
       }
     }
   });
@@ -52,7 +48,6 @@ function NewSubreddit({ setCreateSubredditForm, pageUpdates, setPageUpdates }) {
           placeholder="Subreddit Title"
           onChange={(e) => setTitleInput(e.target.value)}
         />
-        <p style={{ display: duplicate }}>Subreddit already exists</p>
       </div>
       <div className="newSubreddit__description">
         <textarea
@@ -71,9 +66,11 @@ function NewSubreddit({ setCreateSubredditForm, pageUpdates, setPageUpdates }) {
       <div className="newSubreddit__button">
         <button
           onClick={() => {
-            if (duplicate === "none") {
+            if (duplicate === false) {
               setCreateSubredditForm(false);
               CreateNewSubreddit();
+            } else {
+              alert(`r/${titleInput} already exists.`);
             }
           }}
           type="submit"
