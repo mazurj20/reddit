@@ -31,11 +31,11 @@ const Profile = () => {
       {user && (
         <div className="Profile_info">
           <div className="Profile_name">
-            <AccountCircleIcon fontSize={"large"} style={{ padding: "5px" }} />
-            <h3>{user.email}</h3>
+            <AccountCircleIcon fontSize={"large"} style={{ padding: "3px" }} />
+            <h4>{user.email}</h4>
           </div>
           {account && (
-            <h3 style={{ padding: "5px" }}>{account.total_posts} posts</h3>
+            <h4 style={{ padding: "3px" }}>{account.total_posts} posts</h4>
           )}
         </div>
       )}
