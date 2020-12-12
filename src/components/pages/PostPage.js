@@ -68,7 +68,11 @@ const PostPage = ({ match }) => {
             {comments.length > 0 && (
               <div className="PostPage_comments">
                 {comments.map((comment) => (
-                  <Comment comment={comment} />
+                  <Comment
+                    comment={comment}
+                    updateCommentSection={updateCommentSection}
+                    setUpdateCommentSection={setUpdateCommentSection}
+                  />
                 ))}
               </div>
             )}
