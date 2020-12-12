@@ -5,12 +5,19 @@ import ArrowUpwardRoundedIcon from "@material-ui/icons/ArrowUpwardRounded";
 import ArrowDownwardRoundedIcon from "@material-ui/icons/ArrowDownwardRounded";
 import ChatBubbleIcon from "@material-ui/icons/ChatBubble";
 import { IconButton } from "@material-ui/core";
+import CreateRoundedIcon from "@material-ui/icons/CreateRounded";
+import DeleteRoundedIcon from "@material-ui/icons/DeleteRounded";
 import Truncate from "react-truncate";
 import { useStateValue } from "../stateprovider";
 import axios from "../axios";
 import moment from "moment";
 
-const Post = ({ post }) => {
+const Post = ({
+  post,
+  fromProfilePage,
+  profilePageUpdates,
+  setProfilePageUpdates,
+}) => {
   const [{ user }] = useStateValue();
   const [numOfComments, setNumOfComments] = useState(null);
   const [postUpvotes, setPostUpvotes] = useState(post.post_upvotes);
@@ -24,8 +31,23 @@ const Post = ({ post }) => {
   useEffect(() => {
     axios.get(`/post/${post.post_id}`).then((res) => {
       setNumOfComments(res.data);
+      if (user) {
+        if (user.likedPosts.includes(post.post_id)) {
+          changeUpvoteColor();
+        } else if (user.dislikedPosts.includes(post.post_id)) {
+          changeDownvoteColor();
+        }
+      }
     });
   }, []);
+
+  const deletePost = async () => {
+    await axios.delete(`/posts/${post.post_id}`);
+    let newUpdate = profilePageUpdates + 1;
+    setProfilePageUpdates(newUpdate);
+    console.log(profilePageUpdates);
+    console.log("delete");
+  };
 
   const changeUpvoteColor = () => {
     let newColor = upvoteColor == grey ? blue : grey;
@@ -147,6 +169,7 @@ const Post = ({ post }) => {
               <ArrowDownwardRoundedIcon color={downvoteColor} />
             </IconButton>
           </div>
+
           <Link
             to={`/posts/${post.post_id}`}
             style={{ textDecoration: "none", color: "black", width: "100%" }}
@@ -168,9 +191,18 @@ const Post = ({ post }) => {
                   <div className="Post_right_info">
                     &nbsp;&middot;&nbsp;
                     <h5>Posted by&nbsp;</h5>
-                    <Link to={`/account/${post.user_id}`} className="Post_user">
-                      <h5>{`u/${post.email}`}</h5>
-                    </Link>
+                    {user && user.user_id == post.user_id ? (
+                      <Link to="/profile" className="Post_user">
+                        <h5>{`u/${post.email}`}</h5>
+                      </Link>
+                    ) : (
+                      <Link
+                        to={`/account/${post.user_id}`}
+                        className="Post_user"
+                      >
+                        <h5>{`u/${post.email}`}</h5>
+                      </Link>
+                    )}
                   </div>
                   <h5 className="Post_time">
                     {moment(post.post_timestamp).fromNow()}
@@ -208,18 +240,51 @@ const Post = ({ post }) => {
               </div>
 
               <div className="Post_right_links">
-                <ChatBubbleIcon fontSize={"small"} />
-                &nbsp;
-                {numOfComments && (
+                <div className="Post_numOfComments">
+                  <ChatBubbleIcon fontSize={"small"} />
+                  &nbsp;
+                  {numOfComments && (
+                    <>
+                      {numOfComments[0] ? (
+                        <h5>{`${numOfComments[0].comments} Comments`}</h5>
+                      ) : (
+                        <h5>0 Comments</h5>
+                      )}
+                    </>
+                  )}
+                </div>
+                {user && fromProfilePage && (
                   <>
-                    {numOfComments[0] ? (
-                      <h5>{`${numOfComments[0].comments} comments`}</h5>
-                    ) : (
-                      <h5>0 comments</h5>
+                    {user.user_id === post.user_id && (
+                      <div className="Post_editDelete">
+                        <Link
+                          to={`/profile`}
+                          style={{ textDecoration: "none", color: "grey" }}
+                        >
+                          <div
+                            className="Post_edit"
+                            onClick={() => console.log("edit")}
+                          >
+                            <CreateRoundedIcon fontSize={"small"} />
+                            <h5>Edit</h5>
+                          </div>
+                        </Link>
+                        &nbsp;
+                        <Link
+                          to={`/profile`}
+                          style={{ textDecoration: "none", color: "grey" }}
+                        >
+                          <div className="Post_delete" onClick={deletePost}>
+                            <DeleteRoundedIcon fontSize={"small"} />
+                            <h5>Delete</h5>
+                          </div>
+                        </Link>
+                      </div>
                     )}
                   </>
                 )}
               </div>
+              {console.log("from profile page: ", fromProfilePage)}
             </div>
           </Link>
         </div>

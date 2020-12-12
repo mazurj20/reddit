@@ -9,7 +9,9 @@ import AccountCircleIcon from "@material-ui/icons/AccountCircle";
 const Profile = () => {
   const [posts, setPosts] = useState(null);
   const [account, setAccount] = useState(null);
+  const [profilePageUpdates, setProfilePageUpdates] = useState(0);
   const [{ user }] = useStateValue();
+  let fromProfilePage = true;
 
   useEffect(() => {
     const header = { user_id: user.user_id };
@@ -19,7 +21,7 @@ const Profile = () => {
     axios.get(`/users/${user.user_id}`).then((res) => {
       setAccount(res.data[0]);
     });
-  }, []);
+  }, [profilePageUpdates]);
 
   return (
     <div>
@@ -40,7 +42,12 @@ const Profile = () => {
       {posts && (
         <div className="Profile_posts">
           {posts.map((post) => (
-            <Post post={post} />
+            <Post
+              profilePageUpdates={profilePageUpdates}
+              setProfilePageUpdates={setProfilePageUpdates}
+              fromProfilePage={fromProfilePage}
+              post={post}
+            />
           ))}
         </div>
       )}

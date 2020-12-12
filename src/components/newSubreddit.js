@@ -3,13 +3,13 @@ import axios from "../axios";
 import "../styles/newSubreddit.css";
 import { useStateValue } from "../stateprovider";
 
-function NewSubreddit({ setCreateSubredditForm }) {
+function NewSubreddit({ setCreateSubredditForm, pageUpdates, setPageUpdates }) {
   const [titleInput, setTitleInput] = useState("");
   const [descriptionInput, setDescriptionInput] = useState("");
   const [urlInput, setUrlInput] = useState("");
   const [{ user }, dispatch] = useStateValue();
   const [arr, setArr] = useState([]);
-  const [duplicate, setDuplicate] = useState("hidden");
+  const [duplicate, setDuplicate] = useState("none");
 
   useEffect(() => {
     axios.get("/subreddits").then((res) => setArr(res.data));
@@ -26,17 +26,20 @@ function NewSubreddit({ setCreateSubredditForm }) {
     setTitleInput("");
     setDescriptionInput("");
     setUrlInput("");
+
+    let newUpdate = pageUpdates + 1;
+    setPageUpdates(newUpdate);
   };
 
   arr.map((sub) => {
     console.log(sub.subreddit_title);
-    if (duplicate === "hidden") {
+    if (duplicate === "none") {
       if (sub.subreddit_title.toLowerCase() === titleInput.toLowerCase()) {
-        setDuplicate("visible");
+        setDuplicate("block");
       }
     } else {
       if (sub.subreddit_title.toLowerCase() !== titleInput.toLowerCase()) {
-        setDuplicate("hidden");
+        setDuplicate("none");
       }
     }
   });
@@ -49,7 +52,7 @@ function NewSubreddit({ setCreateSubredditForm }) {
           placeholder="Subreddit Title"
           onChange={(e) => setTitleInput(e.target.value)}
         />
-        <p style={{ visibility: duplicate }}>Subreddit already exists</p>
+        <p style={{ display: duplicate }}>Subreddit already exists</p>
       </div>
       <div className="newSubreddit__description">
         <textarea
@@ -68,7 +71,7 @@ function NewSubreddit({ setCreateSubredditForm }) {
       <div className="newSubreddit__button">
         <button
           onClick={() => {
-            if (duplicate === "hidden") {
+            if (duplicate === "none") {
               setCreateSubredditForm(false);
               CreateNewSubreddit();
             }

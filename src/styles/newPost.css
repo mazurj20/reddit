@@ -16,11 +16,10 @@
 
 .newPost__title > textarea {
   width: 100%;
+  height: 100%;
   resize: none;
   overflow: scroll;
-  height: 4vh;
 }
-
 .newPost__description {
   flex: 1;
   margin: 10px;
