@@ -94,6 +94,9 @@ function Navbar({ setCreateSubredditForm, setCreatePostForm }) {
       .catch((error) => alert(error.message));
   };
 
+  const handleLogout = () => {
+    console.log("dsd");
+  };
   return (
     <div className="Navbar">
       <Link
@@ -120,15 +123,20 @@ function Navbar({ setCreateSubredditForm, setCreatePostForm }) {
         />
         <button onClick={select}>enter</button>
       </div>
-      <div className="Navbar_right">
-        {!user && <Button onClick={() => logIn()}>log in</Button>}
-        {user && (
-          <Link to="/profile" style={{ textDecoration: "none" }}>
-            <Avatar src={user.photoURL} />
-          </Link>
-        )}
-        {user && findId()}
-      </div>
+      {user ? (
+        <h4 onClick={handleLogout}>LOGOUT</h4>
+      ) : (
+        <div className="Navbar_right">
+          {!user && <Button onClick={() => logIn()}>log in</Button>}
+
+          {user && findId()}
+        </div>
+      )}
+      {user && (
+        <Link to="/profile" style={{ textDecoration: "none" }}>
+          <Avatar src={user.photoURL} />
+        </Link>
+      )}
     </div>
   );
 }
