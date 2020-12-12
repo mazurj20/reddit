@@ -56,7 +56,7 @@ const Subreddit = ({
           <>
             <SidebarAds
               className="Subreddit_sidebar"
-              top={"43%"}
+              top={"50%"}
               numOfAds={Math.ceil(posts.length / 2) + 1}
             />
 
@@ -77,6 +77,11 @@ const Subreddit = ({
                   <PeopleIcon style={{ marginRight: "10px" }} />
                   <h3>{`${subreddit[0].members}`} user(s) in this community</h3>
                 </div>
+              </div>
+            </div>
+            <div className="Subreddit_filters">
+              <div>
+                <h4>SORT BY</h4>
               </div>
             </div>
             <div className="Subreddit_posts">
