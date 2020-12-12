@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import ArrowUpwardRoundedIcon from "@material-ui/icons/ArrowUpwardRounded";
 import ArrowDownwardRoundedIcon from "@material-ui/icons/ArrowDownwardRounded";
 import { IconButton } from "@material-ui/core";
@@ -15,6 +15,16 @@ const Comment = ({ comment }) => {
   const blue = "primary";
   const [upvoteColor, setUpvoteColor] = useState(grey);
   const [downvoteColor, setDownvoteColor] = useState(grey);
+
+  useEffect(() => {
+    if (user) {
+      if (user.likedComments.includes(comment.comment_id)) {
+        changeUpvoteColor();
+      } else if (user.dislikedComments.includes(comment.comment_id)) {
+        changeDownvoteColor();
+      }
+    }
+  }, []);
 
   const changeUpvoteColor = () => {
     let newColor = upvoteColor == grey ? blue : grey;

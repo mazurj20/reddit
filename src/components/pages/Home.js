@@ -20,17 +20,19 @@ const Home = ({
   setFromHome,
 }) => {
   const [{ user }] = useStateValue();
+  const [pageUpdates, setPageUpdates] = useState(0);
   const [popularPosts, setPopularPosts] = useState(null);
   const location = useLocation();
+
   if (location.state) {
     const id = location.state.id;
   }
-  console.log(value);
+
   useEffect(() => {
     axios.get(`/popular`).then((res) => {
       setPopularPosts(res.data);
     });
-  }, []);
+  }, [pageUpdates]);
 
   const ifTrue = () => {
     if (createSubredditForm) {
@@ -54,7 +56,11 @@ const Home = ({
           switch (ifTrue()) {
             case "subreddit":
               return (
-                <NewSubreddit setCreateSubredditForm={setCreateSubredditForm} />
+                <NewSubreddit
+                  setCreateSubredditForm={setCreateSubredditForm}
+                  pageUpdates={pageUpdates}
+                  setPageUpdates={setPageUpdates}
+                />
               );
             case "post":
               return (
@@ -64,6 +70,8 @@ const Home = ({
                   setCreatePostForm={setCreatePostForm}
                   fromHome={fromHome}
                   setFromHome={setFromHome}
+                  pageUpdates={pageUpdates}
+                  setPageUpdates={setPageUpdates}
                 />
               );
             default:

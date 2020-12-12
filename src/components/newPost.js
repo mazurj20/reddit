@@ -11,6 +11,8 @@ function NewPost({
   setValue,
   fromHome,
   setFromHome,
+  pageUpdates,
+  setPageUpdates,
 }) {
   const [titleInput, setTitleInput] = useState("");
   const [descriptionInput, setDescriptionInput] = useState("");
@@ -39,6 +41,9 @@ function NewPost({
     setTitleInput("");
     setDescriptionInput("");
     setUrlInput("");
+
+    let newUpdate = pageUpdates + 1;
+    setPageUpdates(newUpdate);
   };
 
   const getTitle = () => {
@@ -97,7 +102,7 @@ function NewPost({
                 defaultValue={"subreddit"}
                 onChange={setValue}
                 options={options}
-                placeholder={"subreddit"}
+                placeholder={"select a subreddit"}
               />
             );
           default:

@@ -3,7 +3,7 @@ import axios from "../axios";
 import "../styles/newSubreddit.css";
 import { useStateValue } from "../stateprovider";
 
-function NewSubreddit({ setCreateSubredditForm }) {
+function NewSubreddit({ setCreateSubredditForm, pageUpdates, setPageUpdates }) {
   const [titleInput, setTitleInput] = useState("");
   const [descriptionInput, setDescriptionInput] = useState("");
   const [urlInput, setUrlInput] = useState("");
@@ -11,7 +11,6 @@ function NewSubreddit({ setCreateSubredditForm }) {
   const [arr, setArr] = useState([]);
 
   const [duplicate, setDuplicate] = useState(false);
-
 
   useEffect(() => {
     axios.get("/subreddits").then((res) => setArr(res.data));
@@ -28,14 +27,15 @@ function NewSubreddit({ setCreateSubredditForm }) {
     setTitleInput("");
     setDescriptionInput("");
     setUrlInput("");
+
+    let newUpdate = pageUpdates + 1;
+    setPageUpdates(newUpdate);
   };
 
   arr.map((sub) => {
-
     if (duplicate === false) {
       if (sub.subreddit_title.toLowerCase() === titleInput.toLowerCase()) {
         setDuplicate(true);
-
       }
     }
   });
@@ -48,7 +48,6 @@ function NewSubreddit({ setCreateSubredditForm }) {
           placeholder="Subreddit Title"
           onChange={(e) => setTitleInput(e.target.value)}
         />
-
       </div>
       <div className="newSubreddit__description">
         <textarea
@@ -67,13 +66,11 @@ function NewSubreddit({ setCreateSubredditForm }) {
       <div className="newSubreddit__button">
         <button
           onClick={() => {
-
             if (duplicate === false) {
               setCreateSubredditForm(false);
               CreateNewSubreddit();
             } else {
               alert(`r/${titleInput} already exists.`);
-
             }
           }}
           type="submit"
