@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "../styles/App.css";
 import Navbar from "./Navbar";
 import Home from "./pages/Home";
@@ -59,6 +59,7 @@ function App() {
               />
             )}
           />
+
           <Route
             exact
             path="/posts/:id"

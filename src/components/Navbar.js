@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import "../styles/Navbar.css";
 import RedditIcon from "@material-ui/icons/Reddit";
 import SearchIcon from "@material-ui/icons/Search";
+import MoreVertIcon from "@material-ui/icons/MoreVert";
+import { IconButton } from "@material-ui/core";
 import { Avatar } from "@material-ui/core";
 import { auth, provider } from "../firebase";
 import { actionTypes } from "../reducer";
@@ -11,19 +13,20 @@ import firebase from "firebase";
 import { Link } from "react-router-dom";
 import { useHistory } from "react-router-dom";
 import AutoSuggest from "react-autosuggest";
+import { confirmAlert } from "react-confirm-alert";
+import "react-confirm-alert/src/react-confirm-alert.css";
 
 function Navbar({ setCreateSubredditForm, setCreatePostForm }) {
   const [{ user }, dispatch] = useStateValue();
   const [searchArr, setSearchArr] = useState([]);
   const [value, setValue] = useState("");
   const [suggestions, setSuggestions] = useState([]);
+  const [dropdownMenu, setDropdownMenu] = useState("hidden");
   const history = useHistory();
 
   useEffect(() => {
     axios.get("/subreddits").then((res) => setSearchArr(res.data));
   }, []);
-
-  console.log(searchArr);
 
   let options = [];
   searchArr.map((sub) => {
@@ -98,14 +101,47 @@ function Navbar({ setCreateSubredditForm, setCreatePostForm }) {
   };
 
   const handleLogout = () => {
-    console.log("dsd");
+    confirmAlert({
+      customUI: ({ onClose }) => {
+        return (
+          <div className="LogoutAlert_container">
+            <h4>Logout</h4>
+            <h7>Are you sure you want to do this?</h7>
+            <div className="LogoutAlert_buttons">
+              <button
+                className="LogoutAlert_deleteButton"
+                onClick={() => {
+                  logout();
+                  onClose();
+                }}
+              >
+                Confirm
+              </button>
+              <button className="LogoutAlert_cancelButton" onClick={onClose}>
+                Cancel
+              </button>
+            </div>
+          </div>
+        );
+      },
+    });
+  };
+  const logout = () => {
+    window.location.reload();
+    return false;
   };
 
-  function getSuggestions(value) {
+  const getSuggestions = (value) => {
     return options.filter((option) =>
       option.title.includes(value.trim().toLowerCase())
     );
-  }
+  };
+
+  const toggleDropdown = () => {
+    dropdownMenu === "hidden"
+      ? setDropdownMenu("visible")
+      : setDropdownMenu("hidden");
+  };
 
   return (
     <div className="Navbar">
@@ -153,25 +189,44 @@ function Navbar({ setCreateSubredditForm, setCreatePostForm }) {
         </div>
       </div>
       <div className="Navbar_right">
-        {user ? (
-          <h5 onClick={handleLogout}>Logout</h5>
-        ) : (
-          <div>
-            {!user && (
-              <div onClick={() => logIn()}>
-                <h5>Login</h5>
-              </div>
-            )}
-
-            {user && findId()}
-          </div>
-        )}
-        {user && (
-          <Link to="/profile" style={{ textDecoration: "none" }}>
-            <Avatar fontSize={"small"} src={user.photoURL} />
-          </Link>
-        )}
+        <div>
+          {!user && (
+            <h5 className="Navbar_login" onClick={() => logIn()}>
+              Login
+            </h5>
+          )}
+        </div>
         {user && findId()}
+        {user && (
+          <>
+            <div className="dropdown-menu-button">
+              <IconButton onClick={toggleDropdown}>
+                <MoreVertIcon />
+              </IconButton>
+            </div>
+            <Link to="/profile" style={{ textDecoration: "none" }}>
+              <Avatar fontSize={"small"} src={user.photoURL} />
+            </Link>
+            <div className="dropdown-menu">
+              <div className={dropdownMenu}>
+                <Link
+                  to="/profile"
+                  style={{ textDecoration: "none", color: "black" }}
+                  onClick={toggleDropdown}
+                >
+                  <h5 style={{ padding: "5px" }}>Account</h5>
+                </Link>
+                <h5
+                  style={{ padding: "5px" }}
+                  className="Navbar_logout"
+                  onClick={handleLogout}
+                >
+                  Logout
+                </h5>
+              </div>
+            </div>
+          </>
+        )}
       </div>
     </div>
   );

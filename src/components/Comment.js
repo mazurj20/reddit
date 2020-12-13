@@ -8,6 +8,8 @@ import { Link } from "react-router-dom";
 import { useStateValue } from "../stateprovider";
 import axios from "../axios";
 import moment from "moment";
+import { confirmAlert } from "react-confirm-alert";
+import "react-confirm-alert/src/react-confirm-alert.css";
 
 const Comment = ({
   comment,
@@ -30,6 +32,36 @@ const Comment = ({
       }
     }
   }, []);
+
+  const handleDelete = () => {
+    confirmAlert({
+      customUI: ({ onClose }) => {
+        return (
+          <div className="DeleteCommentAlert_container">
+            <h4>Delete comment</h4>
+            <h7>Are you sure you want to do this?</h7>
+            <div className="DeleteCommentAlert_buttons">
+              <button
+                className="DeleteCommentAlert_deleteButton"
+                onClick={() => {
+                  deleteComment();
+                  onClose();
+                }}
+              >
+                Confirm
+              </button>
+              <button
+                className="DeleteCommentAlert_cancelButton"
+                onClick={onClose}
+              >
+                Cancel
+              </button>
+            </div>
+          </div>
+        );
+      },
+    });
+  };
 
   const deleteComment = async () => {
     await axios.delete(`/comments/${comment.comment_id}`);
@@ -172,7 +204,7 @@ const Comment = ({
         {user && (
           <div className="Comment_delete_container">
             {user.user_id == comment.user_id && (
-              <div className="Comment_delete" onClick={deleteComment}>
+              <div className="Comment_delete" onClick={handleDelete}>
                 <DeleteRoundedIcon fontSize={"small"} />
                 <h5>Delete</h5>
               </div>
