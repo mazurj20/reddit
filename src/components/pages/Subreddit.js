@@ -68,15 +68,26 @@ const Subreddit = ({
 
             <div className="Subreddit_header">
               <div className="Subreddit_header_background"></div>
+
               <div className="Subreddit_header_info">
-                <div>
-                  <h1 className="Subreddit_header_title">{`r/${subreddit[0].subreddit_title}`}</h1>
-                  <h3>Description: {subreddit[0].subreddit_content}</h3>
-                </div>
-                <div className="Subreddit_header_users">
-                  <PeopleIcon style={{ marginRight: "10px" }} />
-                  <h3>{`${subreddit[0].members}`} user(s) in this community</h3>
-                </div>
+                {subreddit[0] ? (
+                  <>
+                    <div>
+                      <h1 className="Subreddit_header_title">{`r/${subreddit[0].subreddit_title}`}</h1>
+                      <h3>Description: {subreddit[0].subreddit_content}</h3>
+                    </div>
+                    <div className="Subreddit_header_users">
+                      <PeopleIcon style={{ marginRight: "10px" }} />
+                      <h5>
+                        {`${subreddit[0].members}`} user(s) in this community
+                      </h5>
+                    </div>
+                  </>
+                ) : (
+                  <div>
+                    <h4>There is no activity in this community yet...</h4>
+                  </div>
+                )}
               </div>
             </div>
             <div className="Subreddit_filters">

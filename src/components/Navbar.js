@@ -162,7 +162,7 @@ function Navbar({ setCreateSubredditForm, setCreatePostForm }) {
       </Link>
       <div className="Navbar_search">
         <div className="Navbar_search_left">
-          <SearchIcon />
+          <SearchIcon style={{ color: "grey", marginLeft: "5px" }} />
           <AutoSuggest
             suggestions={suggestions}
             onSuggestionsClearRequested={() => setSuggestions([])}
@@ -191,7 +191,11 @@ function Navbar({ setCreateSubredditForm, setCreatePostForm }) {
       <div className="Navbar_right">
         <div>
           {!user && (
-            <h5 className="Navbar_login" onClick={() => logIn()}>
+            <h5
+              className="Navbar_login"
+              style={{ cursor: "pointer" }}
+              onClick={() => logIn()}
+            >
               Login
             </h5>
           )}
@@ -217,7 +221,7 @@ function Navbar({ setCreateSubredditForm, setCreatePostForm }) {
                   <h5 style={{ padding: "5px" }}>Account</h5>
                 </Link>
                 <h5
-                  style={{ padding: "5px" }}
+                  style={{ padding: "5px", cursor: "pointer" }}
                   className="Navbar_logout"
                   onClick={handleLogout}
                 >
