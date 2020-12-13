@@ -15,6 +15,7 @@
   justify-content: flex-start;
   align-items: flex-start;
   padding: 7px;
+  max-height: 10vh;
 }
 .Profile_name {
   display: flex;

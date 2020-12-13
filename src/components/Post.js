@@ -11,7 +11,12 @@ import Truncate from "react-truncate";
 import { useStateValue } from "../stateprovider";
 import axios from "../axios";
 import moment from "moment";
+
 import { useHistory } from "react-router-dom";
+
+import { confirmAlert } from "react-confirm-alert";
+import "react-confirm-alert/src/react-confirm-alert.css";
+
 
 const Post = ({
   post,
@@ -48,6 +53,36 @@ const Post = ({
       }
     });
   }, []);
+
+  const handleDelete = () => {
+    confirmAlert({
+      customUI: ({ onClose }) => {
+        return (
+          <div className="DeletePostAlert_container">
+            <h4>Delete post</h4>
+            <h7>Are you sure you want to do this?</h7>
+            <div className="DeletePostAlert_buttons">
+              <button
+                className="DeletePostAlert_deleteButton"
+                onClick={() => {
+                  deletePost();
+                  onClose();
+                }}
+              >
+                Confirm
+              </button>
+              <button
+                className="DeletePostAlert_cancelButton"
+                onClick={onClose}
+              >
+                Cancel
+              </button>
+            </div>
+          </div>
+        );
+      },
+    });
+  };
 
   const deletePost = async () => {
     await axios.delete(`/posts/${post.post_id}`);
@@ -289,7 +324,7 @@ const Post = ({
                           to={`/profile`}
                           style={{ textDecoration: "none", color: "grey" }}
                         >
-                          <div className="Post_delete" onClick={deletePost}>
+                          <div className="Post_delete" onClick={handleDelete}>
                             <DeleteRoundedIcon fontSize={"small"} />
                             <h5>Delete</h5>
                           </div>
