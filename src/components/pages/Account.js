@@ -4,6 +4,7 @@ import axios from "../../axios";
 import Post from "../Post";
 import SidebarAds from "../SidebarAds";
 import AccountCircleIcon from "@material-ui/icons/AccountCircle";
+import EditPost from "../EditPost";
 
 const Account = ({ match }) => {
   const [posts, setPosts] = useState(null);
