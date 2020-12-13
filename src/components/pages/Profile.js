@@ -5,8 +5,14 @@ import { useStateValue } from "../../stateprovider";
 import Post from "../Post";
 import SidebarAds from "../SidebarAds";
 import AccountCircleIcon from "@material-ui/icons/AccountCircle";
+import EditPost from "../EditPost";
 
 const Profile = () => {
+  const [id, setId] = useState(null);
+  const [titleInput, setTitleInput] = useState("");
+  const [descriptionInput, setDescriptionInput] = useState("");
+  const [urlInput, setUrlInput] = useState("");
+  const [editPost, setEditPost] = useState(false);
   const [posts, setPosts] = useState(null);
   const [account, setAccount] = useState(null);
   const [profilePageUpdates, setProfilePageUpdates] = useState(0);
@@ -22,6 +28,16 @@ const Profile = () => {
       setAccount(res.data[0]);
     });
   }, [profilePageUpdates]);
+
+  const ifEdit = () => {
+    if (editPost) {
+      return "edit";
+    } else if (!editPost && posts) {
+      return "posts";
+    }
+  };
+
+  console.log(posts);
 
   return (
     <div>
@@ -39,19 +55,50 @@ const Profile = () => {
           )}
         </div>
       )}
-      {posts && (
-        <div className="Profile_posts">
-          {posts.map((post) => (
-            <Post
-              profilePageUpdates={profilePageUpdates}
-              setProfilePageUpdates={setProfilePageUpdates}
-              fromProfilePage={fromProfilePage}
-              post={post}
-            />
-          ))}
-        </div>
-      )}
-      {posts && console.log(posts)}
+
+      {(() => {
+        switch (ifEdit()) {
+          case "posts":
+            return (
+              <div className="Profile_posts">
+                {posts.map((post) => (
+                  <Post
+                    profilePageUpdates={profilePageUpdates}
+                    setProfilePageUpdates={setProfilePageUpdates}
+                    fromProfilePage={fromProfilePage}
+                    post={post}
+                    editPost={editPost}
+                    setEditPost={setEditPost}
+                    setTitleInput={setTitleInput}
+                    setDescriptionInput={setDescriptionInput}
+                    setUrlInput={setUrlInput}
+                    setId={setId}
+                  />
+                ))}
+              </div>
+            );
+          case "edit":
+            return (
+              <EditPost
+                id={id}
+                titleInput={titleInput}
+                setTitleInput={setTitleInput}
+                descriptionInput={descriptionInput}
+                setDescriptionInput={setDescriptionInput}
+                urlInput={urlInput}
+                setUrlInput={setUrlInput}
+                setEditPost={setEditPost}
+                editPost={editPost}
+              />
+            );
+          default:
+            return (
+              <div>
+                <h2>Loading...</h2>
+              </div>
+            );
+        }
+      })()}
     </div>
   );
 };

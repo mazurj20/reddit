@@ -11,15 +11,26 @@ import Truncate from "react-truncate";
 import { useStateValue } from "../stateprovider";
 import axios from "../axios";
 import moment from "moment";
+
+import { useHistory } from "react-router-dom";
+
 import { confirmAlert } from "react-confirm-alert";
 import "react-confirm-alert/src/react-confirm-alert.css";
+
 
 const Post = ({
   post,
   fromProfilePage,
   profilePageUpdates,
   setProfilePageUpdates,
+  editPost,
+  setEditPost,
+  setTitleInput,
+  setDescriptionInput,
+  setUrlInput,
+  setId,
 }) => {
+  const history = useHistory();
   const [{ user }] = useStateValue();
   const [numOfComments, setNumOfComments] = useState(null);
   const [postUpvotes, setPostUpvotes] = useState(post.post_upvotes);
@@ -184,6 +195,9 @@ const Post = ({
     }
   };
 
+  console.log(editPost);
+  console.log(post);
+
   return (
     <>
       {post && (
@@ -238,7 +252,7 @@ const Post = ({
                     {moment(post.post_timestamp).fromNow()}
                   </h5>
                 </div>
-                <div>
+                <div className="title">
                   <h3>{post.post_title}</h3>
                 </div>
                 <div className="Post_right_body">
@@ -293,7 +307,13 @@ const Post = ({
                         >
                           <div
                             className="Post_edit"
-                            onClick={() => console.log("edit")}
+                            onClick={() => {
+                              setEditPost(true);
+                              setTitleInput(post.post_title);
+                              setDescriptionInput(post.post_content);
+                              setUrlInput(post.post_image);
+                              setId(post.post_id);
+                            }}
                           >
                             <CreateRoundedIcon fontSize={"small"} />
                             <h5>Edit</h5>
