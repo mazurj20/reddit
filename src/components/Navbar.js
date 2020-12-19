@@ -2,8 +2,7 @@ import React, { useEffect, useState } from "react";
 import "../styles/Navbar.css";
 import RedditIcon from "@material-ui/icons/Reddit";
 import SearchIcon from "@material-ui/icons/Search";
-import MoreVertIcon from "@material-ui/icons/MoreVert";
-import { IconButton } from "@material-ui/core";
+import ArrowDropDownIcon from "@material-ui/icons/ArrowDropDown";
 import { Avatar } from "@material-ui/core";
 import { auth, provider } from "../firebase";
 import { actionTypes } from "../reducer";
@@ -176,7 +175,7 @@ function Navbar({ setCreateSubredditForm, setCreatePostForm }) {
             getSuggestionValue={(suggestion) => suggestion.title}
             renderSuggestion={(suggestion) => <span>{suggestion.title}</span>}
             inputProps={{
-              placeholder: "find a community",
+              placeholder: "Find a community",
               value: value,
               onChange: (_, { newValue, method }) => {
                 setValue(newValue);
@@ -202,15 +201,11 @@ function Navbar({ setCreateSubredditForm, setCreatePostForm }) {
         {user && findId()}
         {user && (
           <>
-            <div className='dropdown-menu-button'>
-              <IconButton onClick={toggleDropdown}>
-                <MoreVertIcon />
-              </IconButton>
-            </div>
-            <Link to='/profile' style={{ textDecoration: "none" }}>
+            <div className="dropdown-menu-container" onClick={toggleDropdown}>
               <Avatar fontSize={"small"} src={user.photoURL} />
-            </Link>
-            <div className='dropdown-menu'>
+              <ArrowDropDownIcon />
+            </div>
+            <div className="dropdown-menu">
               <div className={dropdownMenu}>
                 <Link
                   to='/profile'
