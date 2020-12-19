@@ -84,7 +84,7 @@ function NewPost({
   };
 
   return (
-    <div className="form__container">
+    <div className='form__container'>
       {(() => {
         switch (cases()) {
           case "1":
@@ -99,7 +99,7 @@ function NewPost({
           case "2":
             return (
               <Select
-                defaultValue={"subreddit"}
+                defaultValue={"select a subreddit"}
                 onChange={setValue}
                 options={options}
                 placeholder={"select a subreddit"}
@@ -113,38 +113,43 @@ function NewPost({
             );
         }
       })()}
-      <div className="newPost__title">
+      <div className='newPost__title'>
         <textarea
           value={titleInput}
-          placeholder="Post Title"
+          placeholder='Post Title'
           onChange={(e) => setTitleInput(e.target.value)}
         />
       </div>
-      <div className="newPost__description">
+      <div className='newPost__description'>
         <textarea
           value={descriptionInput}
-          placeholder="Content"
+          placeholder='Content'
           onChange={(e) => setDescriptionInput(e.target.value)}
         />
       </div>
-      <div className="newPost__url">
+      <div className='newPost__url'>
         <textarea
           value={urlInput}
-          placeholder="Image URL(optional)"
+          placeholder='Image URL(optional)'
           onChange={(e) => setUrlInput(e.target.value)}
         />
       </div>
-      <div className="newPost__button">
+      <div className='newPost__button'>
         <button
           onClick={() => {
-            setCreatePostForm(false);
-            CreateNewPost();
+            if (value === "select a subreddit") {
+              alert("Please choose a subreddit");
+            } else {
+              setCreatePostForm(false);
+              CreateNewPost();
+              setValue("select a subreddit");
+            }
           }}
-          type="submit"
+          type='submit'
         >
           Create
         </button>
-        <button onClick={() => setCreatePostForm(false)} type="submit">
+        <button onClick={() => setCreatePostForm(false)} type='submit'>
           Cancel
         </button>
       </div>
