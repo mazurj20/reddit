@@ -26,17 +26,6 @@
   justify-content: center;
   align-items: center;
 }
-.Subreddit_filters {
-  top: 43%;
-  left: 3%;
-  position: absolute;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  padding-bottom: 10px;
-  width: 95vw;
-  border-bottom: 0.3px solid grey;
-}
 .Subreddit_post_button > button {
   background-color: rgb(240, 240, 240);
   width: 100%;
@@ -50,7 +39,7 @@
   border-width: 1px;
 }
 .Subreddit_posts {
-  top: 49%;
+  top: 40%;
   left: 3%;
   position: absolute;
   display: flex;
