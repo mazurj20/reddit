@@ -102,20 +102,20 @@ function Navbar({ setCreateSubredditForm, setCreatePostForm }) {
     confirmAlert({
       customUI: ({ onClose }) => {
         return (
-          <div className='LogoutAlert_container'>
+          <div className="LogoutAlert_container">
             <h4>Logout</h4>
             <h7>Are you sure you want to do this?</h7>
-            <div className='LogoutAlert_buttons'>
+            <div className="LogoutAlert_buttons">
               <button
-                className='LogoutAlert_deleteButton'
+                className="LogoutAlert_deleteButton"
                 onClick={() => {
-                  logout();
+                  logout(refreshPage);
                   onClose();
                 }}
               >
                 Confirm
               </button>
-              <button className='LogoutAlert_cancelButton' onClick={onClose}>
+              <button className="LogoutAlert_cancelButton" onClick={onClose}>
                 Cancel
               </button>
             </div>
@@ -124,9 +124,15 @@ function Navbar({ setCreateSubredditForm, setCreatePostForm }) {
       },
     });
   };
-  const logout = () => {
-    window.location.reload();
+  const logout = (cb) => {
+    history.push({
+      pathname: `/`,
+    });
+    cb();
     return false;
+  };
+  const refreshPage = () => {
+    window.location.reload();
   };
 
   const getSuggestions = (value) => {
@@ -142,24 +148,24 @@ function Navbar({ setCreateSubredditForm, setCreatePostForm }) {
   };
 
   return (
-    <div className='Navbar'>
+    <div className="Navbar">
       <Link
-        to='/'
+        to="/"
         onClick={() => {
           setCreateSubredditForm(false);
           setCreatePostForm(false);
         }}
         style={{ textDecoration: "none" }}
       >
-        <div className='Navbar_left'>
+        <div className="Navbar_left">
           <RedditIcon fontSize={"large"} />
-          <div className='Navbar_title'>
+          <div className="Navbar_title">
             <h2>reddit</h2>
           </div>
         </div>
       </Link>
-      <div className='Navbar_search'>
-        <div className='Navbar_search_left'>
+      <div className="Navbar_search">
+        <div className="Navbar_search_left">
           <SearchIcon style={{ color: "grey", marginLeft: "5px" }} />
           <AutoSuggest
             suggestions={suggestions}
@@ -186,11 +192,11 @@ function Navbar({ setCreateSubredditForm, setCreatePostForm }) {
           />
         </div>
       </div>
-      <div className='Navbar_right'>
+      <div className="Navbar_right">
         <div>
           {!user && (
             <h5
-              className='Navbar_login'
+              className="Navbar_login"
               style={{ cursor: "pointer" }}
               onClick={() => logIn()}
             >
@@ -208,7 +214,7 @@ function Navbar({ setCreateSubredditForm, setCreatePostForm }) {
             <div className="dropdown-menu">
               <div className={dropdownMenu}>
                 <Link
-                  to='/profile'
+                  to="/profile"
                   style={{ textDecoration: "none", color: "black" }}
                   onClick={toggleDropdown}
                 >
@@ -216,7 +222,7 @@ function Navbar({ setCreateSubredditForm, setCreatePostForm }) {
                 </Link>
                 <h5
                   style={{ padding: "5px", cursor: "pointer" }}
-                  className='Navbar_logout'
+                  className="Navbar_logout"
                   onClick={handleLogout}
                 >
                   Logout
