@@ -56,7 +56,7 @@ const Subreddit = ({
           <>
             <SidebarAds
               className="Subreddit_sidebar"
-              top={"50%"}
+              top={"41%"}
               numOfAds={Math.ceil(posts.length / 2) + 1}
             />
 
@@ -88,11 +88,6 @@ const Subreddit = ({
                     <h4>There is no activity in this community yet...</h4>
                   </div>
                 )}
-              </div>
-            </div>
-            <div className="Subreddit_filters">
-              <div>
-                <h4>SORT BY</h4>
               </div>
             </div>
             <div className="Subreddit_posts">
