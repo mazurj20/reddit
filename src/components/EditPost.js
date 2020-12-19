@@ -1,12 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import axios from "../axios";
-import "../styles/newPost.css";
-import { useStateValue } from "../stateprovider";
+import "../styles/EditPost.css";
 
 function EditPost({
-  pageUpdates,
-  setPageUpdates,
-  editPost,
+  profilePageUpdates,
+  setProfilePageUpdates,
   setEditPost,
   titleInput,
   setTitleInput,
@@ -16,10 +14,6 @@ function EditPost({
   setUrlInput,
   id,
 }) {
-  const [{ user }] = useStateValue();
-
-  console.log(id);
-
   const edit = async (e) => {
     await axios.put(`/post/${id}`, {
       post_title: titleInput,
@@ -30,6 +24,8 @@ function EditPost({
     setTitleInput("");
     setDescriptionInput("");
     setUrlInput("");
+    let newUpdate = profilePageUpdates + 1;
+    setProfilePageUpdates(newUpdate);
   };
 
   return (

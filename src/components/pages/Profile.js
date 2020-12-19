@@ -89,6 +89,8 @@ const Profile = () => {
                 setUrlInput={setUrlInput}
                 setEditPost={setEditPost}
                 editPost={editPost}
+                profilePageUpdates={profilePageUpdates}
+                setProfilePageUpdates={setProfilePageUpdates}
               />
             );
           default:

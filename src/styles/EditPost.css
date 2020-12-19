@@ -1,0 +1,62 @@
+.editPost__container {
+  top: 24%;
+  left: 15%;
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  padding-bottom: 10px;
+  width: 50vw;
+  background-color: white;
+}
+
+.editPost__title {
+  margin: 10px;
+}
+
+.editPost__title > textarea {
+  width: 100%;
+  height: 100%;
+  resize: none;
+  overflow: scroll;
+}
+.editPost__description {
+  flex: 1;
+  margin: 10px;
+}
+
+.editPost__description > textarea {
+  width: 100%;
+  height: 100%;
+  resize: none;
+  overflow: scroll;
+}
+.editPost__url {
+  margin: 10px;
+}
+.editPost__url > textarea {
+  width: 100%;
+  height: 100%;
+  resize: none;
+  overflow: scroll;
+}
+
+.editPost__button {
+  display: flex;
+  justify-content: flex-start;
+  margin: 10px;
+}
+
+.editPost__button > button {
+  margin: 5px;
+}
+@media only screen and (max-width: 900px) {
+  .editPost__container {
+    width: 40vw;
+  }
+}
+@media only screen and (max-width: 600px) {
+  .editPost__container {
+    width: 70vw;
+  }
+}
