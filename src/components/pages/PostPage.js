@@ -59,7 +59,9 @@ const PostPage = ({ match }) => {
               />
               <div className="PostPage_commentButton">
                 {user ? (
-                  <button onClick={createComment}>Comment</button>
+                  <button style={{ cursor: "pointer" }} onClick={createComment}>
+                    Comment
+                  </button>
                 ) : (
                   <p style={{ margin: "2px" }}>must be logged in to comment</p>
                 )}

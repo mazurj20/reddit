@@ -58,6 +58,7 @@
   align-items: center;
   padding: 5px;
   color: grey;
+  cursor: pointer;
 }
 .Comment_delete:hover {
   background-color: rgb(223, 223, 223);
