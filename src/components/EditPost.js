@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import axios from "../axios";
 import "../styles/newPost.css";
 import { useStateValue } from "../stateprovider";
-import moment from "moment";
 
 function EditPost({
   pageUpdates,
