@@ -50,7 +50,6 @@ function Navbar({ setCreateSubredditForm, setCreatePostForm }) {
       }
     }
   };
-
   const signUp = () => {
     axios.post("/users", { email: user.email }).then((res) => {
       firebase.auth().onAuthStateChanged((user) => {
@@ -104,12 +103,12 @@ function Navbar({ setCreateSubredditForm, setCreatePostForm }) {
     confirmAlert({
       customUI: ({ onClose }) => {
         return (
-          <div className="LogoutAlert_container">
+          <div className='LogoutAlert_container'>
             <h4>Logout</h4>
             <h7>Are you sure you want to do this?</h7>
-            <div className="LogoutAlert_buttons">
+            <div className='LogoutAlert_buttons'>
               <button
-                className="LogoutAlert_deleteButton"
+                className='LogoutAlert_deleteButton'
                 onClick={() => {
                   logout();
                   onClose();
@@ -117,7 +116,7 @@ function Navbar({ setCreateSubredditForm, setCreatePostForm }) {
               >
                 Confirm
               </button>
-              <button className="LogoutAlert_cancelButton" onClick={onClose}>
+              <button className='LogoutAlert_cancelButton' onClick={onClose}>
                 Cancel
               </button>
             </div>
@@ -144,24 +143,24 @@ function Navbar({ setCreateSubredditForm, setCreatePostForm }) {
   };
 
   return (
-    <div className="Navbar">
+    <div className='Navbar'>
       <Link
-        to="/"
+        to='/'
         onClick={() => {
           setCreateSubredditForm(false);
           setCreatePostForm(false);
         }}
         style={{ textDecoration: "none" }}
       >
-        <div className="Navbar_left">
+        <div className='Navbar_left'>
           <RedditIcon fontSize={"large"} />
-          <div className="Navbar_title">
+          <div className='Navbar_title'>
             <h2>reddit</h2>
           </div>
         </div>
       </Link>
-      <div className="Navbar_search">
-        <div className="Navbar_search_left">
+      <div className='Navbar_search'>
+        <div className='Navbar_search_left'>
           <SearchIcon style={{ color: "grey", marginLeft: "5px" }} />
           <AutoSuggest
             suggestions={suggestions}
@@ -188,11 +187,11 @@ function Navbar({ setCreateSubredditForm, setCreatePostForm }) {
           />
         </div>
       </div>
-      <div className="Navbar_right">
+      <div className='Navbar_right'>
         <div>
           {!user && (
             <h5
-              className="Navbar_login"
+              className='Navbar_login'
               style={{ cursor: "pointer" }}
               onClick={() => logIn()}
             >
@@ -203,18 +202,18 @@ function Navbar({ setCreateSubredditForm, setCreatePostForm }) {
         {user && findId()}
         {user && (
           <>
-            <div className="dropdown-menu-button">
+            <div className='dropdown-menu-button'>
               <IconButton onClick={toggleDropdown}>
                 <MoreVertIcon />
               </IconButton>
             </div>
-            <Link to="/profile" style={{ textDecoration: "none" }}>
+            <Link to='/profile' style={{ textDecoration: "none" }}>
               <Avatar fontSize={"small"} src={user.photoURL} />
             </Link>
-            <div className="dropdown-menu">
+            <div className='dropdown-menu'>
               <div className={dropdownMenu}>
                 <Link
-                  to="/profile"
+                  to='/profile'
                   style={{ textDecoration: "none", color: "black" }}
                   onClick={toggleDropdown}
                 >
@@ -222,7 +221,7 @@ function Navbar({ setCreateSubredditForm, setCreatePostForm }) {
                 </Link>
                 <h5
                   style={{ padding: "5px", cursor: "pointer" }}
-                  className="Navbar_logout"
+                  className='Navbar_logout'
                   onClick={handleLogout}
                 >
                   Logout
