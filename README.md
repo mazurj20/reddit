@@ -57,31 +57,26 @@ The following routes are available
 | **Route name**        | **URL**                 | **HTTP Verb** | **Description**                                                   |
 | ---------------       | ----------------------- | ------------- | ----------------------------------------------------------------- |
 | Login*                | /{login}                | GET           | Log user in using their ID and google authentication              |
-#### Users
 | Find users*           | /{users}                | GET           | Return all users in database                                      |    
 | Create user*          | /{users}                | POST          | Create a new user                                                 |       
 | Find user*            | /{users}/{:id}          | GET           | Find basic user information                                       |    
 | Update user*          | /{users}/{:id}          | PUT           | Update user information                                           |       
 | Delete user*          | /{users}/{:id}          | DELETE        | Delete user from database                                         |   
-#### Subreddits
 | Find subreddits*      | /{subreddits}           | GET           | Return all subreddits in database                                 |    
 | Create subreddit*     | /{subreddits}           | POST          | Create a new subreddit                                            |       
 | Find subreddit*       | /{subreddits}/{:id}     | GET           | Find basic subreddit information                                  |    
 | Update subreddit*     | /{subreddits}/{:id}     | PUT           | Update subreddit information                                      |       
 | Delete subreddit*     | /{subreddits}/{:id}     | DELETE        | Delete subreddit from database                                    |  
-#### Posts
 | Find posts*           | /{posts}                | GET           | Return all users in database                                      |    
 | Create post*          | /{posts}                | POST          | Create a new user                                                 |       
 | Find post*            | /{posts}/{:id}          | GET           | Find basic user information                                       |    
 | Update post*          | /{posts}/{:id}          | PUT           | Update user information                                           |       
 | Delete post*          | /{posts}/{:id}          | DELETE        | Delete user from database                                         | 
-#### Comments
 | Find posts*           | /{posts}                | GET           | Return all users in database                                      |    
 | Create post*          | /{posts}                | POST          | Create a new user                                                 |       
 | Find post*            | /{posts}/{:id}          | GET           | Find basic user information                                       |    
 | Update post*          | /{posts}/{:id}          | PUT           | Update user information                                           |       
 | Delete post*          | /{posts}/{:id}          | DELETE        | Delete user from database                                         | 
-#### Misc
 
 
 
