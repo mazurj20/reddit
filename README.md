@@ -53,7 +53,7 @@ In order to sign up or sign in, you must verify your identity through google aut
 
 ### Server and Database
 
-The server, database structure, and routes can be found in a separate repository: https://github.com/tmurphy3/reddit-backend.
+The server, database structure, and routes can be found in a separate repository: https://github.com/mazurj20/reddit-backend.
 
 ### Routes Available
 
