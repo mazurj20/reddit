@@ -47,13 +47,13 @@ This is a full stack web application modeled after Reddit. The objective was to 
 - [Dotenv](https://www.npmjs.com/package/dotenv) - A module for loading environment variables from a .env file into process.env
 - [Pg](https://node-postgres.com/) - A PostgreSQL client for Node.js
 
-### Server and Database
-
-The server, API, routes are all codebase is stored in a seperate github repository https://github.com/tmurphy3/reddit-backend.
-
 ### Authentication
 
 In order to sign up or sign in, you must verify your identity through google authentication
+
+### Server and Database
+
+The server, database structure, and routes can be found in a separate repository: https://github.com/tmurphy3/reddit-backend.
 
 ### Routes Available
 
