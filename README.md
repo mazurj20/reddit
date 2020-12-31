@@ -28,23 +28,27 @@ This is a full stack web application modeled after Reddit. The objective was to 
 - [Axios](https://www.npmjs.com/package/axios) - Promise based HTTP client for the browser and node.js
 - [React-Router](https://www.npmjs.com/package/react-router) - A package providing dynamic routing functionality for web apps
 - [React-Router-Dom](https://www.npmjs.com/package/react-router-dom) - A package containing the DOM bindings for react-router
+- [Moment](https://www.npmjs.com/package/moment) - A library for parsing, validating, manipulating, and formatting dates.
+- [Firebase](https://firebase.google.com/) - A tool providing authentication services in collaboration with Google.
 
 ## Back-end 
 
 ### Technologies Used
 
 - [NodeJS](https://nodejs.org/en/) - An event-driven JavaScript runtime designed to build scalable network applications
-- [ExpressJS](https://www.heroku.com/) - A NodeJS framework used for server side development
-- [PostgreSQL](https://expressjs.com/) - An open source SQL database
+- [PostgreSQL](https://www.postgresql.org/) - An open source SQL database
+- [Heroku](https://www.heroku.com/) - A platform providing cloud-based hosting services
 
 ### Dependencies
 
-- [Django](https://www.djangoproject.com/) - A high level Python Web Framework
-- [Django Rest Framework](https://www.django-rest-framework.org/) - A Django extension for building APIs
+- [ExpressJS](https://expressjs.com/) - A NodeJS framework used for server side development
+- [Cors](https://www.npmjs.com/package/cors) - A package providing cross-origin resource sharing
+- [Dotenv](https://www.npmjs.com/package/dotenv) - A module for loading environment variables from a .env file into process.env
+- [Pg](https://node-postgres.com/) - A PostgreSQL client for Node.js
 
 ### Authentication
 
-In order to sign up or sign in, you must veryfy your identity with google authentication
+In order to sign up or sign in, you must verify your identity through google authentication
 
 ### Routes Available
 
@@ -52,12 +56,8 @@ The following routes are available
 
 | **Route name**  | **URL**                 | **HTTP Verb** | **Description**                                                         |
 | --------------- | ----------------------- | ------------- | ----------------------------------------------------------------------- |
-| Index*          | /{resource}             | GET           | Display a list of all Project or Comment                                |
-| Show ID*        | /{resource}/{:id}       | GET           | Display a specific Project or Comment based on their ID                 |
-| Create*         | /{resource}/create      | POST          | Add new Project or Comment to the database, returns the newly created entry |
-| Edit By Id*     | /{resource}/{:id}       | PUT           | Update a particular Game or Review, returns the new entry               |
-| Delete By Id*   | /{resource}/{:id}       | DELETE        | Delete a particular Game or Review                                      |
-| Login           | /users/login            | POST          | Logs in with a username and password, returns an authentication token   |
-| Create          | /users/create           | POST          | Creates a user and returns an authentication token                      |
+| Find user*      | /{users}/{:id}          | GET           | Find basic user information based on their ID                           |       
+| Find user*      | /{users}/{:id}          | PUT           | Find basic user information based on their ID                           |       
 
-Routes marked with `*` need authentication to be accessed
+
+Route names marked with `*` need authentication to be accessed
