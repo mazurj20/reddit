@@ -67,17 +67,15 @@ The following routes are available
 | Find subreddit*       | /{subreddits}/{:id}     | GET           | Find basic subreddit information                                  |    
 | Update subreddit*     | /{subreddits}/{:id}     | PUT           | Update subreddit information                                      |       
 | Delete subreddit*     | /{subreddits}/{:id}     | DELETE        | Delete subreddit from database                                    |  
-| Find posts*           | /{posts}                | GET           | Return all users in database                                      |    
-| Create post*          | /{posts}                | POST          | Create a new user                                                 |       
-| Find post*            | /{posts}/{:id}          | GET           | Find basic user information                                       |    
-| Update post*          | /{posts}/{:id}          | PUT           | Update user information                                           |       
-| Delete post*          | /{posts}/{:id}          | DELETE        | Delete user from database                                         | 
-| Find posts*           | /{posts}                | GET           | Return all users in database                                      |    
-| Create post*          | /{posts}                | POST          | Create a new user                                                 |       
-| Find post*            | /{posts}/{:id}          | GET           | Find basic user information                                       |    
-| Update post*          | /{posts}/{:id}          | PUT           | Update user information                                           |       
-| Delete post*          | /{posts}/{:id}          | DELETE        | Delete user from database                                         | 
-
-
+| Find posts*           | /{posts}                | GET           | Return all posts in database                                      |    
+| Create post*          | /{posts}                | POST          | Create a new post                                                 |       
+| Find post*            | /{posts}/{:id}          | GET           | Find basic post information                                       |    
+| Update post*          | /{posts}/{:id}          | PUT           | Update post information                                           |       
+| Delete post*          | /{posts}/{:id}          | DELETE        | Delete post from database                                         | 
+| Find comments*        | /{comments}             | GET           | Return all comments in database                                   |    
+| Create comment*       | /{comments}             | POST          | Create a new comment                                              |       
+| Find comment*         | /{comments}/{:id}       | GET           | Find basic comment information                                    |    
+| Update comment*       | /{comments}/{:id}       | PUT           | Update comment information                                        |       
+| Delete comment*       | /{comments}/{:id}       | DELETE        | Delete comment from database                                      | 
 
 Route names marked with `*` need authentication to be accessed
