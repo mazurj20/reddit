@@ -5,7 +5,7 @@ This is a full stack web application modeled after Reddit. The objective was to 
 # Overview
 
 - [Overview](#overview)
-  - [Font-end](#front-end)
+  - [Front-end](#front-end)
     - [Technologies Used](#technologies-used)
     - [Dependencies](#dependencies)
   - [Back-end](#back-end)
