@@ -11,8 +11,8 @@ This is a full stack web application modeled after Reddit. The objective was to 
   - [Back-end](#back-end)
     - [Technologies Used](#technologies-used-1)
     - [Dependencies](#dependencies-1)
-    - [Server and Database](#server-and-database)
     - [Authentication](#authentication)
+    - [Server and Database](#server-and-database)
     - [Routes Available](#routes-available)
 
 ## Front-end
