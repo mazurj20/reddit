@@ -1,10 +1,10 @@
 # Reddit Clone
 
-This is a full stack web application modeled after Reddit. The objective was to include the core features of the platform, including users, profiles, subreddits, posts, comments, trending posts, and "likes". This project was built with PostgreSQL, ExpressJS, ReactJS, and NodeJS, and is deployed through Netlify at https://redditv2.netlify.app/.
+This is a full stack web application modeled after Reddit. The objective was to include the core features of the platform, including users, profiles, subreddits, posts, comments, trending posts, and upvotes. This project was built with PostgreSQL, ExpressJS, ReactJS, and NodeJS - and is deployed through Netlify at https://redditv2.netlify.app/.
 
-# placeholder
+# Overview
 
-- [placeholder](#placeholder)
+- [Overview](#overview)
   - [Font-end](#front-end)
     - [Technologies Used](#technologies-used)
     - [Dependencies](#dependencies)
@@ -44,17 +44,7 @@ This is a full stack web application modeled after Reddit. The objective was to 
 
 ### Authentication
 
-In order to authenticate, you need to create an account or log in with an email and password on the route `users/create`
-
-Once created, you will recieve a token as a response
-
-Add that token to your request headers in this format:
-
-| **Key** | **Value** |
-| ------- | --------- |
-| Authorization | token *your token here* |
-
-And you will have full access to the API!
+In order to sign up or sign in, you must veryfy your identity with google authentication
 
 ### Routes Available
 
@@ -65,7 +55,7 @@ The following routes are available
 | Index*          | /{resource}             | GET           | Display a list of all Project or Comment                                |
 | Show ID*        | /{resource}/{:id}       | GET           | Display a specific Project or Comment based on their ID                 |
 | Create*         | /{resource}/create      | POST          | Add new Project or Comment to the database, returns the newly created entry |
-| Edit By Id*     | /{resource}/{:id}       | PATCH         | Update a particular Game or Review, returns the new entry               |
+| Edit By Id*     | /{resource}/{:id}       | PUT           | Update a particular Game or Review, returns the new entry               |
 | Delete By Id*   | /{resource}/{:id}       | DELETE        | Delete a particular Game or Review                                      |
 | Login           | /users/login            | POST          | Logs in with a username and password, returns an authentication token   |
 | Create          | /users/create           | POST          | Creates a user and returns an authentication token                      |
