@@ -20,7 +20,6 @@ This is a full stack web application modeled after Reddit. The objective was to 
 ### Technologies Used
 
 - [JavaScript](https://www.javascript.com/)
-- [NodeJS](https://nodejs.org/en/)
 - [Netlify](https://www.netlify.com/) - A free website hosting service
 
 ### Dependencies
