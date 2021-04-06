@@ -1,70 +1,86 @@
-# Getting Started with Create React App
+# Reddit Clone
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This is a full stack web application modeled after Reddit. The objective was to include the core features of the platform, including users, profiles, subreddits, posts, comments, and upvotes. This project was built with PostgreSQL, ExpressJS, ReactJS, and NodeJS - and is deployed through Netlify at https://redditv2.netlify.app/.
 
-## Available Scripts
+# Overview
 
-In the project directory, you can run:
+- [Overview](#overview)
+  - [Front-end](#front-end)
+    - [Technologies Used](#technologies-used)
+    - [Dependencies](#dependencies)
+  - [Back-end](#back-end)
+    - [Technologies Used](#technologies-used-1)
+    - [Dependencies](#dependencies-1)
+    - [Authentication](#authentication)
+    - [Server and Database](#server-and-database)
+    - [Routes Available](#routes-available)
 
-### `npm start`
+## Front-end
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+### Technologies Used
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+- [JavaScript](https://www.javascript.com/)
+- [NodeJS](https://nodejs.org/en/)
+- [Netlify](https://www.netlify.com/) - A free website hosting service
 
-### `npm test`
+### Dependencies
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- [ReactJS](https://reactjs.org/) - A client-side JavaScript library for building interfaces
+- [Axios](https://www.npmjs.com/package/axios) - Promise based HTTP client for the browser and node.js
+- [React-Router](https://www.npmjs.com/package/react-router) - A package providing dynamic routing functionality for web apps
+- [React-Router-Dom](https://www.npmjs.com/package/react-router-dom) - A package containing the DOM bindings for react-router
+- [Moment](https://www.npmjs.com/package/moment) - A library for parsing, validating, manipulating, and formatting dates.
+- [Firebase](https://firebase.google.com/) - A tool providing authentication services in collaboration with Google.
 
-### `npm run build`
+## Back-end 
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Technologies Used
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- [NodeJS](https://nodejs.org/en/) - An event-driven JavaScript runtime designed to build scalable network applications
+- [PostgreSQL](https://www.postgresql.org/) - An open source SQL database
+- [Heroku](https://www.heroku.com/) - A platform providing cloud-based hosting services
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Dependencies
 
-### `npm run eject`
+- [ExpressJS](https://expressjs.com/) - A NodeJS framework used for server side development
+- [Cors](https://www.npmjs.com/package/cors) - A package providing cross-origin resource sharing
+- [Dotenv](https://www.npmjs.com/package/dotenv) - A module for loading environment variables from a .env file into process.env
+- [Pg](https://node-postgres.com/) - A PostgreSQL client for Node.js
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+### Authentication
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+In order to sign up or sign in, you must verify your identity through google authentication
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+### Server and Database
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+The server, database structure, and routes can be found in a separate repository: https://github.com/mazurj20/reddit-backend.
 
-## Learn More
+### Routes Available
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+The following routes are available:
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+| **Route name**        | **URL**                 | **HTTP Verb** | **Description**                                                   |
+| ---------------       | ----------------------- | ------------- | ----------------------------------------------------------------- |
+| Login*                | /{login}                | GET           | Log user in using their ID and google authentication              |
+| Find users*           | /{users}                | GET           | Return all users in database                                      |    
+| Create user*          | /{users}                | POST          | Create a new user                                                 |       
+| Find user*            | /{users}/{:id}          | GET           | Find basic user information                                       |    
+| Update user*          | /{users}/{:id}          | PUT           | Update user information                                           |       
+| Delete user*          | /{users}/{:id}          | DELETE        | Delete user from database                                         |   
+| Find subreddits*      | /{subreddits}           | GET           | Return all subreddits in database                                 |    
+| Create subreddit*     | /{subreddits}           | POST          | Create a new subreddit                                            |       
+| Find subreddit*       | /{subreddits}/{:id}     | GET           | Find basic subreddit information                                  |    
+| Update subreddit*     | /{subreddits}/{:id}     | PUT           | Update subreddit information                                      |       
+| Delete subreddit*     | /{subreddits}/{:id}     | DELETE        | Delete subreddit from database                                    |  
+| Find posts*           | /{posts}                | GET           | Return all posts in database                                      |    
+| Create post*          | /{posts}                | POST          | Create a new post                                                 |       
+| Find post*            | /{posts}/{:id}          | GET           | Find basic post information                                       |    
+| Update post*          | /{posts}/{:id}          | PUT           | Update post information                                           |       
+| Delete post*          | /{posts}/{:id}          | DELETE        | Delete post from database                                         | 
+| Find comments*        | /{comments}             | GET           | Return all comments in database                                   |    
+| Create comment*       | /{comments}             | POST          | Create a new comment                                              |       
+| Find comment*         | /{comments}/{:id}       | GET           | Find basic comment information                                    |    
+| Update comment*       | /{comments}/{:id}       | PUT           | Update comment information                                        |       
+| Delete comment*       | /{comments}/{:id}       | DELETE        | Delete comment from database                                      | 
 
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Route names marked with `*` need authentication to be accessed
