@@ -77,7 +77,7 @@ const Home = ({
             default:
               return (
                 <div>
-                  {popularPosts && (
+                  {popularPosts ? (
                     <>
                       <div className="Home_buttons">
                         <Button
@@ -115,6 +115,10 @@ const Home = ({
                         ))}
                       </div>
                     </>
+                  ) : (
+                    <div class="database__message">
+                      <h1>heroku app waking up</h1>
+                    </div>
                   )}
                 </div>
               );

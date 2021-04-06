@@ -2,6 +2,7 @@
   display: flex;
   margin: 5px;
   width: 97%;
+  height: auto;
   border-radius: 2px;
 }
 .Comment_left {
@@ -45,6 +46,7 @@
 }
 .Comment_body > h6 {
   width: 95%;
+  overflow: scroll;
 }
 .Comment_delete_container {
   display: flex;
