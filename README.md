@@ -1,6 +1,6 @@
 # Reddit Clone
 
-This is a full stack web application modeled after Reddit. The objective was to include the core features of the platform, including users, profiles, subreddits, posts, comments, and upvotes. This project was built with PostgreSQL, ExpressJS, ReactJS, and NodeJS - and is deployed through Netlify at https://redditv2.netlify.app/.
+This is a full stack web application modeled after Reddit. The objective was to include the core features of the platform, including users, profiles, subreddits, posts, comments, and upvotes. This project was built with PostgreSQL, ExpressJS, ReactJS, and NodeJS - and is deployed through Netlify at https://redditv2.netlify.app.
 
 # Overview
 
@@ -20,7 +20,6 @@ This is a full stack web application modeled after Reddit. The objective was to 
 ### Technologies Used
 
 - [JavaScript](https://www.javascript.com/)
-- [NodeJS](https://nodejs.org/en/)
 - [Netlify](https://www.netlify.com/) - A free website hosting service
 
 ### Dependencies
